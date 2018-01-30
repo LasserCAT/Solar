@@ -1,0 +1,12 @@
+[{
+  "modid": "solar",
+  "name": "Solar",
+  "description": "Use the power of the stars to do crazy stuff",
+  "version": "0.1",
+  "mcversion": "1.12.2",
+  "logoFile": "",
+  "url": "reddit.com/solarmod/",
+  "updateJSON": "",
+  "authorList": ["Martacus", "Thexare"],
+  "credits": "Thanks to Thexare for his awesome ideas"
+}]

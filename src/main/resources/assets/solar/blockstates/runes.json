@@ -1,0 +1,56 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "normal": {
+        "textures": {
+          "layer0": "solar:items/rune"
+        }
+      },
+      "fire": {
+        "textures": {
+          "layer0": "solar:items/firerune"
+        }
+      },
+      "water": {
+        "textures": {
+          "layer0": "solar:items/waterrune"
+        }
+      },
+      "earth": {
+        "textures": {
+          "layer0": "solar:items/earthrune"
+        }
+      },
+      "wind": {
+        "textures": {
+          "layer0": "solar:items/windrune"
+        }
+      },
+      "time": {
+        "textures": {
+          "layer0": "solar:items/timerune"
+        }
+      },
+      "life": {
+        "textures": {
+          "layer0": "solar:items/liferune"
+        }
+      },
+      "sun": {
+        "textures": {
+          "layer0": "solar:items/sunrune"
+        }
+      },
+      "moon": {
+        "textures": {
+          "layer0": "solar:items/moonrune"
+        }
+      }
+    }
+  }
+}
