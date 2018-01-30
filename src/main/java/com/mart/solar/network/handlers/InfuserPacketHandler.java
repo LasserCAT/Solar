@@ -1,8 +1,15 @@
 package com.mart.solar.network.handlers;
 
-public class InfuserPacketHandler{ // implements IMessageHandler<InfuserPacket, IMessage>
+import com.mart.solar.network.packets.InfuserPacket;
+import com.mart.solar.tileentities.TileRuneInfuser;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-    /*@Override
+public class InfuserPacketHandler implements IMessageHandler<InfuserPacket, IMessage> {
+
+    @Override
     public IMessage onMessage(InfuserPacket message, MessageContext ctx) {
         System.out.println("Called");
 
@@ -23,5 +30,5 @@ public class InfuserPacketHandler{ // implements IMessageHandler<InfuserPacket, 
         }
 
         return null;
-    }*/
+    }
 }

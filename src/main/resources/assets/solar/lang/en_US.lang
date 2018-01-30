@@ -1,9 +1,10 @@
 # Blocks
-tile.sunTotem.name=Celestial Totem
-tile.runeInfuser.name=Rune Infuser
+tile.suntotem.name=Celestial Altar
+tile.brokentotem.name=Broken Altar
+tile.runeinfuser.name=Rune Infuser
 
 
 #Items
-
+item.guidebook.name=Guide Book
 
 #Runes

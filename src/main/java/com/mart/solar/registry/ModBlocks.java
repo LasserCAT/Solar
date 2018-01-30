@@ -50,8 +50,6 @@ public class ModBlocks {
     private static <T extends Block> T register(T block, RegistryEvent.Register<Block> event) {
         event.getRegistry().register(block);
 
-        System.out.println("THIS IS CANCER");
-
         return block;
     }
 

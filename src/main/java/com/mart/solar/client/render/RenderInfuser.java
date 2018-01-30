@@ -16,9 +16,8 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
 
     public static Minecraft mc = Minecraft.getMinecraft();
 
-
     @Override
-    public void renderTileEntityFast(TileRuneInfuser runeInfuser, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
+    public void render(TileRuneInfuser runeInfuser, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         ItemStack inputStack = runeInfuser.getRune();
         ItemStack modifierStack = runeInfuser.getModifier();
 

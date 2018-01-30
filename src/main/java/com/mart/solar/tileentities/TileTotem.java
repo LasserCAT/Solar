@@ -10,6 +10,7 @@ import com.mart.solar.items.ItemRitualStaff;
 import com.mart.solar.registry.ModBlocks;
 import com.mart.solar.rituals.Ritual;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -41,7 +42,7 @@ public class TileTotem extends TileBase implements ITickable {
     private float solarEnergy = 0;
     private float lunarEnergy = 0;
 
-    int second = 0;
+    public boolean blocked = false;
 
     public TileTotem() {
         menhirPlaces.put(1, new Vector2d(0, -4));
@@ -97,14 +98,21 @@ public class TileTotem extends TileBase implements ITickable {
 
     @Override
     public void update() {
-        if (this.getWorld().getWorldTime() % 24000 > 0 && this.getWorld().getWorldTime() % 24000 < 13000) {
-            addSolarEnergy();
-            extractLunarEnergy(1);
+        if(this.getWorld().getWorldTime() % 20 == 0){
+            this.blocked = this.skyBlocked();
         }
-        if (this.getWorld().getWorldTime() % 24000 >= 13000 && this.getWorld().getWorldTime() % 24000 <= 24000) {
-            addLunarEnergy();
-            extractSolarEnergy(1);
+
+        if(!blocked){
+            if (this.getWorld().getWorldTime() % 24000 > 0 && this.getWorld().getWorldTime() % 24000 < 13000) {
+                addSolarEnergy();
+                extractLunarEnergy(2);
+            }
+            if (this.getWorld().getWorldTime() % 24000 >= 13000 && this.getWorld().getWorldTime() % 24000 <= 24000) {
+                addLunarEnergy();
+                extractSolarEnergy(2);
+            }
         }
+
     }
 
     public void checkForMenhirs(BlockPos pos, World world, EntityPlayer player) {
@@ -301,6 +309,20 @@ public class TileTotem extends TileBase implements ITickable {
         } else {
             ritual.activateRitual(rc.getPlayer(), ritual.getRitualSolarCost(), ritual.getRitualLunarCost());
         }
+    }
+
+    public boolean skyBlocked(){
+        BlockPos position = this.getPos();
+        for(int y = position.getY() + 1; y < 256; y++){
+            BlockPos checkPosition = new BlockPos(position.getX(), y, position.getZ());
+            IBlockState checkBlock =this.getWorld().getBlockState(checkPosition);
+
+            if(checkBlock.getBlock() != Blocks.AIR){
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

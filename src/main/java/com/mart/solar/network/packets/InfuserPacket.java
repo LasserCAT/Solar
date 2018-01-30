@@ -1,8 +1,16 @@
 package com.mart.solar.network.packets;
 
-public class InfuserPacket { //implements IMessage
+import io.netty.buffer.ByteBuf;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
-   /* public ItemStack rune;
+public class InfuserPacket implements IMessage {
+
+    public ItemStack rune;
     public ItemStack modifier;
 
     public int x,y,z;
@@ -49,5 +57,5 @@ public class InfuserPacket { //implements IMessage
         buf.writeInt(y);
         buf.writeInt(z);
         buf.writeInt(world.provider.getDimension());
-    }*/
+    }
 }
