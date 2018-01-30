@@ -1,8 +1,10 @@
 package com.mart.solar.tileentities;
 
 import com.mart.solar.registry.ModBlocks;
+import com.mart.solar.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -98,6 +100,10 @@ public class TileBrokenTotem extends TileBase {
     public void checkTransform(BlockPos pos, EntityPlayer player) {
         if (getGoldIngots() == 4 && getSilverIngots() == 4 && getWoodenBlocks() == 8) {
             player.getEntityWorld().setBlockState(pos, ModBlocks.sunTotem.getDefaultState());
+            if(!this.getWorld().isRemote){
+                EntityItem bookItem = new EntityItem(this.getWorld(), pos.getX(), pos.getY()+1, pos.getZ(), new ItemStack(ModItems.guideBook) );
+                this.getWorld().spawnEntity(bookItem);
+            }
         }
     }
 }
