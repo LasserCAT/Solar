@@ -1,24 +1,20 @@
 package com.mart.solar;
 
-import com.mart.solar.creativetabs.SolarTab;
-import com.mart.solar.gen.WorldGenSilverOre;
-import com.mart.solar.network.handlers.ClientPacketHandler;
-import com.mart.solar.network.handlers.ServerPacketHandler;
-import com.mart.solar.network.SolarPacketHandler;
-import com.mart.solar.registry.*;
-import com.mart.solar.proxy.CommonProxy;
-import com.mart.solar.gen.structures.StructForgottenAltar;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
+import com.mart.solar.common.network.GuiHandler;
+import com.mart.solar.common.creativetabs.SolarTab;
+import com.mart.solar.common.gen.WorldGenSilverOre;
+import com.mart.solar.common.network.handlers.ClientPacketHandler;
+import com.mart.solar.common.network.handlers.ServerPacketHandler;
+import com.mart.solar.common.network.SolarPacketHandler;
+import com.mart.solar.common.registry.*;
+import com.mart.solar.common.CommonProxy;
+import com.mart.solar.common.gen.structures.StructForgottenAltar;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -42,7 +38,7 @@ public class Solar
 
     public static Logger logger;
 
-    @SidedProxy(serverSide = "com.mart.solar.proxy.CommonProxy", clientSide = "com.mart.solar.proxy.ClientProxy")
+    @SidedProxy(serverSide = "com.mart.solar.common.CommonProxy", clientSide = "com.mart.solar.client.ClientProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance(MODID)
@@ -73,6 +69,10 @@ public class Solar
 
         OreDictionary.registerOre("oreSilver", ModBlocks.silverOre);
         OreDictionary.registerOre("ingotSilver", ModItems.silverIngot);
+
+        GameRegistry.addSmelting(ModBlocks.silverOre, new ItemStack(ModItems.silverIngot, 1), 1.5f);
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler

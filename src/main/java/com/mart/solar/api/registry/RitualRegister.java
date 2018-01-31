@@ -1,7 +1,7 @@
 package com.mart.solar.api.registry;
 
 import com.mart.solar.Solar;
-import com.mart.solar.rituals.Ritual;
+import com.mart.solar.common.rituals.Ritual;
 
 import java.util.ArrayList;
 import java.util.List;

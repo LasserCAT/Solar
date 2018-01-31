@@ -1,8 +1,7 @@
 package com.mart.solar.client.render;
 
-import com.mart.solar.tileentities.TileRuneInfuser;
+import com.mart.solar.common.tileentities.TileRuneInfuser;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;

@@ -2,7 +2,7 @@ package com.mart.solar.api.util;
 
 import com.mart.solar.api.enums.CircleTypes;
 import com.mart.solar.api.enums.RitualLevel;
-import com.mart.solar.tileentities.TileMenhir;
+import com.mart.solar.common.tileentities.TileMenhir;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
