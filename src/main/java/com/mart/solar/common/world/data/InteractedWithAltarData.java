@@ -18,7 +18,11 @@ public class InteractedWithAltarData extends WorldSavedData {
 
     private List<UUID> playerUUIDSList = new ArrayList<>();
 
-    private InteractedWithAltarData() {
+    public InteractedWithAltarData() {
+        super(IDENTIFIER);
+    }
+
+    public InteractedWithAltarData(String IDENTIFIER) {
         super(IDENTIFIER);
     }
 
@@ -43,22 +47,27 @@ public class InteractedWithAltarData extends WorldSavedData {
         }
 
         nbt.setTag("playerUUIDS", tagList);
-        return null;
+        return nbt;
     }
 
     public void addUUID(UUID uuid) {
         if(!this.playerUUIDSList.contains(uuid)){
             this.playerUUIDSList.add(uuid);
-            markDirty();
         }
+        markDirty();
     }
 
     public List<UUID> getUUIDList() {
+        for(UUID uuid: this.playerUUIDSList){
+            System.out.println(uuid.toString());
+        }
         return this.playerUUIDSList;
     }
 
-    public static InteractedWithAltarData getData(World world) {
+    public static InteractedWithAltarData get(World world) {
+
         MapStorage storage = world.getMapStorage();
+        if(storage == null) return null;
         InteractedWithAltarData data = (InteractedWithAltarData) storage.getOrLoadData(InteractedWithAltarData.class, IDENTIFIER);
         if (data == null) {
             data = new InteractedWithAltarData();
