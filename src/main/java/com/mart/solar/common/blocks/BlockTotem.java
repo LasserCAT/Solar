@@ -1,9 +1,9 @@
-package com.mart.solar.blocks;
+package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.ITotemManipulator;
-import com.mart.solar.items.ItemRitualStaff;
-import com.mart.solar.tileentities.TileTotem;
+import com.mart.solar.common.items.ItemRitualStaff;
+import com.mart.solar.common.tileentities.TileTotem;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,8 +17,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class BlockTotem extends BlockBase implements ITileEntityProvider {
 

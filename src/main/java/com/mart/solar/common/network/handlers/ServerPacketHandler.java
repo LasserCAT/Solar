@@ -1,7 +1,7 @@
-package com.mart.solar.network.handlers;
+package com.mart.solar.common.network.handlers;
 
 import com.mart.solar.Solar;
-import com.mart.solar.network.packets.PacketTime;
+import com.mart.solar.common.network.packets.PacketTime;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 

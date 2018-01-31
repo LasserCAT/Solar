@@ -1,4 +1,4 @@
-package com.mart.solar.network.packets;
+package com.mart.solar.common.network.packets;
 
 import com.mart.solar.Solar;
 import io.netty.buffer.ByteBuf;

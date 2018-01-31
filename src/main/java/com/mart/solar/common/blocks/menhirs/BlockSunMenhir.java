@@ -1,4 +1,4 @@
-package com.mart.solar.blocks.menhirs;
+package com.mart.solar.common.blocks.menhirs;
 
 import com.mart.solar.api.enums.CircleTypes;
 

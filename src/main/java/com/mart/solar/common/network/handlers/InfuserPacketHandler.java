@@ -1,7 +1,7 @@
-package com.mart.solar.network.handlers;
+package com.mart.solar.common.network.handlers;
 
-import com.mart.solar.network.packets.InfuserPacket;
-import com.mart.solar.tileentities.TileRuneInfuser;
+import com.mart.solar.common.network.packets.InfuserPacket;
+import com.mart.solar.common.tileentities.TileRuneInfuser;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

@@ -1,4 +1,4 @@
-package com.mart.solar.circles;
+package com.mart.solar.common.circles;
 
 
 public class Circle {

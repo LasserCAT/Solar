@@ -1,7 +1,7 @@
-package com.mart.solar.blocks;
+package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
-import com.mart.solar.tileentities.TileRuneInfuser;
+import com.mart.solar.common.tileentities.TileRuneInfuser;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -14,8 +14,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class BlockRuneInfuser extends BlockBase implements ITileEntityProvider {
 

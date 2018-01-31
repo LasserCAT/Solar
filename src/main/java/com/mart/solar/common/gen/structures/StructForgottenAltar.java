@@ -1,6 +1,6 @@
-package com.mart.solar.gen.structures;
+package com.mart.solar.common.gen.structures;
 
-import com.mart.solar.registry.ModBlocks;
+import com.mart.solar.common.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;

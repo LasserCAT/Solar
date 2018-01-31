@@ -1,7 +1,7 @@
-package com.mart.solar.blocks;
+package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
-import com.mart.solar.tileentities.TileBrokenTotem;
+import com.mart.solar.common.tileentities.TileBrokenTotem;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,7 +15,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class BlockBrokenTotem extends BlockBase implements ITileEntityProvider {

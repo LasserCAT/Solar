@@ -1,9 +1,9 @@
-package com.mart.solar.blocks.menhirs;
+package com.mart.solar.common.blocks.menhirs;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.blocks.BlockBase;
-import com.mart.solar.tileentities.TileMenhir;
+import com.mart.solar.common.blocks.BlockBase;
+import com.mart.solar.common.tileentities.TileMenhir;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -15,8 +15,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class BlockMenhir extends BlockBase implements ITileEntityProvider {
 

@@ -1,4 +1,4 @@
-package com.mart.solar.network.packets;
+package com.mart.solar.common.network.packets;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
