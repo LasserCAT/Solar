@@ -15,6 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -44,10 +45,14 @@ public class BlockBrokenTotem extends BlockBase implements ITileEntityProvider {
         if (!world.isRemote) {
 
             InteractedWithAltarData data = InteractedWithAltarData.get(world);
+
             if(!data.getUUIDList().contains(player.getUniqueID())){
                 data.addUUID(player.getUniqueID());
-                System.out.println(player.getUniqueID());
-                player.sendMessage(new TextComponentString(this.firstUseString));
+
+                TextComponentString string = new TextComponentString(this.firstUseString);
+                string.getStyle().setColor(TextFormatting.DARK_PURPLE);
+
+                player.sendMessage(string);
             }
 
             ItemStack heldItem = player.getHeldItem(hand);

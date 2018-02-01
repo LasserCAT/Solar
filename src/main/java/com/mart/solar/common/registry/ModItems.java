@@ -2,10 +2,7 @@ package com.mart.solar.common.registry;
 
 import com.mart.solar.api.enums.RuneTypes;
 import com.mart.solar.api.util.ItemRuneEnum;
-import com.mart.solar.common.items.ItemBase;
-import com.mart.solar.common.items.ItemGuideBook;
-import com.mart.solar.common.items.ItemRitualStaff;
-import com.mart.solar.common.items.ItemSilverIngot;
+import com.mart.solar.common.items.*;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -20,6 +17,8 @@ public class ModItems {
     public static ItemRitualStaff ritualStaff;
     public static ItemSilverIngot silverIngot;
     public static ItemGuideBook guideBook;
+    public static ItemDullAmulet dullAmulet;
+
 
     public static final Item RUNES = new ItemRuneEnum<>(RuneTypes.class);
 
@@ -28,6 +27,7 @@ public class ModItems {
         ritualStaff = register(new ItemRitualStaff("ritualstaff"), event);
         silverIngot = register(new ItemSilverIngot("silverIngot"), event);
         guideBook = register(new ItemGuideBook(), event);
+        dullAmulet = register(new ItemDullAmulet(), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
 

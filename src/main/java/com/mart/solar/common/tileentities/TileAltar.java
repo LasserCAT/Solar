@@ -7,6 +7,7 @@ import com.mart.solar.api.util.RitualContainer;
 import com.mart.solar.common.blocks.menhirs.BlockMenhir;
 import com.mart.solar.common.circles.Circle;
 import com.mart.solar.common.items.ItemRitualStaff;
+import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.rituals.Ritual;
 import net.minecraft.block.Block;
@@ -15,14 +16,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 import javax.vecmath.Vector2d;
 import java.util.*;
 
-public class TileTotem extends TileBase implements ITickable {
+public class TileAltar extends TileBase implements ITickable {
 
     private int[][] runeArray = new int[9][9];
 
@@ -44,7 +47,11 @@ public class TileTotem extends TileBase implements ITickable {
 
     public boolean blocked = false;
 
-    public TileTotem() {
+    private ItemStack heldItem;
+    private AltarRecipe currentRecipe;
+    private int currentEnergyProgress;
+
+    public TileAltar() {
         menhirPlaces.put(1, new Vector2d(0, -4));
         menhirPlaces.put(2, new Vector2d(3, -3));
         menhirPlaces.put(3, new Vector2d(4, 0));
@@ -325,4 +332,16 @@ public class TileTotem extends TileBase implements ITickable {
         return false;
     }
 
+    public void startAltarRecipe(AltarRecipe altarRecipe, EntityPlayer player, ItemStack stack, EnumHand hand) {
+        if(altarRecipe.getEnergyCost() > (this.solarEnergy + lunarEnergy)){
+            player.sendMessage(new TextComponentString("Not enough energy in altar"));
+            return;
+        }
+
+        this.currentRecipe = altarRecipe;
+        this.currentEnergyProgress = 0;
+        this.heldItem = stack;
+
+        player.setHeldItem(hand, ItemStack.EMPTY);
+    }
 }

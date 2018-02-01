@@ -39,11 +39,6 @@ public class SpellSummerHeat extends Spell {
             for (int i = 0; i < 41; i++) {
 
                 if (i == blocks.size()) {
-                    setWater(blocks, player.getEntityWorld());
-                    return;
-                }
-                if (i == 40) {
-                    //todo: cancel spell and retract some things
                     break;
                 }
 
@@ -67,12 +62,9 @@ public class SpellSummerHeat extends Spell {
                 if (block4.equals(Blocks.WATER) && !blocks.contains(blockpos4))
                     blocks.add(blockpos4);
 
-                if (blocks.size() >= 41) {
-                    //todo: cancel spell and retract some things
-                    break;
-                }
             }
-            System.out.println(blocks.size());
+
+            setWater(blocks, player.getEntityWorld());
         }
     }
 

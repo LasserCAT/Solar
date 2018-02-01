@@ -4,13 +4,13 @@ import com.mart.solar.Solar;
 import com.mart.solar.common.tileentities.TileBrokenTotem;
 import com.mart.solar.common.tileentities.TileMenhir;
 import com.mart.solar.common.tileentities.TileRuneInfuser;
-import com.mart.solar.common.tileentities.TileTotem;
+import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModTiles {
 
     static TileBrokenTotem brokenTotem = new TileBrokenTotem();
-    static TileTotem totem = new TileTotem();
+    static TileAltar totem = new TileAltar();
     static TileRuneInfuser runeInfuser = new TileRuneInfuser();
     static TileMenhir menhir = new TileMenhir();
 

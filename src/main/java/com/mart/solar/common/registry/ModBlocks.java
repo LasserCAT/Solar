@@ -9,7 +9,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class ModBlocks {
 
-    public static BlockTotem sunTotem;
+    public static BlockAltar sunTotem;
     public static BlockBrokenTotem brokenTotem;
     public static BlockRuneInfuser runeInfuser;
     public static BlockSilverOre silverOre;
@@ -21,7 +21,7 @@ public class ModBlocks {
     public static BlockLifeMenhir lifeMenhir;
 
     public static void init(RegistryEvent.Register<Block> event) {
-        sunTotem = register(new BlockTotem("suntotem"), event);
+        sunTotem = register(new BlockAltar("suntotem"), event);
         brokenTotem = register(new BlockBrokenTotem("brokentotem"), event);
         runeInfuser = register(new BlockRuneInfuser("runeinfuser"), event);
         silverOre = register(new BlockSilverOre("silverore"), event);

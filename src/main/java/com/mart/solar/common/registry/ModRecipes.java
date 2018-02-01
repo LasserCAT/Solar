@@ -23,5 +23,7 @@ public class ModRecipes {
             InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(i.getItem(), RuneTypes.MOON));
         }
 
+        //Altar Recipes
+
     }
 }

@@ -3,7 +3,9 @@ package com.mart.solar.common.blocks;
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.ITotemManipulator;
 import com.mart.solar.common.items.ItemRitualStaff;
-import com.mart.solar.common.tileentities.TileTotem;
+import com.mart.solar.common.recipes.AltarRecipe;
+import com.mart.solar.common.recipes.AltarRecipeManager;
+import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,9 +20,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-public class BlockTotem extends BlockBase implements ITileEntityProvider {
+public class BlockAltar extends BlockBase implements ITileEntityProvider {
 
-    public BlockTotem(String name) {
+    public BlockAltar(String name) {
         super(Material.WOOD, name);
         setCreativeTab(Solar.solarTab);
 
@@ -37,7 +39,7 @@ public class BlockTotem extends BlockBase implements ITileEntityProvider {
                 return true;
             }
 
-            TileTotem tileEntity = (TileTotem) world.getTileEntity(pos);
+            TileAltar tileEntity = (TileAltar) world.getTileEntity(pos);
 
             if (tileEntity == null || player.isSneaking())
                 return false;
@@ -53,6 +55,11 @@ public class BlockTotem extends BlockBase implements ITileEntityProvider {
                     playerItem.getItem().onItemRightClick(world, player, hand);
                     return true;
                 }
+
+                AltarRecipe altarRecipe = AltarRecipeManager.findMatchingInput(playerItem.getItem());
+                if(altarRecipe != null){
+                    tileEntity.startAltarRecipe(altarRecipe, player, playerItem, hand);
+                }
             }
 
             player.sendMessage(new TextComponentString("" + tileEntity.getSolarEnergy() + "/" + tileEntity.getLunarEnergy()));
@@ -65,6 +72,6 @@ public class BlockTotem extends BlockBase implements ITileEntityProvider {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileTotem();
+        return new TileAltar();
     }
 }
