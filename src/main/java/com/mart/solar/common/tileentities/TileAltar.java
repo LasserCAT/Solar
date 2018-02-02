@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
@@ -47,7 +48,7 @@ public class TileAltar extends TileBase implements ITickable {
 
     public boolean blocked = false;
 
-    private ItemStack heldItem;
+    private ItemStack heldItem = ItemStack.EMPTY;
     private AltarRecipe currentRecipe;
     private int currentEnergyProgress;
 
@@ -93,6 +94,13 @@ public class TileAltar extends TileBase implements ITickable {
         super.writeToNBT(compound);
         compound.setFloat("solarEnergy", this.solarEnergy);
         compound.setFloat("lunarEnergy", this.lunarEnergy);
+
+        NBTTagList tagList = new NBTTagList();
+        NBTTagCompound itemCompound = new NBTTagCompound();
+        this.heldItem.writeToNBT(itemCompound);
+        tagList.appendTag(itemCompound);
+        compound.setTag("heldItem", tagList);
+
         return compound;
     }
 
@@ -101,6 +109,10 @@ public class TileAltar extends TileBase implements ITickable {
         super.readFromNBT(compound);
         this.solarEnergy = compound.getFloat("solarEnergy");
         this.lunarEnergy = compound.getFloat("lunarEnergy");
+
+        NBTTagList tagList = (NBTTagList) compound.getTag("heldItem");
+        NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
+        this.heldItem = new ItemStack(tagCompound);
     }
 
     @Override
@@ -120,6 +132,39 @@ public class TileAltar extends TileBase implements ITickable {
             }
         }
 
+        runAltarRecipe();
+
+    }
+
+    private void runAltarRecipe(){
+        if(this.getWorld().isRemote){
+            return;
+        }
+
+        if(!this.heldItem.isEmpty() && this.currentRecipe != null){
+            if(this.currentEnergyProgress < this.currentRecipe.getEnergyCost()){
+                if(this.solarEnergy > 0 && this.lunarEnergy > 0){
+                    this.currentEnergyProgress += 2;
+                    this.solarEnergy--;
+                    this.lunarEnergy--;
+                }
+                else if(this.solarEnergy <= 0 && this.lunarEnergy > 0){
+                    this.currentEnergyProgress++;
+                    this.lunarEnergy--;
+                }
+                else if(this.lunarEnergy <= 0 && this.solarEnergy > 0){
+                    this.currentEnergyProgress++;
+                    this.solarEnergy--;
+                }
+            }
+            else{
+                this.heldItem = new ItemStack(this.currentRecipe.getOutput(), 1);
+                this.currentRecipe = null;
+                this.currentEnergyProgress = 0;
+            }
+        }
+
+        System.out.println(heldItem);
     }
 
     public void checkForMenhirs(BlockPos pos, World world, EntityPlayer player) {
@@ -340,8 +385,12 @@ public class TileAltar extends TileBase implements ITickable {
 
         this.currentRecipe = altarRecipe;
         this.currentEnergyProgress = 0;
-        this.heldItem = stack;
+        this.heldItem = stack.copy();
 
         player.setHeldItem(hand, ItemStack.EMPTY);
+    }
+
+    public ItemStack getHeldItem() {
+        return heldItem;
     }
 }

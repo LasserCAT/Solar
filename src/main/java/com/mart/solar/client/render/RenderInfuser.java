@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
 
-    public static Minecraft mc = Minecraft.getMinecraft();
+    private static Minecraft mc = Minecraft.getMinecraft();
 
     @Override
     public void render(TileRuneInfuser runeInfuser, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {

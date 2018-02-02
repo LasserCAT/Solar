@@ -16,7 +16,7 @@ public class ModAltarRecipes {
     private static void init(){
         ALTAR_RECIPES  = new ArrayList<>();
 
-        addAltarRecipe(new AltarRecipe(ModItems.dullAmulet, ModItems.ritualStaff, 1000, "ritualAmuletRecipe"));
+        addAltarRecipe(new AltarRecipe(ModItems.dullAmulet, ModItems.ritualStaff, 100, "ritualAmuletRecipe"));
     }
 
     public static AltarRecipe[] getAltarRecipes()

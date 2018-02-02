@@ -102,7 +102,6 @@ public class TileRuneInfuser extends TileBase implements ITickable {
     }
 
     public ItemStack getRune() {
-
         return rune;
     }
 

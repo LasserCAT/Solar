@@ -1,4 +1,4 @@
-package com.mart.solar.common.gen.structures;
+package com.mart.solar.common.world.gen.structures;
 
 import com.mart.solar.common.registry.ModBlocks;
 import net.minecraft.block.Block;

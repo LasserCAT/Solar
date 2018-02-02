@@ -2,13 +2,13 @@ package com.mart.solar;
 
 import com.mart.solar.common.network.GuiHandler;
 import com.mart.solar.common.creativetabs.SolarTab;
-import com.mart.solar.common.gen.WorldGenSilverOre;
+import com.mart.solar.common.world.gen.WorldGenSilverOre;
 import com.mart.solar.common.network.handlers.ClientPacketHandler;
 import com.mart.solar.common.network.handlers.ServerPacketHandler;
 import com.mart.solar.common.network.SolarPacketHandler;
 import com.mart.solar.common.registry.*;
 import com.mart.solar.common.CommonProxy;
-import com.mart.solar.common.gen.structures.StructForgottenAltar;
+import com.mart.solar.common.world.gen.structures.StructForgottenAltar;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
