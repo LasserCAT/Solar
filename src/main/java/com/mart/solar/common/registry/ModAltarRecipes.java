@@ -1,6 +1,7 @@
 package com.mart.solar.common.registry;
 
 import com.mart.solar.common.recipes.AltarRecipe;
+import net.minecraft.init.Items;
 
 import java.util.ArrayList;
 import java.util.List;

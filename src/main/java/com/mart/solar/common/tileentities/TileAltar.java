@@ -50,7 +50,9 @@ public class TileAltar extends TileBase implements ITickable {
 
     private ItemStack heldItem = ItemStack.EMPTY;
     private AltarRecipe currentRecipe;
-    private int currentEnergyProgress;
+    private int energyCost = 0;
+    private int currentEnergyProgress = 0;
+    private boolean recipeInProgress = false;
 
     public TileAltar() {
         menhirPlaces.put(1, new Vector2d(0, -4));
@@ -92,6 +94,17 @@ public class TileAltar extends TileBase implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+
+        if(this.currentRecipe != null){
+            compound.setBoolean("recipeInProgress", true);
+            compound.setInteger("recipeEnergyCost", this.currentRecipe.getEnergyCost());
+        }
+        else{
+            compound.setBoolean("recipeInProgress", false);
+            compound.setInteger("recipeEnergyCost", 0);
+        }
+
+        compound.setInteger("recipeEnergyProgress", this.currentEnergyProgress);
         compound.setFloat("solarEnergy", this.solarEnergy);
         compound.setFloat("lunarEnergy", this.lunarEnergy);
 
@@ -107,8 +120,11 @@ public class TileAltar extends TileBase implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
+        this.recipeInProgress = compound.getBoolean("recipeInProgress");
         this.solarEnergy = compound.getFloat("solarEnergy");
         this.lunarEnergy = compound.getFloat("lunarEnergy");
+        this.energyCost = compound.getInteger("energyCost");
+        this.currentEnergyProgress = compound.getInteger("recipeEnergyProgress");
 
         NBTTagList tagList = (NBTTagList) compound.getTag("heldItem");
         NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
@@ -117,6 +133,7 @@ public class TileAltar extends TileBase implements ITickable {
 
     @Override
     public void update() {
+        notifyUpdate();
         if(this.getWorld().getWorldTime() % 20 == 0){
             this.blocked = this.skyBlocked();
         }
@@ -378,8 +395,9 @@ public class TileAltar extends TileBase implements ITickable {
 
     public void retrieveItem(EntityPlayer player, EnumHand hand){
         if(!this.heldItem.isEmpty()){
-            player.setHeldItem(hand, this.heldItem);
+            player.setHeldItem(hand, this.heldItem.copy());
             this.heldItem = ItemStack.EMPTY;
+            notifyUpdate();
         }
 
     }
@@ -402,5 +420,21 @@ public class TileAltar extends TileBase implements ITickable {
 
     public ItemStack getHeldItem() {
         return heldItem;
+    }
+
+    public AltarRecipe getCurrentRecipe() {
+        return currentRecipe;
+    }
+
+    public int getCurrentEnergyProgress() {
+        return currentEnergyProgress;
+    }
+
+    public boolean isRecipeInProgress() {
+        return recipeInProgress;
+    }
+
+    public int getEnergyCost() {
+        return energyCost;
     }
 }
