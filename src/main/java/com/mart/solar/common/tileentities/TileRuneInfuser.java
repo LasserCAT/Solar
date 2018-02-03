@@ -21,21 +21,21 @@ import java.util.Random;
 
 public class TileRuneInfuser extends TileBase implements ITickable {
 
-    private ItemStack rune;
-    private ItemStack modifier;
+    private ItemStack rune = ItemStack.EMPTY;
+    private ItemStack modifier = ItemStack.EMPTY;
 
     private int infuserDuration = 140;
     private int currentDuration = 0;
     private boolean infusing = false;
 
-    private ItemStack nextOutput;
+    private ItemStack nextOutput = ItemStack.EMPTY;
 
     private Random random = new Random();
 
     //Infuser Methods
     public void onUse(ItemStack heldItem, EntityPlayer player, EnumHand hand) {
         if (heldItem.getItem() instanceof IRune) {
-            if (rune == null) {
+            if (rune.isEmpty()) {
                 ItemStack heldItem2 = heldItem.copy();
 
                 heldItem2.setCount(1);
@@ -45,7 +45,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
                 player.setHeldItem(hand, heldItem);
             }
         } else {
-            if (modifier == null) {
+            if (modifier.isEmpty()) {
                 ItemStack heldItem2 = heldItem.copy();
 
                 heldItem2.setCount(1);
@@ -60,19 +60,19 @@ public class TileRuneInfuser extends TileBase implements ITickable {
     }
 
     public void extractItem(EntityPlayer player, EnumHand hand) {
-        if (modifier != null) {
+        if (!modifier.isEmpty()) {
             player.inventory.addItemStackToInventory(modifier);
             System.out.println("Modifier Extracted:" + modifier.getDisplayName());
-            setModifier(null);
-        } else if (rune != null) {
+            setModifier(ItemStack.EMPTY);
+        } else if (!rune.isEmpty()) {
             player.inventory.addItemStackToInventory(rune);
-            setRune(null);
+            setRune(ItemStack.EMPTY);
             System.out.println("Rune Extraced");
         }
     }
 
     public void checkRecipe() {
-        if (rune != null && modifier != null) {
+        if (!rune.isEmpty() && !modifier.isEmpty()) {
             for (BiMap.Entry<Item, InfuserRecipeRegister.InfuserRecipe> b : InfuserRecipeRegister.getRecipes().entrySet()) {
                 if (modifier.getItem() == b.getKey()) {
                     infusing = true;
@@ -85,11 +85,11 @@ public class TileRuneInfuser extends TileBase implements ITickable {
     }
 
     public void endInfusing() {
-        setModifier(null);
+        setModifier(ItemStack.EMPTY);
         infusing = false;
         currentDuration = 0;
         setRune(nextOutput);
-        nextOutput = null;
+        nextOutput = ItemStack.EMPTY;
     }
 
     //Getters and Setters
@@ -114,7 +114,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
 
-        if (rune != null) {
+        if (!rune.isEmpty()) {
             NBTTagList tagList = new NBTTagList();
             NBTTagCompound itemCompound = new NBTTagCompound();
             rune.writeToNBT(itemCompound);
@@ -125,7 +125,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
             compound.setBoolean("runeAvailable", false);
         }
 
-        if (modifier != null) {
+        if (!modifier.isEmpty()) {
             NBTTagList itemList = new NBTTagList();
             NBTTagCompound modifierCompound = new NBTTagCompound();
             modifier.writeToNBT(modifierCompound);
@@ -150,7 +150,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
             NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
             rune = new ItemStack(tagCompound);
         } else {
-            rune = null;
+            rune = ItemStack.EMPTY;
         }
 
         if (compound.getBoolean("modifierAvailable")) {
@@ -158,7 +158,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
             NBTTagCompound modifierCompound = modifierList.getCompoundTagAt(0);
             modifier = new ItemStack(modifierCompound);
         } else {
-            modifier = null;
+            modifier = ItemStack.EMPTY;
         }
 
         infusing = compound.getBoolean("infuserActive");

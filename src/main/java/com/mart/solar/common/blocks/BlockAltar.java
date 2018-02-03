@@ -46,7 +46,7 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
 
             ItemStack playerItem = player.inventory.getCurrentItem();
 
-            if (playerItem.getItem() != Items.AIR) {
+            if (!playerItem.isEmpty()) {
                 if (playerItem.getItem() instanceof ITotemManipulator) {
                     if (playerItem.getItem() instanceof ItemRitualStaff) {
                         tileEntity.checkForMenhirs(tileEntity.getPos(), tileEntity.getWorld(), player);
@@ -60,6 +60,9 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
                 if(altarRecipe != null){
                     tileEntity.startAltarRecipe(altarRecipe, player, playerItem, hand);
                 }
+            }
+            else{
+                tileEntity.retrieveItem(player, hand);
             }
 
             player.sendMessage(new TextComponentString("" + tileEntity.getSolarEnergy() + "/" + tileEntity.getLunarEnergy()));

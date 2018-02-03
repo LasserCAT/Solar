@@ -161,10 +161,9 @@ public class TileAltar extends TileBase implements ITickable {
                 this.heldItem = new ItemStack(this.currentRecipe.getOutput(), 1);
                 this.currentRecipe = null;
                 this.currentEnergyProgress = 0;
+                notifyUpdate();
             }
         }
-
-        System.out.println(heldItem);
     }
 
     public void checkForMenhirs(BlockPos pos, World world, EntityPlayer player) {
@@ -377,6 +376,14 @@ public class TileAltar extends TileBase implements ITickable {
         return false;
     }
 
+    public void retrieveItem(EntityPlayer player, EnumHand hand){
+        if(!this.heldItem.isEmpty()){
+            player.setHeldItem(hand, this.heldItem);
+            this.heldItem = ItemStack.EMPTY;
+        }
+
+    }
+
     public void startAltarRecipe(AltarRecipe altarRecipe, EntityPlayer player, ItemStack stack, EnumHand hand) {
         if(altarRecipe.getEnergyCost() > (this.solarEnergy + lunarEnergy)){
             player.sendMessage(new TextComponentString("Not enough energy in altar"));
@@ -386,8 +393,11 @@ public class TileAltar extends TileBase implements ITickable {
         this.currentRecipe = altarRecipe;
         this.currentEnergyProgress = 0;
         this.heldItem = stack.copy();
+        this.heldItem.setCount(1);
 
         player.setHeldItem(hand, ItemStack.EMPTY);
+
+        notifyUpdate();
     }
 
     public ItemStack getHeldItem() {
