@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "WWW",
-    "GRG",
-    "SSS"  ],
+    "GLG",
+    "SFS"  ],
   "key": {
     "G": [
       {
@@ -23,12 +23,18 @@
         "data": 0
       }
     ],
-    "R": [
+    "L": [
       {
-        "item": "solar:runes",
+        "item": "solar:solarfocus",
         "data": 0
       }
-    ]
+    ],
+    "F": [
+      {
+        "item": "solar:lunarfocus",
+        "data": 0
+      }
+     ]
   },
   "result": {
     "item": "solar:runeinfuser",

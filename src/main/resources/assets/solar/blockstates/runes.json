@@ -8,47 +8,47 @@
     "type": {
       "normal": {
         "textures": {
-          "layer0": "solar:items/rune"
+          "layer0": "solar:items/runes/rune"
         }
       },
       "fire": {
         "textures": {
-          "layer0": "solar:items/firerune"
+          "layer0": "solar:items/runes/firerune"
         }
       },
       "water": {
         "textures": {
-          "layer0": "solar:items/waterrune"
+          "layer0": "solar:items/runes/waterrune"
         }
       },
       "earth": {
         "textures": {
-          "layer0": "solar:items/earthrune"
+          "layer0": "solar:items/runes/earthrune"
         }
       },
       "wind": {
         "textures": {
-          "layer0": "solar:items/windrune"
+          "layer0": "solar:items/runes/windrune"
         }
       },
       "time": {
         "textures": {
-          "layer0": "solar:items/timerune"
+          "layer0": "solar:items/runes/timerune"
         }
       },
       "life": {
         "textures": {
-          "layer0": "solar:items/liferune"
+          "layer0": "solar:items/runes/liferune"
         }
       },
       "sun": {
         "textures": {
-          "layer0": "solar:items/sunrune"
+          "layer0": "solar:items/runes/sunrune"
         }
       },
       "moon": {
         "textures": {
-          "layer0": "solar:items/moonrune"
+          "layer0": "solar:items/runes/moonrune"
         }
       }
     }

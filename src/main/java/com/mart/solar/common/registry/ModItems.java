@@ -18,7 +18,8 @@ public class ModItems {
     public static ItemSilverIngot silverIngot;
     public static ItemGuideBook guideBook;
     public static ItemDullAmulet dullAmulet;
-
+    public static ItemSolarFocus solarFocus;
+    public static ItemLunarFocus lunarFocus;
 
     public static final Item RUNES = new ItemRuneEnum<>(RuneTypes.class);
 
@@ -28,6 +29,8 @@ public class ModItems {
         ritualAmulet = register(new ItemRitualAmulet(), event);
         silverIngot = register(new ItemSilverIngot("silverIngot"), event);
         guideBook = register(new ItemGuideBook(), event);
+        solarFocus = register(new ItemSolarFocus(), event);
+        lunarFocus = register(new ItemLunarFocus(), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
 
@@ -45,7 +48,7 @@ public class ModItems {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerModels() {
+    private static void registerModels() {
         for (RuneTypes type : RuneTypes.values())
             ModelLoader.setCustomModelResourceLocation(RUNES, type.ordinal(), new ModelResourceLocation(RUNES.getRegistryName(), "type=" + type.name().toLowerCase(Locale.ENGLISH)));
     }
