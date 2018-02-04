@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class BlockMenhir extends BlockBase implements ITileEntityProvider {
 
-    CircleTypes type = null;
+    private CircleTypes type = null;
 
     public BlockMenhir(String name) {
         super(Material.ROCK, name);
@@ -35,22 +35,25 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
-            if (hand.equals(EnumHand.MAIN_HAND)) {
-                TileMenhir tileEntity = (TileMenhir) world.getTileEntity(pos);
-                ItemStack heldItem = player.getHeldItem(hand);
+        TileMenhir tileEntity = (TileMenhir) world.getTileEntity(pos);
+        ItemStack heldItem = player.getHeldItem(hand);
 
-                if (tileEntity == null || player.isSneaking())
-                    return false;
-
-                if (heldItem.getItem() != Items.AIR) {
-                    tileEntity.addRune(heldItem, player, hand);
-                } else {
-                    player.swingArm(hand);
-                    tileEntity.extractItem(player, hand);
-                }
-            }
+        if (world.isRemote || tileEntity == null) {
+            return true;
         }
+
+        if (player.isSneaking()){
+            player.swingArm(hand);
+            tileEntity.extractItem(player);
+            return true;
+        }
+
+        if (!heldItem.isEmpty()) {
+            System.out.println("Do this with Item.");
+            tileEntity.addRune(heldItem, player, hand);
+            return true;
+        }
+
         return true;
     }
 

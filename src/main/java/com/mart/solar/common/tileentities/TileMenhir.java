@@ -6,18 +6,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
 
-public class TileMenhir extends TileBase {
+public class TileMenhir extends TileBase implements ITickable {
 
-    private ItemStack rune = null;
+    private ItemStack rune = ItemStack.EMPTY;
+
+    @Override
+    public void update() {
+        notifyUpdate();
+    }
 
     public void addRune(ItemStack heldItem, EntityPlayer player, EnumHand hand) {
-        if (rune == null) {
+        if (rune.isEmpty()) {
             if (heldItem.getItem() instanceof IRune) {
                 ItemStack heldItem2 = heldItem.copy();
 
                 heldItem2.setCount(1);
-                setRune(heldItem2);
+                this.rune = heldItem2;
 
                 heldItem.setCount(heldItem.getCount() - 1);
                 player.setHeldItem(hand, heldItem);
@@ -26,20 +32,12 @@ public class TileMenhir extends TileBase {
         notifyUpdate();
     }
 
-    public void extractItem(EntityPlayer player, EnumHand hand) {
-        if (rune != null) {
+    public void extractItem(EntityPlayer player) {
+        if (!rune.isEmpty()) {
             player.inventory.addItemStackToInventory(rune);
-            setRune(null);
+            this.rune = ItemStack.EMPTY;
         }
         notifyUpdate();
-    }
-
-    public ItemStack getRune() {
-        return rune;
-    }
-
-    public void setRune(ItemStack rune) {
-        this.rune = rune;
     }
 
     //Data
@@ -47,16 +45,11 @@ public class TileMenhir extends TileBase {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
 
-        if (rune != null) {
-            NBTTagList tagList = new NBTTagList();
-            NBTTagCompound itemCompound = new NBTTagCompound();
-            rune.writeToNBT(itemCompound);
-            tagList.appendTag(itemCompound);
-            compound.setTag("rune", tagList);
-            compound.setBoolean("runeAvailable", true);
-        } else {
-            compound.setBoolean("runeAvailable", false);
-        }
+        NBTTagList tagList = new NBTTagList();
+        NBTTagCompound itemCompound = new NBTTagCompound();
+        this.rune.writeToNBT(itemCompound);
+        tagList.appendTag(itemCompound);
+        compound.setTag("rune", tagList);
 
         return compound;
     }
@@ -65,15 +58,13 @@ public class TileMenhir extends TileBase {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
 
-        if (compound.getBoolean("runeAvailable")) {
-            NBTTagList tagList = (NBTTagList) compound.getTag("rune");
-            NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
-            rune = new ItemStack(tagCompound);
-        } else {
-            rune = null;
-        }
+        NBTTagList tagList = (NBTTagList) compound.getTag("rune");
+        NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
+        this.rune = new ItemStack(tagCompound);
 
     }
 
-
+    public ItemStack getRune() {
+        return rune;
+    }
 }

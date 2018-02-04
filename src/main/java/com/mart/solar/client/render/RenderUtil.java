@@ -47,11 +47,9 @@ public class RenderUtil{
 
             GlStateManager.rotate(180, 0.0F, 1.0F, 1);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
-            GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
             itemRenderer.renderItem(entityitem.getItem(), ItemCameraTransforms.TransformType.FIXED);
             RenderHelper.disableStandardItemLighting();
-            GlStateManager.popAttrib();
 
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();

@@ -41,8 +41,6 @@ public class TileAltar extends TileBase implements ITickable {
             {-3, -3}
     };
 
-    private Map<Integer, Vector2d> menhirPlaces = new HashMap<>();
-
     private float solarEnergy = 0;
     private float lunarEnergy = 0;
 
@@ -55,40 +53,7 @@ public class TileAltar extends TileBase implements ITickable {
     private boolean recipeInProgress = false;
 
     public TileAltar() {
-        menhirPlaces.put(1, new Vector2d(0, -4));
-        menhirPlaces.put(2, new Vector2d(3, -3));
-        menhirPlaces.put(3, new Vector2d(4, 0));
-        menhirPlaces.put(4, new Vector2d(3, 3));
-        menhirPlaces.put(5, new Vector2d(0, 4));
-        menhirPlaces.put(6, new Vector2d(-3, 3));
-        menhirPlaces.put(7, new Vector2d(-4, 0));
-        menhirPlaces.put(8, new Vector2d(-3, -3));
-    }
 
-    public void addSolarEnergy() {
-        solarEnergy++;
-    }
-
-    public void addLunarEnergy() {
-        lunarEnergy++;
-    }
-
-    public void extractSolarEnergy(float amount) {
-        if (solarEnergy > 0)
-            solarEnergy -= amount;
-    }
-
-    public void extractLunarEnergy(float amount) {
-        if (lunarEnergy > 0)
-            lunarEnergy -= amount;
-    }
-
-    public float getSolarEnergy() {
-        return solarEnergy;
-    }
-
-    public float getLunarEnergy() {
-        return lunarEnergy;
     }
 
     @Override
@@ -403,6 +368,7 @@ public class TileAltar extends TileBase implements ITickable {
         notifyUpdate();
     }
 
+    //Getter Setters Adders Extractors
     public ItemStack getHeldItem() {
         return heldItem;
     }
@@ -421,5 +387,31 @@ public class TileAltar extends TileBase implements ITickable {
 
     public int getEnergyCost() {
         return energyCost;
+    }
+
+    public void addSolarEnergy() {
+        solarEnergy++;
+    }
+
+    public void addLunarEnergy() {
+        lunarEnergy++;
+    }
+
+    public void extractSolarEnergy(float amount) {
+        if (solarEnergy > 0)
+            solarEnergy -= amount;
+    }
+
+    public void extractLunarEnergy(float amount) {
+        if (lunarEnergy > 0)
+            lunarEnergy -= amount;
+    }
+
+    public float getSolarEnergy() {
+        return solarEnergy;
+    }
+
+    public float getLunarEnergy() {
+        return lunarEnergy;
     }
 }
