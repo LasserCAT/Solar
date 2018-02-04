@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "GRG",
+    "SSS"  ],
+  "key": {
+    "G": [
+      {
+        "item": "minecraft:gold_ingot",
+        "data": 0
+      }
+    ],
+    "S": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingotSilver"
+      }
+    ],
+    "W": [
+      {
+        "item": "minecraft:planks"
+        "data": 0
+      }
+    ],
+    "R": [
+      {
+        "item": "solar:runes"
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:runeinfuser",
+    "data": 0
+  }
+}

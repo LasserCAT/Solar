@@ -14,16 +14,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-import javax.vecmath.Vector2d;
 import java.util.*;
 
 public class TileAltar extends TileBase implements ITickable {
@@ -44,7 +46,7 @@ public class TileAltar extends TileBase implements ITickable {
     private float solarEnergy = 0;
     private float lunarEnergy = 0;
 
-    public boolean blocked = false;
+    private boolean blocked = false;
 
     private ItemStack heldItem = ItemStack.EMPTY;
     private AltarRecipe currentRecipe;
@@ -183,7 +185,7 @@ public class TileAltar extends TileBase implements ITickable {
         }
 
         if (Arrays.deepEquals(Circle.tieronecircel, runeArray)) {
-            checkCirleType(1, world, pos, player);
+            checkCircleType(1, world, pos, player);
         }
     }
 
@@ -209,10 +211,16 @@ public class TileAltar extends TileBase implements ITickable {
                 world.setBlockState(blockPlusOnePos, Blocks.AIR.getDefaultState());
                 world.setBlockState(blockPlusTwoPos, Blocks.AIR.getDefaultState());
             }
+            else{
+                world.setBlockState(b, Blocks.AIR.getDefaultState());
+                world.setBlockState(blockPlusOnePos, Blocks.AIR.getDefaultState());
+                world.setBlockState(blockPlusTwoPos, Blocks.AIR.getDefaultState());
+                world.playEvent(2001, b, Block.getStateId(Blocks.STONE.getDefaultState()));
+            }
         }
     }
 
-    public void checkCirleType(int level, World world, BlockPos pos, EntityPlayer player) {
+    public void checkCircleType(int level, World world, BlockPos pos, EntityPlayer player) {
         switch (level) {
             case 1:
                 CircleTypes circleTypes = null;

@@ -15,9 +15,9 @@ public class ModTiles {
     static TileMenhir menhir = new TileMenhir();
 
     public static void init() {
-        GameRegistry.registerTileEntity(brokenTotem.getClass(), Solar.MODID + "tileTotem");
+        GameRegistry.registerTileEntity(brokenTotem.getClass(), Solar.MODID + "tiletotem");
         GameRegistry.registerTileEntity(totem.getClass(), Solar.MODID + "totem");
-        GameRegistry.registerTileEntity(runeInfuser.getClass(), Solar.MODID + "runeInfuser");
+        GameRegistry.registerTileEntity(runeInfuser.getClass(), Solar.MODID + "runeinfuser");
         GameRegistry.registerTileEntity(menhir.getClass(), Solar.MODID + "menhir");
     }
 }
