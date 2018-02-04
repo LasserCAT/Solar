@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockMenhir extends BlockBase implements ITileEntityProvider {
@@ -23,6 +24,17 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
     public BlockMenhir(String name) {
         super(Material.ROCK, name);
         setCreativeTab(Solar.solarTab);
+    }
+
+    @Override
+    @Deprecated
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return false;
     }
 
     public CircleTypes getType() {

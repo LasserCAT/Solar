@@ -19,13 +19,13 @@
     ],
     "W": [
       {
-        "item": "minecraft:planks"
+        "item": "minecraft:planks",
         "data": 0
       }
     ],
     "R": [
       {
-        "item": "solar:runes"
+        "item": "solar:runes",
         "data": 0
       }
     ]

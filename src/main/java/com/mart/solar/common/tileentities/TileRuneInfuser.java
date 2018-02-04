@@ -32,84 +32,6 @@ public class TileRuneInfuser extends TileBase implements ITickable {
 
     private Random random = new Random();
 
-    //Infuser Methods
-    public void onUse(ItemStack heldItem, EntityPlayer player, EnumHand hand) {
-        if (heldItem.getItem() instanceof IRune) {
-            if (rune.isEmpty()) {
-                ItemStack heldItem2 = heldItem.copy();
-
-                heldItem2.setCount(1);
-                setRune(heldItem2);
-
-                heldItem.setCount(heldItem.getCount() - 1);
-                player.setHeldItem(hand, heldItem);
-            }
-        } else {
-            if (modifier.isEmpty()) {
-                ItemStack heldItem2 = heldItem.copy();
-
-                heldItem2.setCount(1);
-                setModifier(heldItem2);
-
-                heldItem.setCount(heldItem.getCount() - 1);
-                player.setHeldItem(hand, heldItem);
-            }
-        }
-
-        checkRecipe();
-    }
-
-    public void extractItem(EntityPlayer player, EnumHand hand) {
-        if (!modifier.isEmpty()) {
-            player.inventory.addItemStackToInventory(modifier);
-            System.out.println("Modifier Extracted:" + modifier.getDisplayName());
-            setModifier(ItemStack.EMPTY);
-        } else if (!rune.isEmpty()) {
-            player.inventory.addItemStackToInventory(rune);
-            setRune(ItemStack.EMPTY);
-            System.out.println("Rune Extraced");
-        }
-    }
-
-    public void checkRecipe() {
-        if (!rune.isEmpty() && !modifier.isEmpty()) {
-            for (BiMap.Entry<Item, InfuserRecipeRegister.InfuserRecipe> b : InfuserRecipeRegister.getRecipes().entrySet()) {
-                if (modifier.getItem() == b.getKey()) {
-                    infusing = true;
-
-                    nextOutput = new ItemStack(ModItems.RUNES, 1, b.getValue().getOutput().ordinal());
-                    break;
-                }
-            }
-        }
-    }
-
-    public void endInfusing() {
-        setModifier(ItemStack.EMPTY);
-        infusing = false;
-        currentDuration = 0;
-        setRune(nextOutput);
-        nextOutput = ItemStack.EMPTY;
-    }
-
-    //Getters and Setters
-    public ItemStack getModifier() {
-        return modifier;
-    }
-
-    public void setModifier(ItemStack modifier2) {
-        this.modifier = modifier2;
-    }
-
-    public ItemStack getRune() {
-        return rune;
-    }
-
-    public void setRune(ItemStack rune) {
-        this.rune = rune;
-    }
-
-    //Data
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
@@ -164,7 +86,6 @@ public class TileRuneInfuser extends TileBase implements ITickable {
         infusing = compound.getBoolean("infuserActive");
     }
 
-    //Ticket methods
     @Override
     public void update() {
         notifyUpdate();
@@ -180,8 +101,76 @@ public class TileRuneInfuser extends TileBase implements ITickable {
 
     }
 
+    //Infuser Methods
+    public void onUse(ItemStack heldItem, EntityPlayer player, EnumHand hand) {
+        if (heldItem.getItem() instanceof IRune) {
+            if (rune.isEmpty()) {
+                ItemStack heldItem2 = heldItem.copy();
+
+                heldItem2.setCount(1);
+                setRune(heldItem2);
+
+                heldItem.setCount(heldItem.getCount() - 1);
+                player.setHeldItem(hand, heldItem);
+            }
+        } else {
+            if (modifier.isEmpty()) {
+                ItemStack heldItem2 = heldItem.copy();
+
+                heldItem2.setCount(1);
+                setModifier(heldItem2);
+
+                heldItem.setCount(heldItem.getCount() - 1);
+                player.setHeldItem(hand, heldItem);
+            }
+        }
+
+        checkRecipe();
+    }
+
+    public void extractItem(EntityPlayer player) {
+        if (!modifier.isEmpty()) {
+            player.inventory.addItemStackToInventory(modifier.copy());
+            setModifier(ItemStack.EMPTY);
+        } else if (!rune.isEmpty()) {
+            player.inventory.addItemStackToInventory(rune.copy());
+            setRune(ItemStack.EMPTY);
+        }
+
+        if(infusing){
+            stopInfusing();
+        }
+    }
+
+    private void checkRecipe() {
+        if (!rune.isEmpty() && !modifier.isEmpty()) {
+            for (BiMap.Entry<Item, InfuserRecipeRegister.InfuserRecipe> b : InfuserRecipeRegister.getRecipes().entrySet()) {
+                if (modifier.getItem() == b.getKey()) {
+                    infusing = true;
+
+                    nextOutput = new ItemStack(ModItems.RUNES, 1, b.getValue().getOutput().ordinal());
+                    break;
+                }
+            }
+        }
+    }
+
+    private void endInfusing() {
+        setModifier(ItemStack.EMPTY);
+        infusing = false;
+        currentDuration = 0;
+        setRune(nextOutput);
+        nextOutput = ItemStack.EMPTY;
+    }
+
+    private void stopInfusing(){
+        setModifier(ItemStack.EMPTY);
+        infusing = false;
+        currentDuration = 0;
+    }
+
     @SideOnly(Side.CLIENT)
-    public void spawnInfuseParticle() {
+    private void spawnInfuseParticle() {
         int[] array = {Item.getIdFromItem(modifier.getItem())};
         Vec3d[] vec = getPositionAndVelocity(getPos());
         getWorld().spawnParticle(EnumParticleTypes.ITEM_CRACK, vec[0].x, vec[0].y, vec[0].z, vec[1].x, 0, vec[1].z, array);
@@ -198,5 +187,22 @@ public class TileRuneInfuser extends TileBase implements ITickable {
         Vec3d p = new Vec3d(posX + center.getX(), center.getY() + 2, posZ + center.getZ());
         Vec3d v = new Vec3d((0.5 - posX) * velocityFactor, 0, (0.5 - posZ) * velocityFactor);
         return new Vec3d[]{p, v};
+    }
+
+    //Getters and Setters
+    public ItemStack getModifier() {
+        return modifier;
+    }
+
+    public void setModifier(ItemStack modifier2) {
+        this.modifier = modifier2;
+    }
+
+    public ItemStack getRune() {
+        return rune;
+    }
+
+    public void setRune(ItemStack rune) {
+        this.rune = rune;
     }
 }

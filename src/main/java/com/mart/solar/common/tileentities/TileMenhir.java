@@ -40,7 +40,6 @@ public class TileMenhir extends TileBase implements ITickable {
         notifyUpdate();
     }
 
-    //Data
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);

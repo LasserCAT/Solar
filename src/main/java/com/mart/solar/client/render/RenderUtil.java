@@ -66,18 +66,11 @@ public class RenderUtil{
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
 
-            //GlStateManager.rotate(0, 0F, 1.0F, 0.5f); = Rechtop
-            //GlStateManager.rotate(0, 0F, 1.0F, 1f); = Rechtop
-            // GlStateManager.rotate(90, 0F, 1.0F, 1f); = https://gyazo.com/4d690ac37c9029ed9020240bdd14309e
-
-
             GlStateManager.rotate(rotation, 0F, 1.0F, 1f);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
-            GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
             itemRenderer.renderItem(entityitem.getItem(), ItemCameraTransforms.TransformType.FIXED);
             RenderHelper.disableStandardItemLighting();
-            GlStateManager.popAttrib();
 
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();

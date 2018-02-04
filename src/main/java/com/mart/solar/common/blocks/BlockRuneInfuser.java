@@ -48,7 +48,7 @@ public class BlockRuneInfuser extends BlockBase implements ITileEntityProvider {
                     tileEntity.onUse(heldItem, player, hand);
                 } else {
                     player.swingArm(hand);
-                    tileEntity.extractItem(player, hand);
+                    tileEntity.extractItem(player);
                 }
             }
         }
