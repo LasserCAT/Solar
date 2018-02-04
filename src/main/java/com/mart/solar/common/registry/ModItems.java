@@ -24,10 +24,10 @@ public class ModItems {
 
     public static void init(RegistryEvent.Register<Item> event) {
 
+        dullAmulet = register(new ItemDullAmulet(), event);
         ritualAmulet = register(new ItemRitualAmulet(), event);
         silverIngot = register(new ItemSilverIngot("silverIngot"), event);
         guideBook = register(new ItemGuideBook(), event);
-        dullAmulet = register(new ItemDullAmulet(), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
 
