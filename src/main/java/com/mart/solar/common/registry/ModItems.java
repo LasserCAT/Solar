@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class ModItems {
 
-    public static ItemRitualStaff ritualStaff;
+    public static ItemRitualAmulet ritualAmulet;
     public static ItemSilverIngot silverIngot;
     public static ItemGuideBook guideBook;
     public static ItemDullAmulet dullAmulet;
@@ -24,7 +24,7 @@ public class ModItems {
 
     public static void init(RegistryEvent.Register<Item> event) {
 
-        ritualStaff = register(new ItemRitualStaff("ritualstaff"), event);
+        ritualAmulet = register(new ItemRitualAmulet(), event);
         silverIngot = register(new ItemSilverIngot("silverIngot"), event);
         guideBook = register(new ItemGuideBook(), event);
         dullAmulet = register(new ItemDullAmulet(), event);

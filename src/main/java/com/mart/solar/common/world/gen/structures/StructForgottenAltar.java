@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class StructForgottenAltar implements IWorldGenerator {
 
-    List<Vector2d> ruinLocations = new ArrayList<>();
+    private List<Vector2d> ruinLocations = new ArrayList<>();
 
     public StructForgottenAltar(){
         this.ruinLocations.add(new Vector2d(5, 0));

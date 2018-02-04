@@ -1,7 +1,7 @@
 package com.mart.solar.common.items;
 
 import com.mart.solar.Solar;
-import com.mart.solar.api.interfaces.ITotemManipulator;
+import com.mart.solar.api.interfaces.IAltarManipulator;
 import com.mart.solar.api.registry.SpellRegister;
 import com.mart.solar.common.spells.Spell;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,10 +11,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemRitualStaff extends ItemBase implements ITotemManipulator {
+public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
 
-    public ItemRitualStaff(String name) {
-        super(name);
+    public ItemRitualAmulet() {
+        super("ritualamulet");
         setCreativeTab(Solar.solarTab);
     }
 

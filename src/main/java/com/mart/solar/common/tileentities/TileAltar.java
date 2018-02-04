@@ -4,9 +4,9 @@ import com.mart.solar.api.enums.RitualLevel;
 import com.mart.solar.api.enums.CircleTypes;
 import com.mart.solar.api.registry.RitualRegister;
 import com.mart.solar.api.util.RitualContainer;
-import com.mart.solar.common.blocks.menhirs.BlockMenhir;
+import com.mart.solar.common.blocks.BlockMenhir;
 import com.mart.solar.common.circles.Circle;
-import com.mart.solar.common.items.ItemRitualStaff;
+import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.rituals.Ritual;
@@ -28,7 +28,7 @@ import java.util.*;
 
 public class TileAltar extends TileBase implements ITickable {
 
-    private int[][] runeArray = new int[9][9];
+    private int[][] runeArray = new int[11][11];
 
     private int[][] tierOneCoords = new int[][]{
             {0, -4},
@@ -123,7 +123,7 @@ public class TileAltar extends TileBase implements ITickable {
         this.recipeInProgress = compound.getBoolean("recipeInProgress");
         this.solarEnergy = compound.getFloat("solarEnergy");
         this.lunarEnergy = compound.getFloat("lunarEnergy");
-        this.energyCost = compound.getInteger("energyCost");
+        this.energyCost = compound.getInteger("recipeEnergyCost");
         this.currentEnergyProgress = compound.getInteger("recipeEnergyProgress");
 
         NBTTagList tagList = (NBTTagList) compound.getTag("heldItem");
@@ -183,8 +183,8 @@ public class TileAltar extends TileBase implements ITickable {
         }
     }
 
-    public void checkForMenhirs(BlockPos pos, World world, EntityPlayer player) {
-        int radius = 4;
+    public void useRitualAmulet(BlockPos pos, World world, EntityPlayer player) {
+        int radius = 5;
 
         int startingX = pos.getX() - radius;
         int startingZ = pos.getZ() - radius;
@@ -197,17 +197,19 @@ public class TileAltar extends TileBase implements ITickable {
                 int xPos = x - startingX;
                 int zPos = z - startingZ;
 
+                if (block.equals(Blocks.STONE)) {
+                    craftMenhirs(radius, pos, world);
+                    return;
+                }
+
                 if (block instanceof BlockMenhir) {
                     runeArray[zPos][xPos] = 1;
-                } else if (block.equals(Blocks.STONE)) {
-                    System.out.println("Block is stone");
-                    getStoneBlocks(radius, pos, world, player);
-                    return;
                 } else {
                     runeArray[zPos][xPos] = 0;
                 }
             }
         }
+        //For rune logging
         for (int[] i : runeArray) {
             for (int j : i) {
                 System.out.print(j + " ");
@@ -220,9 +222,8 @@ public class TileAltar extends TileBase implements ITickable {
         }
     }
 
-    void getStoneBlocks(int radius, BlockPos pos, World world, EntityPlayer player) {
+    void craftMenhirs(int radius, BlockPos pos, World world) {
         List<BlockPos> stonePositions = new ArrayList<>();
-
         int startingY = pos.getY();
 
         for (int x = pos.getX() - radius; x <= pos.getX() + radius; x++) {
@@ -235,33 +236,16 @@ public class TileAltar extends TileBase implements ITickable {
             }
         }
 
-        turnIntoMenhirs(stonePositions, world);
-    }
-
-    void turnIntoMenhirs(List<BlockPos> pos, World world) {
-        for (BlockPos b : pos) {
-            BlockPos blockPos = new BlockPos(b.getX(), b.getY() + 1, b.getZ());
-            Block block = world.getBlockState(blockPos).getBlock();
-
-            if (block.equals(Blocks.LOG)) {
-                world.setBlockState(b, ModBlocks.lifeMenhir.getDefaultState());
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
-            }
-            if (block.equals(Blocks.GOLD_ORE)) {
-                world.setBlockState(b, ModBlocks.sunMenhir.getDefaultState());
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
-            }
-            if (block.equals(ModBlocks.silverOre)) {
-                world.setBlockState(b, ModBlocks.moonMenhir.getDefaultState());
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
-            }
-            if (block.equals(Blocks.LAPIS_BLOCK)) {
-                world.setBlockState(b, ModBlocks.timeMenhir.getDefaultState());
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+        for (BlockPos b : stonePositions) {
+            BlockPos blockPlusOnePos = new BlockPos(b.getX(), b.getY() + 1, b.getZ());
+            BlockPos blockPlusTwoPos = new BlockPos(b.getX(), b.getY() + 2, b.getZ());
+            if(world.getBlockState(blockPlusOnePos).getBlock() == Blocks.STONE && world.getBlockState(blockPlusTwoPos).getBlock() == Blocks.STONE){
+                world.setBlockState(b, ModBlocks.menhir.getDefaultState());
+                world.setBlockState(blockPlusOnePos, Blocks.AIR.getDefaultState());
+                world.setBlockState(blockPlusTwoPos, Blocks.AIR.getDefaultState());
             }
         }
     }
-
 
     public void checkCirleType(int level, World world, BlockPos pos, EntityPlayer player) {
         switch (level) {
@@ -371,7 +355,7 @@ public class TileAltar extends TileBase implements ITickable {
         }
 
         if (ritual.isHasSpell()) {
-            ItemRitualStaff r = (ItemRitualStaff) rc.getRitualStaff().getItem();
+            ItemRitualAmulet r = (ItemRitualAmulet) rc.getRitualStaff().getItem();
             r.setCurrentSpell(rc.getPlayer().getHeldItemMainhand(), ritual.getSpell().getName());
 
         } else {
@@ -393,9 +377,9 @@ public class TileAltar extends TileBase implements ITickable {
         return false;
     }
 
-    public void retrieveItem(EntityPlayer player, EnumHand hand){
+    public void retrieveItem(EntityPlayer player){
         if(!this.heldItem.isEmpty()){
-            player.setHeldItem(hand, this.heldItem.copy());
+            player.addItemStackToInventory(this.heldItem.copy());
             this.heldItem = ItemStack.EMPTY;
             notifyUpdate();
         }
@@ -409,6 +393,7 @@ public class TileAltar extends TileBase implements ITickable {
         }
 
         this.currentRecipe = altarRecipe;
+        this.energyCost = altarRecipe.getEnergyCost();
         this.currentEnergyProgress = 0;
         this.heldItem = stack.copy();
         this.heldItem.setCount(1);

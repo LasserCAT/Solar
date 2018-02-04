@@ -1,17 +1,16 @@
 package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
-import com.mart.solar.api.interfaces.ITotemManipulator;
-import com.mart.solar.common.items.ItemRitualStaff;
+import com.mart.solar.api.interfaces.IAltarManipulator;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
+import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -46,40 +45,36 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
+            TileAltar tileEntity = (TileAltar) world.getTileEntity(pos);
+            ItemStack playerItem = player.inventory.getCurrentItem();
 
-            if (hand == EnumHand.OFF_HAND) {
+            if (hand == EnumHand.OFF_HAND || tileEntity == null) {
                 return true;
             }
 
-            TileAltar tileEntity = (TileAltar) world.getTileEntity(pos);
+            if (player.isSneaking()) {
+                tileEntity.retrieveItem(player);
+                return true;
+            }
 
-            if (tileEntity == null || player.isSneaking())
-                return false;
+            if(playerItem.isEmpty()){
+                return true;
+            }
 
-            ItemStack playerItem = player.inventory.getCurrentItem();
 
-            if (!playerItem.isEmpty()) {
-                if (playerItem.getItem() instanceof ITotemManipulator) {
-                    if (playerItem.getItem() instanceof ItemRitualStaff) {
-                        tileEntity.checkForMenhirs(tileEntity.getPos(), tileEntity.getWorld(), player);
-                        return true;
-                    }
-                    playerItem.getItem().onItemRightClick(world, player, hand);
+            if (playerItem.getItem() instanceof IAltarManipulator) {
+                if (playerItem.getItem() == ModItems.ritualAmulet) {
+                    tileEntity.useRitualAmulet(tileEntity.getPos(), tileEntity.getWorld(), player);
                     return true;
                 }
-
-                AltarRecipe altarRecipe = AltarRecipeManager.findMatchingInput(playerItem.getItem());
-                if(altarRecipe != null){
-                    tileEntity.startAltarRecipe(altarRecipe, player, playerItem, hand);
-                }
             }
-            else{
-                tileEntity.retrieveItem(player, hand);
+
+            AltarRecipe altarRecipe = AltarRecipeManager.findMatchingInput(playerItem.getItem());
+            if(altarRecipe != null){
+                tileEntity.startAltarRecipe(altarRecipe, player, playerItem, hand);
             }
 
             player.sendMessage(new TextComponentString("" + tileEntity.getSolarEnergy() + "/" + tileEntity.getLunarEnergy()));
-
-
         }
 
         return true;
