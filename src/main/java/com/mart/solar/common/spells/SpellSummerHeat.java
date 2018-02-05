@@ -1,5 +1,6 @@
 package com.mart.solar.common.spells;
 
+import com.mart.solar.api.spell.Spell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -66,6 +67,11 @@ public class SpellSummerHeat extends Spell {
 
             setWater(blocks, player.getEntityWorld());
         }
+    }
+
+    @Override
+    public String getSpellRegistryName() {
+        return "spellsummerheat";
     }
 
     private void setWater(List<BlockPos> list, World world) {

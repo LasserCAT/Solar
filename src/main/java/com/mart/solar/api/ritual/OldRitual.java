@@ -1,9 +1,8 @@
 package com.mart.solar.api.ritual;
 
 import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.common.spells.Spell;
+import com.mart.solar.api.spell.Spell;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -3,7 +3,7 @@ package com.mart.solar.common.items;
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
 import com.mart.solar.api.registry.SpellRegister;
-import com.mart.solar.common.spells.Spell;
+import com.mart.solar.api.spell.Spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

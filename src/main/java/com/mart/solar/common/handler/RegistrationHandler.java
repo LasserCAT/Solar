@@ -3,10 +3,13 @@ package com.mart.solar.common.handler;
 import com.mart.solar.Solar;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualManager;
+import com.mart.solar.api.spell.Spell;
+import com.mart.solar.api.spell.SpellManager;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModAltarRecipes;
 import com.mart.solar.common.registry.ModRituals;
+import com.mart.solar.common.registry.ModSpells;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +38,15 @@ public class RegistrationHandler {
                 .allowModification()
                 .create()
         );
+
+        SpellManager.setRegistry(
+                new RegistryBuilder<Spell>()
+                        .setName(new ResourceLocation(Solar.MODID, "spells"))
+                        .setType(Spell.class)
+                        .disableSaving()
+                        .allowModification()
+                        .create()
+        );
     }
 
     @SubscribeEvent
@@ -47,5 +59,11 @@ public class RegistrationHandler {
     public static void registerRituals(RegistryEvent.Register<Ritual> event){
         IForgeRegistry<Ritual> registry = event.getRegistry();
         registry.registerAll(ModRituals.getRituals());
+    }
+
+    @SubscribeEvent
+    public static void registerSpells(RegistryEvent.Register<Spell> event){
+        IForgeRegistry<Spell> registry = event.getRegistry();
+        registry.registerAll(ModSpells.getSpells());
     }
 }

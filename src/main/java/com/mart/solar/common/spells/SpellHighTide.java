@@ -1,5 +1,6 @@
 package com.mart.solar.common.spells;
 
+import com.mart.solar.api.spell.Spell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -74,6 +75,11 @@ public class SpellHighTide extends Spell {
             }
             System.out.println(blocks.size());
         }
+    }
+
+    @Override
+    public String getSpellRegistryName() {
+        return "spellhightide";
     }
 
     void setWater(List<BlockPos> list, World world) {

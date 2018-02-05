@@ -1,7 +1,7 @@
 package com.mart.solar.api.registry;
 
 import com.mart.solar.Solar;
-import com.mart.solar.common.spells.Spell;
+import com.mart.solar.api.spell.Spell;
 
 import java.util.ArrayList;
 import java.util.List;
