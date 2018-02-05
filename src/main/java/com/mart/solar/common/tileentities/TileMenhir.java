@@ -40,6 +40,11 @@ public class TileMenhir extends TileBase implements ITickable {
         notifyUpdate();
     }
 
+    public void emptyRuneSlot(){
+        this.rune = ItemStack.EMPTY;
+        notifyUpdate();
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);

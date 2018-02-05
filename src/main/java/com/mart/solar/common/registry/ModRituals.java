@@ -22,15 +22,15 @@ public class ModRituals {
         RITUALS = new ArrayList<>();
 
         addRitual(new RitualRisingSun());
+        addRitual(new RitualRisingMoon());
+        addRitual(new RitualRain());
+        addRitual(new RitualStorm());
+        addRitual(new RitualClearSkies());
     }
 
     public static void oldInit(){
-        RitualRegistar.registerRitual(new RitualRisingMoon());
         RitualRegistar.registerRitual(new RitualSummerHeat());
         RitualRegistar.registerRitual(new RitualHighTide());
-        RitualRegistar.registerRitual(new RitualClearSkies());
-        RitualRegistar.registerRitual(new RitualRain());
-        RitualRegistar.registerRitual(new RitualStorm());
     }
 
     public static Ritual[] getRituals()

@@ -1,28 +1,44 @@
 package com.mart.solar.common.rituals;
 
-import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.api.ritual.OldRitual;
-import net.minecraft.entity.player.EntityPlayer;
+import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualComponent;
+import com.mart.solar.common.tileentities.TileAltar;
+import net.minecraft.util.math.BlockPos;
 
-public class RitualClearSkies extends OldRitual {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RitualClearSkies extends Ritual {
 
     public RitualClearSkies() {
         super("Rite of the Clear Skies", 1000, 0);
 
-        types.add(CircleTypes.SUN);
-        windRunes = 4;
-
-        runes.put(0, 4);
-        runes.put(2, 4);
-        runes.put(4, 4);
-        runes.put(6, 4);
+        setRegistryName("ritualclearskies");
     }
 
     @Override
-    public void activateRitual(EntityPlayer player, float solar, float lunar) {
-        if (!player.getEntityWorld().isRemote) {
-            player.getEntityWorld().getWorldInfo().setRaining(false);
-            player.getEntityWorld().getWorldInfo().setThundering(false);
+    public void performRitual(TileAltar altar) {
+        if (!altar.getWorld().isRemote) {
+            altar.getWorld().getWorldInfo().setRaining(false);
+            altar.getWorld().getWorldInfo().setThundering(false);
         }
+    }
+
+    @Override
+    public List<RitualComponent> getRitualComponents() {
+        List<RitualComponent> ritualComponents = new ArrayList<>();
+
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, -4), RuneType.WIND));
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, 4), RuneType.WIND));
+        ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.WIND));
+        ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.WIND));
+
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, 3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), null));
+
+        return ritualComponents;
     }
 }

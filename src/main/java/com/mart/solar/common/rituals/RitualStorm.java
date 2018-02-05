@@ -1,29 +1,48 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.OldRitual;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualComponent;
+import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 
-public class RitualStorm extends OldRitual {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RitualStorm extends Ritual {
 
     public RitualStorm() {
         super("OldRitual of the Rising Storm", 0, 1000);
 
-        types.add(CircleTypes.MOON);
-        windRunes = 2;
-        waterRunes = 2;
+        setRegistryName("ritualstorm");
+    }
 
-        runes.put(0, 2);
-        runes.put(2, 4);
-        runes.put(4, 2);
-        runes.put(6, 4);
+
+    @Override
+    public void performRitual(TileAltar altar) {
+        if (!altar.getWorld().isRemote) {
+            altar.getWorld().getWorldInfo().setThundering(true);
+            altar.getWorld().getWorldInfo().setRaining(true);
+        }
     }
 
     @Override
-    public void activateRitual(EntityPlayer player, float solar, float lunar) {
-        if (!player.getEntityWorld().isRemote) {
-            player.getEntityWorld().getWorldInfo().setThundering(true);
-            player.getEntityWorld().getWorldInfo().setRaining(true);
-        }
+    public List<RitualComponent> getRitualComponents() {
+        List<RitualComponent> ritualComponents = new ArrayList<>();
+
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, -4), RuneType.WATER));
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, 4), RuneType.WATER));
+        ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.WIND));
+        ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.WIND));
+
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, -3), RuneType.MOON));
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, 3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), RuneType.MOON));
+
+        return ritualComponents;
     }
 }

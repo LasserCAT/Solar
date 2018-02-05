@@ -2,40 +2,35 @@ package com.mart.solar.common.rituals;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.OldRitual;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.network.packets.PacketTime;
+import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RitualRisingMoon extends OldRitual {
+public class RitualRisingMoon extends Ritual {
 
-    boolean activated = false;
+    private boolean activated = false;
 
     public RitualRisingMoon() {
-        super("OldRitual of the Rising Moon", 1000, 0);
+        super("Ritual of the Rising Moon", 1000, 0);
+
+        setRegistryName("ritualrisingmoon");
 
         MinecraftForge.EVENT_BUS.register(this);
-
-        types.add(CircleTypes.MOON);
-        timeRunes = 2;
-
-        runes.put(0, 5);
-        runes.put(4, 5);
     }
 
-    @Override
-    public void activateRitual(EntityPlayer player, float solar, float lunar) {
-        if (player.getEntityWorld().getWorldTime() % 24000 > 13000 && player.getEntityWorld().getWorldTime() % 24000 < 23999 || lunar < getRitualLunarCost()) {
-            player.sendMessage(new TextComponentString("OldRitual failed"));
-        } else {
-            activated = true;
-        }
-    }
 
     @SubscribeEvent
     public void worldTick(TickEvent.WorldTickEvent event) throws IOException {
@@ -47,5 +42,29 @@ public class RitualRisingMoon extends OldRitual {
                 Solar.channel.sendToAll(PacketTime.createEntityPacket(event.world.getWorldTime()));
             }
         }
+    }
+
+    @Override
+    public void performRitual(TileAltar altar) {
+        if ((altar.getWorld().getWorldTime() % 24000 <= 13000 || altar.getWorld().getWorldTime() % 24000 >= 23999) && altar.getLunarEnergy() >= getRitualLunarCost()) {
+            activated = true;
+        }
+    }
+
+    @Override
+    public List<RitualComponent> getRitualComponents() {
+        List<RitualComponent> ritualComponents = new ArrayList<>();
+
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, -4), RuneType.TIME));
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, 4), RuneType.TIME));
+        ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.MOON));
+        ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.MOON));
+
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, 3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), null));
+
+        return ritualComponents;
     }
 }

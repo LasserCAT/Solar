@@ -9,7 +9,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.mart.solar.common.registry.ModBlocks.menhir;
 
 public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>{
 
@@ -28,38 +31,44 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>{
     public abstract List<RitualComponent> getRitualComponents();
 
     public boolean isSetup(TileAltar altar){
-        System.out.println("U did it");
         List<RitualComponent> components = getRitualComponents();
         BlockPos altarPos = altar.getPos();
+
+        List<TileMenhir> menhirs = new ArrayList<>();
 
         for(RitualComponent component : components){
             BlockPos checkPos = altarPos.add(component.getComponentPos());
 
-            if(altar.getWorld().getBlockState(checkPos).getBlock() != ModBlocks.menhir){
-                System.out.println("blocks isnt menhir");
+            if(altar.getWorld().getBlockState(checkPos).getBlock() != menhir){
                return false;
             }
 
             TileMenhir menhirTile = (TileMenhir) altar.getWorld().getTileEntity(checkPos);
+
+            if(menhirTile == null){
+                return false;
+            }
+
             ItemStack rune = menhirTile.getRune();
 
+            if(rune.isEmpty() && component.getRuneType() == null){
+                continue;
+            }
+
             if(rune.isEmpty()){
-                System.out.println("Doenst have rune");
                 return false;
             }
 
             int runeID = rune.getItemDamage();
 
-            if(ModItems.RUNES.getDamage(rune) != runeID){
-                System.out.println("runeID: " + runeID);
-                System.out.println("getDamageID: " + ModItems.RUNES.getDamage(rune));
-                System.out.println("not right rune ID");
+            if(component.getRuneType() != RuneType.values()[runeID]){
                 return false;
             }
+
+            menhirs.add(menhirTile);
         }
 
-        System.out.println("and you even made it workn");
-
+        menhirs.forEach(TileMenhir::emptyRuneSlot);
         return true;
     }
 

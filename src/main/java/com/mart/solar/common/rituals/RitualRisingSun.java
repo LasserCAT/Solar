@@ -56,6 +56,11 @@ public class RitualRisingSun extends Ritual {
         ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.SUN));
         ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.SUN));
 
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, 3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), null));
+
         return ritualComponents;
     }
 }

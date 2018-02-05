@@ -4,10 +4,10 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public abstract class Spell {
 
-    String name = "Spell not set";
+    private final String name;
 
     public Spell(String name) {
-        setName(name);
+        this.name = name;
     }
 
     public abstract void activateSpell(EntityPlayer player);
@@ -16,7 +16,4 @@ public abstract class Spell {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -68,7 +68,7 @@ public class SpellSummerHeat extends Spell {
         }
     }
 
-    void setWater(List<BlockPos> list, World world) {
+    private void setWater(List<BlockPos> list, World world) {
         for (BlockPos p : list) {
             world.setBlockToAir(p);
         }

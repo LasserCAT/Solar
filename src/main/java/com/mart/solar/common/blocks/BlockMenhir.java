@@ -61,7 +61,6 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
         }
 
         if (!heldItem.isEmpty()) {
-            System.out.println("Do this with Item.");
             tileEntity.addRune(heldItem, player, hand);
             return true;
         }
