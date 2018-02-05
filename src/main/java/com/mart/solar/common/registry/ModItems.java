@@ -1,6 +1,6 @@
 package com.mart.solar.common.registry;
 
-import com.mart.solar.api.enums.RuneTypes;
+import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.util.ItemRuneEnum;
 import com.mart.solar.common.items.*;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -21,7 +21,7 @@ public class ModItems {
     public static ItemSolarFocus solarFocus;
     public static ItemLunarFocus lunarFocus;
 
-    public static final Item RUNES = new ItemRuneEnum<>(RuneTypes.class);
+    public static final Item RUNES = new ItemRuneEnum<>(RuneType.class);
 
     public static void init(RegistryEvent.Register<Item> event) {
 
@@ -49,7 +49,7 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     private static void registerModels() {
-        for (RuneTypes type : RuneTypes.values())
+        for (RuneType type : RuneType.values())
             ModelLoader.setCustomModelResourceLocation(RUNES, type.ordinal(), new ModelResourceLocation(RUNES.getRegistryName(), "type=" + type.name().toLowerCase(Locale.ENGLISH)));
     }
 

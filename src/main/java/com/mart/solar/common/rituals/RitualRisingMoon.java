@@ -2,6 +2,7 @@ package com.mart.solar.common.rituals;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.ritual.OldRitual;
 import com.mart.solar.common.network.packets.PacketTime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
@@ -11,12 +12,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.io.IOException;
 
-public class RitualRisingMoon extends Ritual {
+public class RitualRisingMoon extends OldRitual {
 
     boolean activated = false;
 
     public RitualRisingMoon() {
-        super("Ritual of the Rising Moon", 1000, 0);
+        super("OldRitual of the Rising Moon", 1000, 0);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -30,7 +31,7 @@ public class RitualRisingMoon extends Ritual {
     @Override
     public void activateRitual(EntityPlayer player, float solar, float lunar) {
         if (player.getEntityWorld().getWorldTime() % 24000 > 13000 && player.getEntityWorld().getWorldTime() % 24000 < 23999 || lunar < getRitualLunarCost()) {
-            player.sendMessage(new TextComponentString("Ritual failed"));
+            player.sendMessage(new TextComponentString("OldRitual failed"));
         } else {
             activated = true;
         }

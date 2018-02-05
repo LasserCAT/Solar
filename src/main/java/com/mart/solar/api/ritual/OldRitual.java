@@ -1,38 +1,39 @@
-package com.mart.solar.common.rituals;
+package com.mart.solar.api.ritual;
 
 import com.mart.solar.api.enums.CircleTypes;
 import com.mart.solar.common.spells.Spell;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Ritual {
+public abstract class OldRitual {
 
-    private String ritualName;
-    private float ritualSolarCost;
-    private float ritualLunarCost;
-    boolean hasSpell = false;
+    protected String ritualName;
+    protected float ritualSolarCost;
+    protected float ritualLunarCost;
+    protected boolean hasSpell = false;
 
-    int fireRunes = 0;
-    int waterRunes = 0;
-    int earthRunes = 0;
-    int windRunes = 0;
-    int timeRunes = 0;
-    int lifeRunes = 0;
-    int sunRunes = 0;
-    int moonRunes = 0;
+    protected int fireRunes = 0;
+    protected int waterRunes = 0;
+    protected int earthRunes = 0;
+    protected int windRunes = 0;
+    protected int timeRunes = 0;
+    protected int lifeRunes = 0;
+    protected int sunRunes = 0;
+    protected int moonRunes = 0;
 
-    List<CircleTypes> types = new ArrayList<>();
+    protected  List<CircleTypes> types = new ArrayList<>();
 
-    Map<Integer, Integer> runes = new HashMap<>();
+    protected Map<Integer, Integer> runes = new HashMap<>();
 
-    Spell spell;
+    protected Spell spell;
 
 
-    public Ritual(String ritualName, float ritualSolarCost, float ritualLunarCost) {
+    public OldRitual(String ritualName, float ritualSolarCost, float ritualLunarCost) {
         this.ritualName = ritualName;
         this.ritualSolarCost = ritualSolarCost;
         this.ritualLunarCost = ritualLunarCost;

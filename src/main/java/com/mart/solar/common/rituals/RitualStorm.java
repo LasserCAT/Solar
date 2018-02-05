@@ -1,12 +1,13 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.ritual.OldRitual;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class RitualStorm extends Ritual {
+public class RitualStorm extends OldRitual {
 
     public RitualStorm() {
-        super("Ritual of the Rising Storm", 0, 1000);
+        super("OldRitual of the Rising Storm", 0, 1000);
 
         types.add(CircleTypes.MOON);
         windRunes = 2;

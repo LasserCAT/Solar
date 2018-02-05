@@ -1,13 +1,14 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.ritual.OldRitual;
 import com.mart.solar.common.spells.SpellSummerHeat;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class RitualSummerHeat extends Ritual {
+public class RitualSummerHeat extends OldRitual {
 
     public RitualSummerHeat() {
-        super("Ritual of Summer Heat", 10000, 0);
+        super("OldRitual of Summer Heat", 10000, 0);
 
         types.add(CircleTypes.SUN);
         fireRunes = 4;

@@ -1,27 +1,18 @@
 package com.mart.solar.common.tileentities;
 
-import com.mart.solar.api.enums.RitualLevel;
-import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.api.registry.RitualRegister;
-import com.mart.solar.api.util.RitualContainer;
-import com.mart.solar.common.blocks.BlockMenhir;
-import com.mart.solar.common.circles.Circle;
-import com.mart.solar.common.items.ItemRitualAmulet;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualManager;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.registry.ModBlocks;
-import com.mart.solar.common.rituals.Ritual;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -29,19 +20,6 @@ import net.minecraft.world.World;
 import java.util.*;
 
 public class TileAltar extends TileBase implements ITickable {
-
-    private int[][] runeArray = new int[11][11];
-
-    private int[][] tierOneCoords = new int[][]{
-            {0, -4},
-            {3, -3},
-            {4, 0},
-            {3, 3},
-            {0, 4},
-            {-3, 3},
-            {-4, 0},
-            {-3, -3}
-    };
 
     private float solarEnergy = 0;
     private float lunarEnergy = 0;
@@ -150,46 +128,27 @@ public class TileAltar extends TileBase implements ITickable {
         }
     }
 
-    public void useRitualAmulet(BlockPos pos, World world, EntityPlayer player) {
+    public void useRitualAmulet(BlockPos pos, World world) {
         int radius = 5;
-
-        int startingX = pos.getX() - radius;
-        int startingZ = pos.getZ() - radius;
         int startingY = pos.getY();
 
         for (int x = pos.getX() - radius; x <= pos.getX() + radius; x++) {
             for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++) {
                 Block block = world.getBlockState(new BlockPos(x, startingY, z)).getBlock();
 
-                int xPos = x - startingX;
-                int zPos = z - startingZ;
-
                 if (block.equals(Blocks.STONE)) {
                     craftMenhirs(radius, pos, world);
                     return;
                 }
-
-                if (block instanceof BlockMenhir) {
-                    runeArray[zPos][xPos] = 1;
-                } else {
-                    runeArray[zPos][xPos] = 0;
-                }
             }
         }
-        //For rune logging
-        for (int[] i : runeArray) {
-            for (int j : i) {
-                System.out.print(j + " ");
-            }
-            System.out.println(" ");
-        }
 
-        if (Arrays.deepEquals(Circle.tieronecircel, runeArray)) {
-            checkCircleType(1, world, pos, player);
-        }
+        //Check Ritual
+        Optional<Ritual> ritual = RitualManager.getRituals().stream().filter(r -> r.isSetup(this)).findFirst();
+        ritual.ifPresent(ritual1 -> ritual1.performRitual(this));
     }
 
-    void craftMenhirs(int radius, BlockPos pos, World world) {
+    private void craftMenhirs(int radius, BlockPos pos, World world) {
         List<BlockPos> stonePositions = new ArrayList<>();
         int startingY = pos.getY();
 
@@ -220,123 +179,7 @@ public class TileAltar extends TileBase implements ITickable {
         }
     }
 
-    public void checkCircleType(int level, World world, BlockPos pos, EntityPlayer player) {
-        switch (level) {
-            case 1:
-                CircleTypes circleTypes = null;
-                List<TileMenhir> menhirs = new ArrayList<>();
-
-                BlockPos block1Pos = new BlockPos(pos.getX() + tierOneCoords[0][0], pos.getY(), pos.getZ() + tierOneCoords[0][1]);
-
-                Block block = world.getBlockState(block1Pos).getBlock();
-                if (block instanceof BlockMenhir) {
-                    circleTypes = ((BlockMenhir) block).getType();
-
-                    TileMenhir tile = (TileMenhir) world.getTileEntity(block1Pos);
-
-                    menhirs.add(tile);
-                }
-
-
-                for (int i = 1; i < 8; i++) {
-                    BlockPos block2Pos = new BlockPos(pos.getX() + tierOneCoords[i][0], pos.getY(), pos.getZ() + tierOneCoords[i][1]);
-                    Block block2 = world.getBlockState(block2Pos).getBlock();
-
-                    if (block2 instanceof BlockMenhir) {
-                        CircleTypes type = ((BlockMenhir) block2).getType();
-                        if (circleTypes != type) {
-                            return;
-                        }
-
-                        TileMenhir tile = (TileMenhir) world.getTileEntity(block2Pos);
-                        menhirs.add(tile);
-                    }
-                }
-
-                RitualContainer rc = new RitualContainer(pos);
-                rc.addTypes(circleTypes);
-                rc.setRcLevel(RitualLevel.ONE);
-                rc.setMenhirs(menhirs);
-                rc.setWorld(world);
-                rc.setPlayer(player);
-                rc.setRitualStaff(player.getHeldItemMainhand());
-                checkRitual(rc);
-
-                break;
-        }
-    }
-
-    public void checkRitual(RitualContainer rc) {
-
-        for (TileMenhir b : rc.getMenhirs()) {
-            if (b.getRune() != null) {
-                if (b.getRune().getItemDamage() == 1) {
-                    rc.addFireRunes();
-                } else if (b.getRune().getItemDamage() == 2) {
-                    rc.addWaterRunes();
-                } else if (b.getRune().getItemDamage() == 3) {
-                    rc.addEarthRunes();
-                } else if (b.getRune().getItemDamage() == 4) {
-                    rc.addWindRunes();
-                } else if (b.getRune().getItemDamage() == 5) {
-                    rc.addTimeRunes();
-                } else if (b.getRune().getItemDamage() == 6) {
-                    rc.addLifeRunes();
-                } else if (b.getRune().getItemDamage() == 7) {
-                    rc.addSunRunes();
-                } else if (b.getRune().getItemDamage() == 8) {
-                    rc.addMoonRunes();
-                }
-            }
-
-        }
-
-        for (Ritual r : RitualRegister.getRituals()) {
-            if (r.getTypes().equals(rc.getTypes())
-                    && r.getFireRunes() == rc.getFireRunes()
-                    && r.getWaterRunes() == rc.getWaterRunes()
-                    && r.getEarthRunes() == rc.getEarthRunes()
-                    && r.getWindRunes() == rc.getWindRunes()
-                    && r.getTimeRunes() == rc.getTimeRunes()
-                    && r.getLifeRunes() == rc.getLifeRunes()
-                    && r.getMoonRunes() == rc.getMoonRunes()
-                    && r.getSunRunes() == rc.getSunRunes()) {
-                checkRunes(r, rc);
-            }
-        }
-    }
-
-    void checkRunes(Ritual ritual, RitualContainer rc) {
-        for (Map.Entry<Integer, Integer> entry : ritual.getRunes().entrySet()) {
-
-            if (rc.getMenhirs().get(entry.getKey()).getRune() != null) {
-
-                TileMenhir tile = rc.getMenhirs().get(entry.getKey());
-                int itemDamage = entry.getValue();
-
-                ItemStack i = tile.getRune();
-
-                if (i.getItemDamage() == itemDamage) {
-                } else {
-                    return;
-                }
-
-            } else {
-                System.out.println("Nope");
-                return;
-            }
-        }
-
-        if (ritual.isHasSpell()) {
-            ItemRitualAmulet r = (ItemRitualAmulet) rc.getRitualStaff().getItem();
-            r.setCurrentSpell(rc.getPlayer().getHeldItemMainhand(), ritual.getSpell().getName());
-
-        } else {
-            ritual.activateRitual(rc.getPlayer(), ritual.getRitualSolarCost(), ritual.getRitualLunarCost());
-        }
-    }
-
-    public boolean skyBlocked(){
+    private boolean skyBlocked(){
         BlockPos position = this.getPos();
         for(int y = position.getY() + 1; y < 256; y++){
             BlockPos checkPosition = new BlockPos(position.getX(), y, position.getZ());
@@ -379,10 +222,6 @@ public class TileAltar extends TileBase implements ITickable {
     //Getter Setters Adders Extractors
     public ItemStack getHeldItem() {
         return heldItem;
-    }
-
-    public AltarRecipe getCurrentRecipe() {
-        return currentRecipe;
     }
 
     public int getCurrentEnergyProgress() {

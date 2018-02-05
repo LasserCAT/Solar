@@ -1,9 +1,10 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.ritual.OldRitual;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class RitualClearSkies extends Ritual {
+public class RitualClearSkies extends OldRitual {
 
     public RitualClearSkies() {
         super("Rite of the Clear Skies", 1000, 0);

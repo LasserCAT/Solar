@@ -1,40 +1,30 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.Solar;
-import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.network.packets.PacketTime;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentString;
+import com.mart.solar.common.tileentities.TileAltar;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RitualRisingSun extends Ritual {
 
-    boolean activated = false;
+    private boolean activated = false;
 
     public RitualRisingSun() {
         super("Ritual of the Rising Sun", 1000, 0);
 
+        this.setRegistryName("ritualrisingsun");
+
         MinecraftForge.EVENT_BUS.register(this);
-
-        types.add(CircleTypes.SUN);
-        fireRunes = 2;
-
-        runes.put(2, 1);
-        runes.put(6, 1);
-    }
-
-    @Override
-    public void activateRitual(EntityPlayer player, float solar, float lunar) {
-        if (player.getEntityWorld().getWorldTime() % 24000 > 0 && player.getEntityWorld().getWorldTime() % 24000 < 13000 || solar < getRitualSolarCost()) {
-            player.sendMessage(new TextComponentString("Ritual failed"));
-        } else {
-            activated = true;
-        }
-
     }
 
     @SubscribeEvent
@@ -50,4 +40,22 @@ public class RitualRisingSun extends Ritual {
     }
 
 
+    @Override
+    public void performRitual(TileAltar altar) {
+        if ((altar.getWorld().getWorldTime() % 24000 <= 0 || altar.getWorld().getWorldTime() % 24000 >= 13000) && altar.getSolarEnergy() >= getRitualSolarCost()) {
+            activated = true;
+        }
+    }
+
+    @Override
+    public List<RitualComponent> getRitualComponents() {
+        List<RitualComponent> ritualComponents = new ArrayList<>();
+
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, -4), RuneType.TIME));
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, 4), RuneType.TIME));
+        ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.SUN));
+        ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.SUN));
+
+        return ritualComponents;
+    }
 }

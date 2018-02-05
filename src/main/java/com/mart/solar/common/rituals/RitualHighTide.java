@@ -1,10 +1,11 @@
 package com.mart.solar.common.rituals;
 
 import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.api.ritual.OldRitual;
 import com.mart.solar.common.spells.SpellHighTide;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class RitualHighTide extends Ritual {
+public class RitualHighTide extends OldRitual {
 
     public RitualHighTide() {
         super("Rite of the High Tide", 0, 10000);

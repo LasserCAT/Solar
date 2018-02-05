@@ -48,7 +48,7 @@ public class Solar
     public void preInit(FMLPreInitializationEvent event) {
         ModTiles.init();
         ModRecipes.init();
-        ModRituals.init();
+        ModRituals.oldInit();
         ModSpells.init();
 
         SolarPacketHandler.init();

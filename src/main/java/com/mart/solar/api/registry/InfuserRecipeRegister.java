@@ -3,9 +3,8 @@ package com.mart.solar.api.registry;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mart.solar.Solar;
-import com.mart.solar.api.enums.RuneTypes;
+import com.mart.solar.api.enums.RuneType;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public class InfuserRecipeRegister {
 
@@ -26,10 +25,10 @@ public class InfuserRecipeRegister {
     public static class InfuserRecipe {
 
         private final Item input;
-        private final RuneTypes output;
+        private final RuneType output;
 
 
-        public InfuserRecipe(Item input, RuneTypes output) {
+        public InfuserRecipe(Item input, RuneType output) {
             this.input = input;
             this.output = output;
         }
@@ -38,7 +37,7 @@ public class InfuserRecipeRegister {
             return input;
         }
 
-        public RuneTypes getOutput() {
+        public RuneType getOutput() {
             return output;
         }
     }

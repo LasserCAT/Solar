@@ -64,7 +64,7 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
 
             if (playerItem.getItem() instanceof IAltarManipulator) {
                 if (playerItem.getItem() == ModItems.ritualAmulet) {
-                    tileEntity.useRitualAmulet(tileEntity.getPos(), tileEntity.getWorld(), player);
+                    tileEntity.useRitualAmulet(tileEntity.getPos(), tileEntity.getWorld());
                     return true;
                 }
             }
