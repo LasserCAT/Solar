@@ -22,7 +22,7 @@ public class RitualStorm extends Ritual {
 
 
     @Override
-    public void performRitual(TileAltar altar) {
+    public void performRitual(TileAltar altar, EntityPlayer player) {
         if (!altar.getWorld().isRemote) {
             altar.getWorld().getWorldInfo().setThundering(true);
             altar.getWorld().getWorldInfo().setRaining(true);

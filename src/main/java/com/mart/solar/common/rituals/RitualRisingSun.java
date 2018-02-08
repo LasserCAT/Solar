@@ -6,6 +6,7 @@ import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.network.packets.PacketTime;
 import com.mart.solar.common.tileentities.TileAltar;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -41,7 +42,7 @@ public class RitualRisingSun extends Ritual {
 
 
     @Override
-    public void performRitual(TileAltar altar) {
+    public void performRitual(TileAltar altar, EntityPlayer player) {
         if ((altar.getWorld().getWorldTime() % 24000 <= 0 || altar.getWorld().getWorldTime() % 24000 >= 13000) && altar.getSolarEnergy() >= getRitualSolarCost()) {
             activated = true;
         }

@@ -128,7 +128,7 @@ public class TileAltar extends TileBase implements ITickable {
         }
     }
 
-    public void useRitualAmulet(BlockPos pos, World world) {
+    public void useRitualAmulet(BlockPos pos, World world, EntityPlayer player) {
         int radius = 5;
         int startingY = pos.getY();
 
@@ -145,7 +145,7 @@ public class TileAltar extends TileBase implements ITickable {
 
         //Check Ritual
         Optional<Ritual> ritual = RitualManager.getRituals().stream().filter(r -> r.isSetup(this)).findFirst();
-        ritual.ifPresent(ritual1 -> ritual1.performRitual(this));
+        ritual.ifPresent(ritual1 -> ritual1.performRitual(this, player));
     }
 
     private void craftMenhirs(int radius, BlockPos pos, World world) {

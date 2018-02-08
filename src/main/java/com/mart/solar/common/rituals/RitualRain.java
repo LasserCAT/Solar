@@ -4,6 +4,7 @@ import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.tileentities.TileAltar;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class RitualRain extends Ritual {
     }
 
     @Override
-    public void performRitual(TileAltar altar) {
+    public void performRitual(TileAltar altar, EntityPlayer player) {
         System.out.println("performed");
         if (!altar.getWorld().isRemote) {
             System.out.println("setting rain");

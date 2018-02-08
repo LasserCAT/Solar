@@ -34,13 +34,14 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         return super.onItemRightClick(world, player, hand);
     }
 
-    public void setCurrentSpell(ItemStack stack, String key) {
+    public static void setCurrentSpell(ItemStack stack, String key) {
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
         }
 
         NBTTagCompound tag = stack.getTagCompound();
 
+        assert tag != null;
         tag.setString("spell", key);
     }
 

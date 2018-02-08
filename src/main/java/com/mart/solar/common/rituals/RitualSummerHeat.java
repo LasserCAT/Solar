@@ -1,29 +1,43 @@
 package com.mart.solar.common.rituals;
 
-import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.api.ritual.OldRitual;
-import com.mart.solar.common.spells.SpellSummerHeat;
+import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.api.ritual.Ritual;
+import com.mart.solar.api.ritual.RitualComponent;
+import com.mart.solar.common.registry.ModSpells;
+import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 
-public class RitualSummerHeat extends OldRitual {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RitualSummerHeat extends Ritual {
 
     public RitualSummerHeat() {
-        super("OldRitual of Summer Heat", 10000, 0);
-
-        types.add(CircleTypes.SUN);
-        fireRunes = 4;
-
-        hasSpell = true;
-
-        spell = new SpellSummerHeat();
-
-        runes.put(0, 1);
-        runes.put(2, 1);
-        runes.put(4, 1);
-        runes.put(6, 1);
+        super("Ritual of Summer Heat", 10000, 0);
+        setRegistryName("ritualsummerheat");
+        setSpell(ModSpells.spellSummerHeat);
     }
 
     @Override
-    public void activateRitual(EntityPlayer player, float solar, float lunar) {
+    public void performRitual(TileAltar altar, EntityPlayer player) {
+        givePlayerSpell(player);
+    }
+
+    @Override
+    public List<RitualComponent> getRitualComponents() {
+        List<RitualComponent> ritualComponents = new ArrayList<>();
+
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, -4), RuneType.FIRE));
+        ritualComponents.add(new RitualComponent(new BlockPos(0, 0, 4), RuneType.FIRE));
+        ritualComponents.add(new RitualComponent(new BlockPos(-4, 0, 0), RuneType.FIRE));
+        ritualComponents.add(new RitualComponent(new BlockPos(4, 0, 0), RuneType.FIRE));
+
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(3, 0, 3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, -3), null));
+        ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), null));
+
+        return ritualComponents;
     }
 }

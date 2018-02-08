@@ -11,15 +11,20 @@ public class ModSpells {
 
     public static List<Spell> SPELLS;
 
-    public static void addSpell(Spell ritual){
-        SPELLS.add(ritual);
-    }
+    public static SpellSummerHeat spellSummerHeat;
+    public static SpellHighTide spellHighTide;
+
 
     private static void init(){
         SPELLS = new ArrayList<>();
 
-        addSpell(new SpellSummerHeat());
-        addSpell(new SpellHighTide());
+        spellSummerHeat = addSpell(new SpellSummerHeat());
+        spellHighTide = addSpell(new SpellHighTide());
+    }
+
+    private static <T extends Spell> T addSpell(T spell){
+        SPELLS.add(spell);
+        return spell;
     }
 
     public static Spell[] getSpells()

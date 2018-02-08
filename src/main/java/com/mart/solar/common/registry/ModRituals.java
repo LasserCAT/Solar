@@ -26,11 +26,8 @@ public class ModRituals {
         addRitual(new RitualRain());
         addRitual(new RitualStorm());
         addRitual(new RitualClearSkies());
-    }
-
-    public static void oldInit(){
-        RitualRegistar.registerRitual(new RitualSummerHeat());
-        RitualRegistar.registerRitual(new RitualHighTide());
+        addRitual(new RitualSummerHeat());
+        addRitual(new RitualHighTide());
     }
 
     public static Ritual[] getRituals()

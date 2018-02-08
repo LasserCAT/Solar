@@ -82,7 +82,7 @@ public class SpellHighTide extends Spell {
         return "spellhightide";
     }
 
-    void setWater(List<BlockPos> list, World world) {
+    private void setWater(List<BlockPos> list, World world) {
         for (BlockPos p : list) {
             world.setBlockState(p, Blocks.WATER.getDefaultState());
         }

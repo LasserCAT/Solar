@@ -45,7 +45,7 @@ public class RitualRisingMoon extends Ritual {
     }
 
     @Override
-    public void performRitual(TileAltar altar) {
+    public void performRitual(TileAltar altar, EntityPlayer player) {
         if ((altar.getWorld().getWorldTime() % 24000 <= 13000 || altar.getWorld().getWorldTime() % 24000 >= 23999) && altar.getLunarEnergy() >= getRitualLunarCost()) {
             activated = true;
         }

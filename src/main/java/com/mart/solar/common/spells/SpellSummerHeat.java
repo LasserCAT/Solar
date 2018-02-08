@@ -29,6 +29,7 @@ public class SpellSummerHeat extends Spell {
             Vec3d vec3d2 = vec3d.addVector(vec3d1.x * 5, vec3d1.y * 5, vec3d1.z * 5);
             RayTraceResult result = player.getEntityWorld().rayTraceBlocks(vec3d, vec3d2, true, false, true);
 
+            assert result != null;
             Block b = player.getEntityWorld().getBlockState(result.getBlockPos()).getBlock();
 
             if (b.equals(Blocks.WATER)) {
