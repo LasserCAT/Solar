@@ -2,8 +2,8 @@ package com.mart.solar.common.items;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
-import com.mart.solar.api.registry.SpellRegister;
 import com.mart.solar.api.spell.Spell;
+import com.mart.solar.api.spell.SpellManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,11 +11,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
+import java.util.Optional;
+
 public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
 
     public ItemRitualAmulet() {
         super("ritualamulet");
         setCreativeTab(Solar.solarTab);
+        setMaxStackSize(1);
     }
 
 
@@ -23,13 +26,9 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (!world.isRemote) {
             ItemStack stack = player.getHeldItem(hand);
-            String spell = getCurrentSpell(stack);
 
-            for (Spell s : SpellRegister.getSpells()) {
-                if (spell.equals(s.getName())) {
-                    s.activateSpell(player);
-                }
-            }
+            Optional<Spell> spell = SpellManager.getSpells().stream().filter(s -> s.getSpellRegistryName().equals(getCurrentSpell(stack))).findFirst();
+            spell.ifPresent(spell1 -> spell1.activateSpell(player));
         }
         return super.onItemRightClick(world, player, hand);
     }
@@ -40,12 +39,10 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         }
 
         NBTTagCompound tag = stack.getTagCompound();
-
-        assert tag != null;
         tag.setString("spell", key);
     }
 
-    public String getCurrentSpell(ItemStack stack) {
+    private String getCurrentSpell(ItemStack stack) {
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
         }

@@ -73,7 +73,6 @@ public class SpellHighTide extends Spell {
                     break;
                 }
             }
-            System.out.println(blocks.size());
         }
     }
 

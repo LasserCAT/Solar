@@ -16,12 +16,11 @@ public class RitualSummerHeat extends Ritual {
     public RitualSummerHeat() {
         super("Ritual of Summer Heat", 10000, 0);
         setRegistryName("ritualsummerheat");
-        setSpell(ModSpells.spellSummerHeat);
     }
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player);
+        givePlayerSpell(player, ModSpells.spellSummerHeat);
     }
 
     @Override

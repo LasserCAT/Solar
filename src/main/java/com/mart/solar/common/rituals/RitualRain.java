@@ -20,9 +20,7 @@ public class RitualRain extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        System.out.println("performed");
         if (!altar.getWorld().isRemote) {
-            System.out.println("setting rain");
             altar.getWorld().getWorldInfo().setThundering(false);
             altar.getWorld().getWorldInfo().setRaining(true);
         }

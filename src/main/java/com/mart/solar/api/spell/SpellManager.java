@@ -12,7 +12,7 @@ public class SpellManager {
         REGISTRY = registry;
     }
 
-    public static List<Spell> getRituals() {
+    public static List<Spell> getSpells() {
         return REGISTRY.getValues();
     }
 

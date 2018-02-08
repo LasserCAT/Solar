@@ -41,14 +41,17 @@ public class BlockRuneInfuser extends BlockBase implements ITileEntityProvider {
                 TileRuneInfuser tileEntity = (TileRuneInfuser) world.getTileEntity(pos);
                 ItemStack heldItem = player.getHeldItem(hand);
 
-                if (tileEntity == null || player.isSneaking())
-                    return false;
+                if (tileEntity == null)
+                    return true;
 
-                if (heldItem.getItem() != Items.AIR) {
-                    tileEntity.onUse(heldItem, player, hand);
-                } else {
+                if(heldItem.isEmpty() && player.isSneaking()){
                     player.swingArm(hand);
                     tileEntity.extractItem(player);
+                    return true;
+                }
+
+                if (!heldItem.isEmpty()) {
+                    tileEntity.onUse(heldItem, player, hand);
                 }
             }
         }

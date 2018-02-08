@@ -8,5 +8,6 @@ public class ItemDullAmulet extends ItemBase implements IRune{
     public ItemDullAmulet() {
         super("dull_amulet");
         setCreativeTab(Solar.solarTab);
+        setMaxStackSize(1);
     }
 }

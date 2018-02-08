@@ -24,8 +24,6 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
     private float ritualSolarCost;
     private float ritualLunarCost;
 
-    private Spell spell;
-
     public Ritual(String ritualName, float ritualSolarCost, float ritualLunarCost) {
         this.ritualName = ritualName;
         this.ritualSolarCost = ritualSolarCost;
@@ -78,11 +76,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         return true;
     }
 
-    public void givePlayerSpell(EntityPlayer player) {
-        if (spell == null) {
-            return;
-        }
-
+    public void givePlayerSpell(EntityPlayer player, Spell spell) {
         ItemStack mainItem = player.getHeldItem(EnumHand.MAIN_HAND);
         ItemStack offItem = player.getHeldItem(EnumHand.OFF_HAND);
         ItemStack itemStack;
@@ -95,8 +89,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
             return;
         }
 
-        ItemRitualAmulet.setCurrentSpell(itemStack, this.spell.getSpellRegistryName());
-
+        ItemRitualAmulet.setCurrentSpell(itemStack, spell.getSpellRegistryName());
     }
 
     //getters setters
@@ -110,13 +103,5 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
     public float getRitualLunarCost() {
         return ritualLunarCost;
-    }
-
-    public Spell getSpell() {
-        return spell;
-    }
-
-    public void setSpell(Spell spell) {
-        this.spell = spell;
     }
 }

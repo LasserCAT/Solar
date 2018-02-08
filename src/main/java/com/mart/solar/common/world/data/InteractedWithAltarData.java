@@ -58,9 +58,6 @@ public class InteractedWithAltarData extends WorldSavedData {
     }
 
     public List<UUID> getUUIDList() {
-        for(UUID uuid: this.playerUUIDSList){
-            System.out.println(uuid.toString());
-        }
         return this.playerUUIDSList;
     }
 

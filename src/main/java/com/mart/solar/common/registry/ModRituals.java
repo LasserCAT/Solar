@@ -1,11 +1,7 @@
 package com.mart.solar.common.registry;
 
-import com.mart.solar.api.registry.RitualRegistar;
 import com.mart.solar.api.ritual.Ritual;
-import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.rituals.*;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;

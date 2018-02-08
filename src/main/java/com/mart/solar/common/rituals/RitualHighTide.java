@@ -16,13 +16,12 @@ public class RitualHighTide extends Ritual {
     public RitualHighTide() {
         super("Rite of the High Tide", 0, 10000);
         setRegistryName("ritualhightide");
-        setSpell(ModSpells.spellHighTide);
     }
 
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player);
+        givePlayerSpell(player, ModSpells.spellHighTide);
     }
 
     @Override
