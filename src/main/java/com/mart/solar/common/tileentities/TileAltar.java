@@ -21,8 +21,9 @@ import java.util.*;
 
 public class TileAltar extends TileBase implements ITickable {
 
-    private float solarEnergy = 0;
-    private float lunarEnergy = 0;
+    //todo: change back to 0
+    private float solarEnergy = 30000;
+    private float lunarEnergy = 30000;
 
     private boolean blocked = false;
 
@@ -146,7 +147,7 @@ public class TileAltar extends TileBase implements ITickable {
         //Check Ritual
         Optional<Ritual> ritual = RitualManager.getRituals().stream().filter(r -> r.isSetup(this)).findFirst();
         if(ritual.isPresent()){
-            if(ritual.get().getRitualSolarCost() >= this.solarEnergy && ritual.get().getRitualLunarCost() >= this.lunarEnergy){
+            if(this.solarEnergy >= ritual.get().getRitualSolarCost() && this.lunarEnergy >= ritual.get().getRitualLunarCost() ){
                 ritual.get().performRitual(this, player);
                 this.lunarEnergy -= ritual.get().getRitualLunarCost();
                 this.solarEnergy -= ritual.get().getRitualSolarCost();

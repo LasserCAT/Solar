@@ -34,13 +34,11 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
     }
 
     public static void setCurrentSpell(ItemStack stack, String key) {
-        System.out.println("Settng the spell");
         NBTTagCompound tag = getCompound(stack);
         tag.setString("spell", key);
     }
 
     public static void setEnergy(ItemStack stack, int energy) {
-        System.out.println("Setting the energy");
         NBTTagCompound tag = getCompound(stack);
         tag.setInteger("energy", energy);
 
@@ -60,7 +58,6 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
     }
 
     private static NBTTagCompound getCompound(ItemStack stack){
-        System.out.println("Getting tag");
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
         }

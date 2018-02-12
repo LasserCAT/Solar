@@ -4,7 +4,6 @@ import com.mart.solar.api.spell.Spell;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.registry.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -17,7 +16,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SpellSummerHeat extends Spell {
@@ -28,19 +27,17 @@ public class SpellSummerHeat extends Spell {
 
     @Override
     public void activateSpell(EntityPlayer player, ItemStack itemStack) {
-        System.out.println("Calls spell");
         if (player.getEntityWorld().isRemote) {
             return;
         }
 
         if(itemStack.getItem() != ModItems.ritualAmulet){
-            System.out.println("is no amulet");
             return;
         }
 
         int energy = ItemRitualAmulet.getEnergy(itemStack);
         World world = player.getEntityWorld();
-        List<BlockPos> blocks = new ArrayList<>();
+        LinkedList<BlockPos> blocks = new LinkedList<>();
 
         Vec3d vec3d = player.getPositionEyes(0.1F);
         Vec3d vec3d1 = player.getLook(0.1F);
@@ -56,21 +53,16 @@ public class SpellSummerHeat extends Spell {
             return;
         }
 
-        System.out.println("Block is wataaaw");
-
         for (int i = 0; i < blocks.size(); i++) {
-            System.out.println("BAM");
             if(blocks.size() > energy){
-                System.out.println("Well this is too pricy for me. Bye spell");
                 ItemRitualAmulet.setCurrentSpell(itemStack, "");
                 ItemRitualAmulet.setEnergy(itemStack, 0);
-                System.out.println("Sound");
-                player.getEntityWorld().playSound(player, result.getBlockPos(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 100, 1);
+
+                WorldServer serverWorld = (WorldServer) player.getEntityWorld();
+                serverWorld.playSound(null, result.getBlockPos(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 100, 1);
 
                 for(BlockPos blockPos : blocks){
-                    System.out.println("particle");
-                    WorldServer serverWorld = (WorldServer) player.getEntityWorld();
-                    serverWorld.spawnParticle(EnumParticleTypes.SMOKE_LARGE, blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), 0, 2, 0);
+                    serverWorld.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double)blockPos.getX(), (double)blockPos.getY() + 1, (double)blockPos.getZ(), 2, (double)0, (double)0, (double)0, 0.5);
                 }
                 return;
             }
@@ -97,9 +89,7 @@ public class SpellSummerHeat extends Spell {
 
         }
 
-        System.out.println("turn blocks into air");
-        setWater(blocks, player.getEntityWorld());
-        System.out.println("oh and energt to 0");
+        setAir(blocks, player.getEntityWorld());
         ItemRitualAmulet.setEnergy(itemStack, energy-blocks.size());
     }
 
@@ -108,7 +98,7 @@ public class SpellSummerHeat extends Spell {
         return "spellsummerheat";
     }
 
-    private void setWater(List<BlockPos> list, World world) {
+    private void setAir(List<BlockPos> list, World world) {
         for (BlockPos p : list) {
             world.setBlockToAir(p);
         }
