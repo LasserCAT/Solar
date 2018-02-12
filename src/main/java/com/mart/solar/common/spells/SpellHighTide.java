@@ -4,6 +4,7 @@ import com.mart.solar.api.spell.Spell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -19,7 +20,7 @@ public class SpellHighTide extends Spell {
     }
 
     @Override
-    public void activateSpell(EntityPlayer player) {
+    public void activateSpell(EntityPlayer player, ItemStack itemStack) {
         if (!player.getEntityWorld().isRemote) {
             World world = player.getEntityWorld();
             List<BlockPos> blocks = new ArrayList<>();

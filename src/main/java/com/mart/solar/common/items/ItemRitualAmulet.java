@@ -28,27 +28,44 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
             ItemStack stack = player.getHeldItem(hand);
 
             Optional<Spell> spell = SpellManager.getSpells().stream().filter(s -> s.getSpellRegistryName().equals(getCurrentSpell(stack))).findFirst();
-            spell.ifPresent(spell1 -> spell1.activateSpell(player));
+            spell.ifPresent(spell1 -> spell1.activateSpell(player, player.getHeldItem(hand)));
         }
         return super.onItemRightClick(world, player, hand);
     }
 
     public static void setCurrentSpell(ItemStack stack, String key) {
-        if (!stack.hasTagCompound()) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-
-        NBTTagCompound tag = stack.getTagCompound();
+        System.out.println("Settng the spell");
+        NBTTagCompound tag = getCompound(stack);
         tag.setString("spell", key);
     }
 
+    public static void setEnergy(ItemStack stack, int energy) {
+        System.out.println("Setting the energy");
+        NBTTagCompound tag = getCompound(stack);
+        tag.setInteger("energy", energy);
+
+        if(energy == 0){
+            setCurrentSpell(stack, "");
+        }
+    }
+
     private String getCurrentSpell(ItemStack stack) {
+        NBTTagCompound tag = getCompound(stack);
+        return tag.getString("spell");
+    }
+
+    public static int getEnergy(ItemStack stack) {
+        NBTTagCompound tag = getCompound(stack);
+        return tag.getInteger("energy");
+    }
+
+    private static NBTTagCompound getCompound(ItemStack stack){
+        System.out.println("Getting tag");
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
         }
 
-        NBTTagCompound tag = stack.getTagCompound();
-        return tag.getString("spell");
+        return stack.getTagCompound();
     }
 
 }

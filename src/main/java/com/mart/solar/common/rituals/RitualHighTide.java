@@ -21,7 +21,7 @@ public class RitualHighTide extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player, ModSpells.spellHighTide);
+        givePlayerSpell(player, ModSpells.spellHighTide, amuletEnergy());
     }
 
     @Override
@@ -39,5 +39,10 @@ public class RitualHighTide extends Ritual {
         ritualComponents.add(new RitualComponent(new BlockPos(-3, 0, 3), null));
 
         return ritualComponents;
+    }
+
+    @Override
+    public int amuletEnergy() {
+        return 40;
     }
 }

@@ -30,10 +30,6 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         this.ritualLunarCost = ritualLunarCost;
     }
 
-    public abstract void performRitual(TileAltar altar, EntityPlayer player);
-
-    public abstract List<RitualComponent> getRitualComponents();
-
     public boolean isSetup(TileAltar altar) {
         List<RitualComponent> components = getRitualComponents();
         BlockPos altarPos = altar.getPos();
@@ -76,7 +72,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         return true;
     }
 
-    public void givePlayerSpell(EntityPlayer player, Spell spell) {
+    protected void givePlayerSpell(EntityPlayer player, Spell spell, int amuletEnergy) {
         ItemStack mainItem = player.getHeldItem(EnumHand.MAIN_HAND);
         ItemStack offItem = player.getHeldItem(EnumHand.OFF_HAND);
         ItemStack itemStack;
@@ -90,7 +86,14 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         }
 
         ItemRitualAmulet.setCurrentSpell(itemStack, spell.getSpellRegistryName());
+        ItemRitualAmulet.setEnergy(itemStack, amuletEnergy);
     }
+
+    public abstract void performRitual(TileAltar altar, EntityPlayer player);
+
+    public abstract List<RitualComponent> getRitualComponents();
+
+    public abstract int amuletEnergy();
 
     //getters setters
     public String getRitualName() {

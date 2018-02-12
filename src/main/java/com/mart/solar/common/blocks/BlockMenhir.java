@@ -2,17 +2,16 @@ package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.enums.CircleTypes;
-import com.mart.solar.common.blocks.BlockBase;
 import com.mart.solar.common.tileentities.TileMenhir;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -21,9 +20,12 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
 
     private CircleTypes type = null;
 
+    private final AxisAlignedBB menhirAabb = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.45D, 0.8D);
+
     public BlockMenhir(String name) {
         super(Material.ROCK, name);
         setCreativeTab(Solar.solarTab);
+
     }
 
     @Override
@@ -71,5 +73,10 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileMenhir();
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return menhirAabb;
     }
 }

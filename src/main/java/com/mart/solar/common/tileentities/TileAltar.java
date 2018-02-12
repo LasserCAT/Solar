@@ -145,7 +145,13 @@ public class TileAltar extends TileBase implements ITickable {
 
         //Check Ritual
         Optional<Ritual> ritual = RitualManager.getRituals().stream().filter(r -> r.isSetup(this)).findFirst();
-        ritual.ifPresent(ritual1 -> ritual1.performRitual(this, player));
+        if(ritual.isPresent()){
+            if(ritual.get().getRitualSolarCost() >= this.solarEnergy && ritual.get().getRitualLunarCost() >= this.lunarEnergy){
+                ritual.get().performRitual(this, player);
+                this.lunarEnergy -= ritual.get().getRitualLunarCost();
+                this.solarEnergy -= ritual.get().getRitualSolarCost();
+            }
+        }
     }
 
     private void craftMenhirs(int radius, BlockPos pos, World world) {

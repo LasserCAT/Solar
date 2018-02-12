@@ -67,4 +67,9 @@ public class RitualRisingMoon extends Ritual {
 
         return ritualComponents;
     }
+
+    @Override
+    public int amuletEnergy() {
+        return 0;
+    }
 }

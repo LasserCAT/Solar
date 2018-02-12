@@ -11,13 +11,13 @@ public class ModRecipes {
 
     public static void init() {
         //Infuser Recipes
-        InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.BLAZE_ROD, RuneType.FIRE));
+        InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.BLAZE_POWDER, RuneType.FIRE));
         InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.POTIONITEM, RuneType.WATER));
         InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(ItemBlock.getByNameOrId("stone"), RuneType.EARTH));
         InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.FEATHER, RuneType.WIND));
         InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.DIAMOND, RuneType.TIME));
         InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.BONE, RuneType.LIFE));
-        InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.GOLD_INGOT, RuneType.SUN));
+        InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(Items.GOLD_NUGGET, RuneType.SUN));
 
         for (ItemStack i : OreDictionary.getOres("ingotSilver")) {
             InfuserRecipeRegister.registerRecipe(new InfuserRecipeRegister.InfuserRecipe(i.getItem(), RuneType.MOON));

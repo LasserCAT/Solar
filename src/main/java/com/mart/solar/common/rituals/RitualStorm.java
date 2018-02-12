@@ -45,4 +45,9 @@ public class RitualStorm extends Ritual {
 
         return ritualComponents;
     }
+
+    @Override
+    public int amuletEnergy() {
+        return 0;
+    }
 }
