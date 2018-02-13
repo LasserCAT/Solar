@@ -20,6 +20,7 @@ public class RitualSolarProtection extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
+        System.out.println("Gives spell");
         givePlayerSpell(player, ModSpells.spellSolarProtection, amuletEnergy());
     }
 

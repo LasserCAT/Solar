@@ -149,6 +149,7 @@ public class TileAltar extends TileBase implements ITickable {
         if(ritual.isPresent()){
             if(this.solarEnergy >= ritual.get().getRitualSolarCost() && this.lunarEnergy >= ritual.get().getRitualLunarCost() ){
                 ritual.get().performRitual(this, player);
+                System.out.println("Ritual Performed");
                 this.lunarEnergy -= ritual.get().getRitualLunarCost();
                 this.solarEnergy -= ritual.get().getRitualSolarCost();
             }

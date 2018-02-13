@@ -85,6 +85,13 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
             return;
         }
 
+        System.out.println("set spell");
+        if(!player.getEntityWorld().isRemote){
+            System.out.println("server");
+        }
+        else{
+            System.out.println("Client");
+        }
         ItemRitualAmulet.setCurrentSpell(itemStack, spell.getSpellRegistryName());
         ItemRitualAmulet.setEnergy(itemStack, amuletEnergy);
     }

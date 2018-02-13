@@ -27,6 +27,8 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         if (!world.isRemote) {
             ItemStack stack = player.getHeldItem(hand);
 
+            System.out.println("Right clicked");
+
             Optional<Spell> spell = SpellManager.getSpells().stream().filter(s -> s.getSpellRegistryName().equals(getCurrentSpell(stack))).findFirst();
             spell.ifPresent(spell1 -> spell1.activateSpell(player, player.getHeldItem(hand)));
         }
@@ -34,6 +36,7 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
     }
 
     public static void setCurrentSpell(ItemStack stack, String key) {
+        System.out.println(key);
         NBTTagCompound tag = getCompound(stack);
         tag.setString("spell", key);
     }
@@ -41,10 +44,6 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
     public static void setEnergy(ItemStack stack, int energy) {
         NBTTagCompound tag = getCompound(stack);
         tag.setInteger("energy", energy);
-
-        if(energy == 0){
-            setCurrentSpell(stack, "");
-        }
     }
 
     private String getCurrentSpell(ItemStack stack) {
