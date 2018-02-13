@@ -24,6 +24,7 @@ public class ModRituals {
         addRitual(new RitualClearSkies());
         addRitual(new RitualSummerHeat());
         addRitual(new RitualHighTide());
+        addRitual(new RitualSolarProtection());
     }
 
     public static Ritual[] getRituals()

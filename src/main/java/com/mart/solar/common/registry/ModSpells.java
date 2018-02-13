@@ -2,6 +2,7 @@ package com.mart.solar.common.registry;
 
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.common.spells.SpellHighTide;
+import com.mart.solar.common.spells.SpellSolarProtection;
 import com.mart.solar.common.spells.SpellSummerHeat;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class ModSpells {
 
     public static SpellSummerHeat spellSummerHeat;
     public static SpellHighTide spellHighTide;
+    public static SpellSolarProtection spellSolarProtection;
 
 
     private static void init(){
@@ -20,6 +22,7 @@ public class ModSpells {
 
         spellSummerHeat = addSpell(new SpellSummerHeat());
         spellHighTide = addSpell(new SpellHighTide());
+        spellSolarProtection = addSpell(new SpellSolarProtection());
     }
 
     private static <T extends Spell> T addSpell(T spell){

@@ -14,12 +14,14 @@ public class ModBlocks {
     public static BlockSilverOre silverOre;
 
     public static BlockMenhir menhir;
+    public static BlockRitualStone ritualStone;
 
     public static void init(RegistryEvent.Register<Block> event) {
         sunTotem = register(new BlockAltar("suntotem"), event);
         brokenTotem = register(new BlockBrokenTotem("brokentotem"), event);
         runeInfuser = register(new BlockRuneInfuser("runeinfuser"), event);
         silverOre = register(new BlockSilverOre("silverore"), event);
+        ritualStone = register(new BlockRitualStone(), event);
 
         menhir = register(new BlockMenhir("menhir"), event);
     }
@@ -30,6 +32,7 @@ public class ModBlocks {
         registerItemBlock(runeInfuser, event);
         registerItemBlock(silverOre, event);
         registerItemBlock(menhir, event);
+        registerItemBlock(ritualStone, event);
     }
 
     private static <T extends Block> T register(T block, RegistryEvent.Register<Block> event) {

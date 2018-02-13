@@ -8,15 +8,15 @@ import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block {
 
-    protected String name;
+    protected String registryName;
 
-    public BlockBase(Material material, String name) {
+    public BlockBase(Material material, String registryName) {
         super(material);
 
-        this.name = name;
+        this.registryName = registryName;
 
-        setUnlocalizedName(name);
-        setRegistryName(name);
+        setUnlocalizedName(registryName);
+        setRegistryName(registryName);
     }
 
     public void registerItemModel(ItemBlock itemBlock) {

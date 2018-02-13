@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 
 public class ItemBase extends Item {
 
-    protected String name;
+    protected String registryName;
 
-    public ItemBase(String name) {
-        this.name = name;
-        setUnlocalizedName(name);
-        setRegistryName(name);
+    public ItemBase(String registryName) {
+        this.registryName = registryName;
+        setUnlocalizedName(registryName);
+        setRegistryName(registryName);
     }
 
     public void registerItemModel() {
