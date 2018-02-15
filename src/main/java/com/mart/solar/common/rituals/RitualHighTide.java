@@ -4,6 +4,7 @@ import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.registry.ModSpells;
+import com.mart.solar.common.spells.SpellHighTide;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +22,7 @@ public class RitualHighTide extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player, ModSpells.spellHighTide, amuletEnergy());
+        givePlayerSpell(player, new SpellHighTide(), amuletEnergy());
     }
 
     @Override

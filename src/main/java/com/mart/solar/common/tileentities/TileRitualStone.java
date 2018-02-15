@@ -5,8 +5,6 @@ import net.minecraft.util.ITickable;
 public class TileRitualStone extends TileBase implements ITickable {
 
     public TileRitualStone(){
-        System.out.println("ritualstone");
-        System.out.println("ritualstone");
     }
 
     @Override
@@ -15,7 +13,6 @@ public class TileRitualStone extends TileBase implements ITickable {
     }
 
     public void poop(){
-        System.out.println("cancercancercancer");
     }
 
 

@@ -45,39 +45,29 @@ public class BlockRitualStone extends BlockBase implements ITileEntityProvider {
             return true;
         }
 
-        System.out.println(1);
-
         TileRitualStone tileEntity = (TileRitualStone) world.getTileEntity(pos);
         ItemStack playerItem = player.inventory.getCurrentItem();
 
-        System.out.println(2);
-
         if (hand == EnumHand.OFF_HAND || tileEntity == null) {
-            System.out.println(3);
             return true;
         }
 
         if (player.isSneaking()) {
-            System.out.println(4);
             return true;
         }
 
         if (playerItem.isEmpty()) {
-            System.out.println(5);
             return true;
         }
 
 
         if (playerItem.getItem() instanceof IAltarManipulator) {
-            System.out.println(6);
             if (playerItem.getItem() == ModItems.ritualAmulet) {
-                System.out.println(7);
                 tileEntity.poop();
                 return true;
             }
         }
 
-        System.out.println(8);
         return true;
     }
 

@@ -2,6 +2,7 @@ package com.mart.solar.api.ritual;
 
 import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.spell.Spell;
+import com.mart.solar.common.items.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.registry.ModItems;
@@ -34,8 +35,6 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         List<RitualComponent> components = getRitualComponents();
         BlockPos altarPos = altar.getPos();
 
-        List<TileMenhir> menhirs = new ArrayList<>();
-
         for (RitualComponent component : components) {
             BlockPos checkPos = altarPos.add(component.getComponentPos());
 
@@ -64,11 +63,8 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
             if (component.getRuneType() != RuneType.values()[runeID]) {
                 return false;
             }
-
-            menhirs.add(menhirTile);
         }
 
-        menhirs.forEach(TileMenhir::emptyRuneSlot);
         return true;
     }
 
@@ -85,15 +81,28 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
             return;
         }
 
-        System.out.println("set spell");
-        if(!player.getEntityWorld().isRemote){
-            System.out.println("server");
-        }
-        else{
-            System.out.println("Client");
-        }
-        ItemRitualAmulet.setCurrentSpell(itemStack, spell.getSpellRegistryName());
+        spell.saveSpellHandleToNBT(ItemBase.getCompound(itemStack));
+        spell.saveDataToNBT(ItemBase.getCompound(itemStack));
         ItemRitualAmulet.setEnergy(itemStack, amuletEnergy);
+    }
+
+    public void clearRunes(TileAltar altar){
+        BlockPos altarPos = altar.getPos();
+        for(RitualComponent component : getRitualComponents()){
+            BlockPos checkPos = altarPos.add(component.getComponentPos());
+
+            if (altar.getWorld().getBlockState(checkPos).getBlock() != menhir) {
+                return;
+            }
+
+            TileMenhir menhirTile = (TileMenhir) altar.getWorld().getTileEntity(checkPos);
+
+            if (menhirTile == null) {
+                return;
+            }
+
+            menhirTile.emptyRuneSlot();
+        }
     }
 
     public abstract void performRitual(TileAltar altar, EntityPlayer player);

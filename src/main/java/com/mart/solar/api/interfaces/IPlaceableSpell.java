@@ -1,9 +1,11 @@
 package com.mart.solar.api.interfaces;
 
-import com.mart.solar.common.tileentities.TileRitualStone;
 
-public interface IPlaceableSpell {
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-    void tick(TileRitualStone stone);
+public interface IPlaceAbleSpell {
+
+    void tick(World world, BlockPos pos, int tickValue);
 
 }

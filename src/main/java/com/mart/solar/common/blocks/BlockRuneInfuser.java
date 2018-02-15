@@ -1,6 +1,7 @@
 package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
+import com.mart.solar.common.tileentities.TileMenhir;
 import com.mart.solar.common.tileentities.TileRuneInfuser;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -15,7 +16,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRuneInfuser extends BlockBase implements ITileEntityProvider {
+import javax.annotation.Nullable;
+
+public class BlockRuneInfuser extends BlockBase{
 
     public BlockRuneInfuser(String name) {
         super(Material.WOOD, name);
@@ -59,7 +62,13 @@ public class BlockRuneInfuser extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileRuneInfuser();
     }
 }

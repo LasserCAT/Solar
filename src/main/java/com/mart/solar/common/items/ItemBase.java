@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
@@ -32,6 +33,14 @@ public class ItemBase extends Item {
     public ItemBase setCreativeTab(CreativeTabs tab) {
         super.setCreativeTab(tab);
         return this;
+    }
+
+    public static NBTTagCompound getCompound(ItemStack stack){
+        if (!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+
+        return stack.getTagCompound();
     }
 
 }

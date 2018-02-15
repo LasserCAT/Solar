@@ -7,7 +7,8 @@
       "north": "solar:blocks/altar/altar_side",
       "south": "solar:blocks/altar/altar_side",
       "east": "solar:blocks/altar/altar_side",
-      "west": "solar:blocks/altar/altar_side"
+      "west": "solar:blocks/altar/altar_side",
+      "particle": "solar:blocks/altar/altar_top"
     }
   },
   "variants": {

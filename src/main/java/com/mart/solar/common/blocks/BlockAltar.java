@@ -6,6 +6,7 @@ import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;
+import com.mart.solar.common.tileentities.TileMenhir;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -20,7 +21,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockAltar extends BlockBase implements ITileEntityProvider {
+import javax.annotation.Nullable;
+
+public class BlockAltar extends BlockBase{
 
     public BlockAltar(String name) {
         super(Material.WOOD, name);
@@ -29,7 +32,6 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
         this.setHardness(2.0F);
         this.setSoundType(SoundType.WOOD);
     }
-
 
     @Override
     @Deprecated
@@ -81,7 +83,13 @@ public class BlockAltar extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileAltar();
     }
 }

@@ -27,18 +27,17 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         if (!world.isRemote) {
             ItemStack stack = player.getHeldItem(hand);
 
-            System.out.println("Right clicked");
+            Optional<Spell> spell = SpellManager.getSpells().stream()
+                    .filter(s -> s.getSpellRegistryName().equals(Spell.getSpellHandleFromNBT(getCompound(stack)))).findFirst();
 
-            Optional<Spell> spell = SpellManager.getSpells().stream().filter(s -> s.getSpellRegistryName().equals(getCurrentSpell(stack))).findFirst();
-            spell.ifPresent(spell1 -> spell1.activateSpell(player, player.getHeldItem(hand)));
+            if(spell.isPresent()){
+                Spell copySpell = spell.get().getNewInstance();
+                copySpell.getDataFromNBT(ItemBase.getCompound(stack));
+                copySpell.activateSpell(player, stack);
+            }
+
         }
         return super.onItemRightClick(world, player, hand);
-    }
-
-    public static void setCurrentSpell(ItemStack stack, String key) {
-        System.out.println(key);
-        NBTTagCompound tag = getCompound(stack);
-        tag.setString("spell", key);
     }
 
     public static void setEnergy(ItemStack stack, int energy) {
@@ -46,22 +45,9 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         tag.setInteger("energy", energy);
     }
 
-    private String getCurrentSpell(ItemStack stack) {
-        NBTTagCompound tag = getCompound(stack);
-        return tag.getString("spell");
-    }
-
     public static int getEnergy(ItemStack stack) {
         NBTTagCompound tag = getCompound(stack);
         return tag.getInteger("energy");
-    }
-
-    private static NBTTagCompound getCompound(ItemStack stack){
-        if (!stack.hasTagCompound()) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-
-        return stack.getTagCompound();
     }
 
 }

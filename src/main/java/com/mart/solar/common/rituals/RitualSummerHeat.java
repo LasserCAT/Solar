@@ -21,7 +21,7 @@ public class RitualSummerHeat extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player, ModSpells.spellSummerHeat, amuletEnergy());
+        givePlayerSpell(player, new SpellSummerHeat(), amuletEnergy());
     }
 
     @Override

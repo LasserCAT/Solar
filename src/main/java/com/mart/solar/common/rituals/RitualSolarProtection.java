@@ -4,6 +4,7 @@ import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.registry.ModSpells;
+import com.mart.solar.common.spells.SpellSolarProtection;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -20,8 +21,7 @@ public class RitualSolarProtection extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        System.out.println("Gives spell");
-        givePlayerSpell(player, ModSpells.spellSolarProtection, amuletEnergy());
+        givePlayerSpell(player, new SpellSolarProtection(), amuletEnergy());
     }
 
     @Override

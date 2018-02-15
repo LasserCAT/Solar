@@ -1,6 +1,7 @@
 package com.mart.solar.common.spells;
 
 import com.mart.solar.api.spell.Spell;
+import com.mart.solar.common.items.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.registry.ModItems;
 import net.minecraft.block.Block;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -23,6 +25,16 @@ public class SpellHighTide extends Spell {
 
     public SpellHighTide() {
         super("High Tide");
+    }
+
+    @Override
+    public void saveDataToNBT(NBTTagCompound tag) {
+
+    }
+
+    @Override
+    public void getDataFromNBT(NBTTagCompound tag) {
+
     }
 
     @Override
@@ -55,9 +67,7 @@ public class SpellHighTide extends Spell {
 
         for (int i = 0; i < blocks.size(); i++) {
             if(blocks.size() > energy){
-                System.out.println(energy);
-                System.out.println(blocks.size());
-                ItemRitualAmulet.setCurrentSpell(itemStack, "");
+                setSpellToNullOnNBT(ItemBase.getCompound(itemStack));
                 ItemRitualAmulet.setEnergy(itemStack, 0);
 
                 WorldServer serverWorld = (WorldServer) player.getEntityWorld();
@@ -100,5 +110,10 @@ public class SpellHighTide extends Spell {
         for (BlockPos p : list) {
             world.setBlockState(p, Blocks.WATER.getDefaultState());
         }
+    }
+
+    @Override
+    public Spell getNewInstance() {
+        return new SpellHighTide();
     }
 }
