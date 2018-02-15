@@ -5,6 +5,7 @@ import com.mart.solar.api.enums.CircleTypes;
 import com.mart.solar.common.tileentities.TileMenhir;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,9 +17,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockMenhir extends BlockBase implements ITileEntityProvider {
+import javax.annotation.Nullable;
 
-    private CircleTypes type = null;
+public class BlockMenhir extends BlockBase{
 
     private final AxisAlignedBB menhirAabb = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.45D, 0.8D);
 
@@ -26,25 +27,6 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
         super(Material.ROCK, name);
         setCreativeTab(Solar.solarTab);
 
-    }
-
-    @Override
-    @Deprecated
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return false;
-    }
-
-    public CircleTypes getType() {
-        return type;
-    }
-
-    public void setType(CircleTypes type) {
-        this.type = type;
     }
 
     @Override
@@ -71,12 +53,34 @@ public class BlockMenhir extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileMenhir();
     }
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return menhirAabb;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    @Deprecated
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+        return BlockFaceShape.UNDEFINED;
     }
 }

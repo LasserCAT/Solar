@@ -1,11 +1,15 @@
 {
   "forge_marker": 1,
-  "variants": {
-    "normal": {
-      "model": "solar:menhir"
+  "defaults": {
+    "textures": {
+      "0": "solar:blocks/stone",
+      "layer0": "solar:blocks/stone",
+      "particle": "solar:blocks/stone"
     },
-    "inventory": {
-      "model": "solar:menhir"
-    }
+    "model": "solar:menhir"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
   }
 }

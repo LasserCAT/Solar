@@ -1,8 +1,5 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
-    "textures": {
-        "0": "blocks/stone"
-    },
     "elements": [
         {
             "name": "Base1",
