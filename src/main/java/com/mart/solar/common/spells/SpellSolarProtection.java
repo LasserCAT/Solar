@@ -31,14 +31,23 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
     }
 
     @Override
-    public void saveDataToNBT(NBTTagCompound tag) {
-        tag.setInteger("spellRadius", this.spellRadius);
+    public NBTTagCompound serializeNBT() {
+        NBTTagCompound superCompund = super.serializeNBT();
+
+        superCompund.setInteger("spellRadius", this.spellRadius);
+
+        return superCompund;
     }
 
-    @Override
-    public void getDataFromNBT(NBTTagCompound tag) {
-        this.spellRadius = tag.getInteger("spellRadius");
-    }
+    //    @Override
+//    public void saveDataToNBT(NBTTagCompound tag) {
+//        tag.setInteger("spellRadius", this.spellRadius);
+//    }
+//
+//    @Override
+//    public void getDataFromNBT(NBTTagCompound tag) {
+//        this.spellRadius = tag.getInteger("spellRadius");
+//    }
 
     @Override
     public void activateSpell(EntityPlayer player, ItemStack itemStack) {

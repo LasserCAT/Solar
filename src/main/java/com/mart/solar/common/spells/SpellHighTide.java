@@ -28,16 +28,6 @@ public class SpellHighTide extends Spell {
     }
 
     @Override
-    public void saveDataToNBT(NBTTagCompound tag) {
-
-    }
-
-    @Override
-    public void getDataFromNBT(NBTTagCompound tag) {
-
-    }
-
-    @Override
     public void activateSpell(EntityPlayer player, ItemStack itemStack) {
         if (player.getEntityWorld().isRemote) {
             return;

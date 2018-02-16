@@ -1,17 +1,11 @@
 package com.mart.solar.api.spell;
 
 import com.mart.solar.Solar;
-import com.mart.solar.common.items.ItemBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public abstract class Spell implements INBTSerializable<NBTTagCompound>{
+public abstract class SpellType extends IForgeRegistryEntry.Impl<SpellType> {
 
-    private final String name;
     private static final String NBT_SPELL_HANDLE_KEY = "spell";
 
     /**
@@ -19,15 +13,14 @@ public abstract class Spell implements INBTSerializable<NBTTagCompound>{
      */
     protected int lifeSpan = 0;
 
-    public Spell(String name) {
-        this.name = name;
+    public SpellType(String registryName) {
 
-        setRegistryName(Solar.MODID, getSpellRegistryName());
+        setRegistryName(Solar.MODID, registryName);
     }
 
-    public abstract void activateSpell(EntityPlayer player, ItemStack stack);
+    //public abstract void activateSpell(EntityPlayer player, ItemStack stack);
 
-    public abstract String getSpellRegistryName();
+    //public abstract String getSpellRegistryName();
 
     public static String getSpellHandleFromNBT(NBTTagCompound tag){
         return tag.getString(NBT_SPELL_HANDLE_KEY);
@@ -48,12 +41,6 @@ public abstract class Spell implements INBTSerializable<NBTTagCompound>{
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
 
-    }
-
-    public abstract Spell getNewInstance();
-
-    public String getName() {
-        return name;
     }
 
     public int getLifeSpan() {
