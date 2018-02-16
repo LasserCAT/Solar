@@ -60,7 +60,13 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
             return;
         }
 
-       //todo: only work at night.
+        long worldTime = world.getWorldTime();
+        long dayTime = worldTime % 24000;
+
+        if(dayTime < 12566 || dayTime > 23450){
+            return;
+        }
+
 
         List<EntityMob> entitiesInRange = world.getEntitiesWithinAABB(EntityMob.class,
                 new AxisAlignedBB(pos.getX() - this.spellRadius, 0, pos.getZ() - this.spellRadius,

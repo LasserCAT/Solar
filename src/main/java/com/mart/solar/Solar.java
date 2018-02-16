@@ -27,6 +27,8 @@ import java.util.logging.Logger;
 public class Solar
 {
 
+    //19:11 or 13183 ticks is when mobs spawn. 5:01 or 23016 ticks is when mobs stop spawning. Great! That will be my day and night cycle
+
     public static final SolarTab solarTab = new SolarTab();
 
     public static final String networkChannelName = "solarMod";
