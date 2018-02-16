@@ -9,7 +9,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public abstract class Spell implements INBTSerializable<NBTTagCompound>{
+public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> implements INBTSerializable<NBTTagCompound>{
 
     private final String name;
     private static final String NBT_SPELL_HANDLE_KEY = "spell";

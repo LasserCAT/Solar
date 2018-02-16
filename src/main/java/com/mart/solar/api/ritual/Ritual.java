@@ -81,7 +81,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
             return;
         }
 
-        spell.saveSpellHandleToNBT(ItemBase.getCompound(itemStack));
+        spell.serializeNBT();
         spell.saveDataToNBT(ItemBase.getCompound(itemStack));
         ItemRitualAmulet.setEnergy(itemStack, amuletEnergy);
     }
