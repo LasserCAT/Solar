@@ -11,6 +11,10 @@ public class RenderMenhir extends TileEntitySpecialRenderer<TileMenhir> {
     public void render(TileMenhir tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         ItemStack inputStack = tileEntity.getRune();
 
+        if(inputStack.isEmpty()){
+            return;
+        }
+
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
         RenderUtil.renderLayingOnBlockWithCoords(inputStack, tileEntity, 0.5, 0.45, 0.5);

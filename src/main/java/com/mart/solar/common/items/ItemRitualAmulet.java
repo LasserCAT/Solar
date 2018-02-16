@@ -27,7 +27,12 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         if (!world.isRemote) {
             ItemStack stack = player.getHeldItem(hand);
 
-            Spell copySpell = SpellManager.getSpellByName(Spell.getSpellHandleFromNBT(getCompound(stack))).getNewInstance();
+            System.out.println(Spell.getSpellHandleFromNBT(getCompound(stack)));
+
+
+
+            Spell spell = SpellManager.getSpellByName(Spell.getSpellHandleFromNBT(getCompound(stack)));
+            Spell copySpell = spell.getNewInstance();
             copySpell.getDataFromNBT(getCompound(stack));
             copySpell.activateSpell(player, stack);
 

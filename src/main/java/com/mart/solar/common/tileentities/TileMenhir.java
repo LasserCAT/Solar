@@ -14,7 +14,7 @@ public class TileMenhir extends TileBase implements ITickable {
 
     @Override
     public void update() {
-        notifyUpdate();
+
     }
 
     public void addRune(ItemStack heldItem, EntityPlayer player, EnumHand hand) {

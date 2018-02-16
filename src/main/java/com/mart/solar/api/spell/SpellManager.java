@@ -19,7 +19,7 @@ public class SpellManager {
     }
 
     public static Spell getSpellByName(String registrationName){
-        return REGISTRY.getValue(new ResourceLocation(Solar.MODID + registrationName));
+        return REGISTRY.getValue(new ResourceLocation(Solar.MODID, registrationName));
     }
 
 
