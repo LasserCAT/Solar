@@ -30,15 +30,14 @@ public class EntitySpellContainer extends Entity{
         this.setPosition(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 
         this.iPlaceAbleSpell = iPlaceAbleSpell;
-
-        if(!(this.iPlaceAbleSpell instanceof Spell)){
-            System.out.println("[EntitySpellContainer.java] Removing iPlaceAbleSpell entity. iPlaceAbleSpell was not an instance of a Spell.class");
-            getEntityWorld().removeEntity(this);
-        }
     }
 
     @Override
     protected void entityInit() {
+        if(!(iPlaceAbleSpell instanceof Spell)){
+            System.out.println("[EntitySpellContainer.java] Removing iPlaceAbleSpell entity. iPlaceAbleSpell was not an instance of a Spell.class");
+            getEntityWorld().removeEntity(this);
+        }
     }
 
     @Override
