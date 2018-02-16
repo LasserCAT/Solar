@@ -2,9 +2,9 @@ package com.mart.solar.common.spells;
 
 import com.mart.solar.api.interfaces.IPlaceAbleSpell;
 import com.mart.solar.api.spell.Spell;
-import com.mart.solar.common.entity.SpellContainer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import com.mart.solar.client.particle.SolarProtectionParticle;
+import com.mart.solar.common.entity.EntitySpellContainer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITasks;
@@ -45,7 +45,7 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
         if (player.getEntityWorld().isRemote) {
             return;
         }
-        player.getEntityWorld().spawnEntity(new SpellContainer(player.getEntityWorld(), player, this));
+        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), player, this));
     }
 
     @Override
@@ -67,6 +67,7 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
             return;
         }
 
+        Minecraft.getMinecraft().effectRenderer.addEffect(new SolarProtectionParticle(world, pos.getX(),pos.getY(),pos.getZ()));
 
         List<EntityMob> entitiesInRange = world.getEntitiesWithinAABB(EntityMob.class,
                 new AxisAlignedBB(pos.getX() - this.spellRadius, 0, pos.getZ() - this.spellRadius,

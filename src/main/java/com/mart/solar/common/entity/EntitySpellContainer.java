@@ -10,13 +10,17 @@ import net.minecraft.world.World;
 
 import java.util.logging.Level;
 
-public class SpellContainer extends Entity{
+public class EntitySpellContainer extends Entity{
 
-    private final IPlaceAbleSpell iPlaceAbleSpell;
+    private IPlaceAbleSpell iPlaceAbleSpell;
 
     private int lifeTime;
 
-    public SpellContainer(World worldIn, EntityPlayer player, IPlaceAbleSpell iPlaceAbleSpell) {
+    public EntitySpellContainer(World worldIn) {
+        super(worldIn);
+    }
+
+    public EntitySpellContainer(World worldIn, EntityPlayer player, IPlaceAbleSpell iPlaceAbleSpell) {
         super(worldIn);
 
         this.setWorld(worldIn);
@@ -42,7 +46,8 @@ public class SpellContainer extends Entity{
     @Override
     public void onEntityUpdate() {
         if(!(this.iPlaceAbleSpell instanceof Spell)){
-            Solar.logger.log(Level.WARNING, "[SpellContainer.java] Removing iPlaceAbleSpell entity. iPlaceAbleSpell was not an instance of a Spell.class");
+            //Solar.logger.log(Level.WARNING, "[EntitySpellContainer.java] Removing iPlaceAbleSpell entity. iPlaceAbleSpell was not an instance of a Spell.class");
+            System.out.println("[EntitySpellContainer.java] Removing iPlaceAbleSpell entity. iPlaceAbleSpell was not an instance of a Spell.class");
             getEntityWorld().removeEntity(this);
             return;
         }

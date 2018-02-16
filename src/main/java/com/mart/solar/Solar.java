@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.logging.Logger;
@@ -50,6 +51,10 @@ public class Solar
     public void preInit(FMLPreInitializationEvent event) {
         ModTiles.init();
         ModRecipes.init();
+
+        if(event.getSide() == Side.CLIENT){
+            ModEntities.regRenders();
+        }
 
         SolarPacketHandler.init();
 
