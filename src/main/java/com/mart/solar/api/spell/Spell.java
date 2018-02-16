@@ -1,18 +1,15 @@
 package com.mart.solar.api.spell;
 
-import com.mart.solar.common.items.ItemBase;
+import com.mart.solar.Solar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
 
     private final String name;
     private static final String NBT_SPELL_HANDLE_KEY = "spell";
-
-    protected int energy;
 
     /**
      * The lifespan of the Spell in ticks.
@@ -22,7 +19,7 @@ public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
     public Spell(String name) {
         this.name = name;
 
-        setRegistryName(getSpellRegistryName());
+        setRegistryName(Solar.MODID, getSpellRegistryName());
     }
 
     public abstract void activateSpell(EntityPlayer player, ItemStack stack);

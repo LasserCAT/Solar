@@ -27,6 +27,13 @@ public class EntitySpellContainer extends Entity{
         this.setPosition(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 
         this.spell = iPlaceAbleSpell;
+        System.out.println("Spell is set");
+        if(spell instanceof IPlaceAbleSpell){
+            System.out.println("Sick is an instance");
+        }
+        else{
+            System.out.println("Somehow not an instance");
+        }
     }
 
     @Override
@@ -54,7 +61,6 @@ public class EntitySpellContainer extends Entity{
     protected void writeEntityToNBT(NBTTagCompound compound) {
         compound.setInteger("lifeTime", this.lifeTime);
 
-        Spell spell = this.spell;
         spell.saveSpellHandleToNBT(compound);
         spell.saveDataToNBT(compound);
     }
