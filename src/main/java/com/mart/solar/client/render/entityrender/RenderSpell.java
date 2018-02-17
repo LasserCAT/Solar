@@ -32,12 +32,11 @@ public class RenderSpell<T extends Entity> extends Render<T> {
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 
-        EntitySpellContainer spellContainer = (EntitySpellContainer) entity;
-
-        //todo: make this spell dependant
-        if(spellContainer.isDay()){
-            GlStateManager.color(1.0f, 1.0f, 1.0f, 0.2f);
-        }
+//        EntitySpellContainer spellContainer = (EntitySpellContainer) entity;
+//todo: make spell dependent
+//        if(spellContainer.isDay()){
+//            GlStateManager.color(1.0f, 1.0f, 1.0f, 0.2f);
+//        }
 
         this.bindTexture(getEntityTexture(entity));
         Tessellator tessellatorSpell = Tessellator.getInstance();

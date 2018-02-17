@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import java.awt.*;
+
 public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
 
     private final String name;

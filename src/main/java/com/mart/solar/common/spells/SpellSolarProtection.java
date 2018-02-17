@@ -84,8 +84,6 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
             return;
         }
 
-        Minecraft.getMinecraft().effectRenderer.addEffect(new SolarProtectionParticle(world, pos.getX(),pos.getY(),pos.getZ()));
-
         List<EntityMob> entitiesInRange = world.getEntitiesWithinAABB(EntityMob.class,
                 new AxisAlignedBB(pos.getX() - this.spellRadius, 0, pos.getZ() - this.spellRadius,
                         pos.getX() + this.spellRadius, 255, pos.getZ() + this.spellRadius));

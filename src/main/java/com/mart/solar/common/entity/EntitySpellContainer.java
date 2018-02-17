@@ -12,6 +12,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.Optional;
 
 public class EntitySpellContainer extends Entity{
@@ -32,6 +33,8 @@ public class EntitySpellContainer extends Entity{
         this.setPosition(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5);
 
         this.spell = iPlaceAbleSpell;
+
+        writeEntityToNBT(getEntityData());
     }
 
     @Override
@@ -42,8 +45,6 @@ public class EntitySpellContainer extends Entity{
     protected void readEntityFromNBT(NBTTagCompound compound) {
         this.lifeTime = compound.getInteger("lifeTime");
 
-        System.out.println("Reading data from entity");
-
         this.spell = SpellManager.getSpellByName(Spell.getSpellHandleFromNBT(compound)).getNewInstance();
         this.spell.getDataFromNBT(compound);
     }
@@ -51,8 +52,6 @@ public class EntitySpellContainer extends Entity{
     @Override
     protected void writeEntityToNBT(NBTTagCompound compound) {
         compound.setInteger("lifeTime", this.lifeTime);
-
-        System.out.println("Saving data to Enity");
 
         spell.saveSpellHandleToNBT(compound);
         spell.saveDataToNBT(compound);
@@ -83,10 +82,8 @@ public class EntitySpellContainer extends Entity{
         long worldTime = world.getWorldTime();
         long dayTime = worldTime % 24000;
 
-        if (dayTime < 12566 || dayTime > 23450) {
-            return true;
-        }
+        return dayTime < 12566 || dayTime > 23450;
 
-        return false;
     }
+
 }
