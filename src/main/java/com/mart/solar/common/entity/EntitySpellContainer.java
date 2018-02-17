@@ -3,9 +3,13 @@ package com.mart.solar.common.entity;
 import com.mart.solar.api.interfaces.IPlaceAbleSpell;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.api.spell.SpellManager;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Optional;
@@ -20,11 +24,12 @@ public class EntitySpellContainer extends Entity{
         super(worldIn);
     }
 
-    public EntitySpellContainer(World worldIn, EntityPlayer player, Spell iPlaceAbleSpell) {
+    public EntitySpellContainer(World worldIn, BlockPos blockPos, Spell iPlaceAbleSpell) {
         super(worldIn);
 
         this.setWorld(worldIn);
-        this.setPosition(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+
+        this.setPosition(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5);
 
         this.spell = iPlaceAbleSpell;
     }
@@ -72,5 +77,16 @@ public class EntitySpellContainer extends Entity{
         placeAbleSpell.tick(this.getEntityWorld(), this.getPosition(), this.lifeTime);
 
         this.lifeTime++;
+    }
+
+    public boolean isDay() {
+        long worldTime = world.getWorldTime();
+        long dayTime = worldTime % 24000;
+
+        if (dayTime < 12566 || dayTime > 23450) {
+            return true;
+        }
+
+        return false;
     }
 }

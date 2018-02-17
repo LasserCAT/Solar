@@ -4,6 +4,7 @@ import com.mart.solar.api.interfaces.IPlaceAbleSpell;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.client.particle.SolarProtectionParticle;
 import com.mart.solar.common.entity.EntitySpellContainer;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -11,10 +12,13 @@ import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
 
     public SpellSolarProtection() {
         super("Solar Protection");
-        this.lifeSpan = 200;
+        this.lifeSpan = 2000;
         this.spellRadius = 8;
     }
 
@@ -45,7 +49,20 @@ public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
         if (player.getEntityWorld().isRemote) {
             return;
         }
-        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), player, this));
+
+        Vec3d vec3d = player.getPositionEyes(0.1F);
+        Vec3d vec3d1 = player.getLook(0.1F);
+        Vec3d vec3d2 = vec3d.addVector(vec3d1.x * 5, vec3d1.y * 5, vec3d1.z * 5);
+        RayTraceResult result = player.getEntityWorld().rayTraceBlocks(vec3d, vec3d2, true, false, true);
+
+        assert result != null;
+        Block b = player.getEntityWorld().getBlockState(result.getBlockPos()).getBlock();
+
+        if(b == Blocks.AIR){
+            return;
+        }
+
+        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), result.getBlockPos(), this));
     }
 
     @Override

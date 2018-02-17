@@ -79,7 +79,6 @@ public class TileAltar extends TileBase implements ITickable {
 
     @Override
     public void update() {
-        notifyUpdate();
         if(this.getWorld().getWorldTime() % 20 == 0){
             this.blocked = this.skyBlocked();
         }

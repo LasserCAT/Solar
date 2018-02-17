@@ -88,8 +88,6 @@ public class TileRuneInfuser extends TileBase implements ITickable {
 
     @Override
     public void update() {
-        notifyUpdate();
-
         if (infusing) {
             spawnInfuseParticle();
             if (currentDuration <= infuserDuration) {
@@ -126,6 +124,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
         }
 
         checkRecipe();
+        notifyUpdate();
     }
 
     public void extractItem(EntityPlayer player) {
@@ -140,6 +139,8 @@ public class TileRuneInfuser extends TileBase implements ITickable {
         if(infusing){
             stopInfusing();
         }
+
+        notifyUpdate();
     }
 
     private void checkRecipe() {
@@ -153,6 +154,7 @@ public class TileRuneInfuser extends TileBase implements ITickable {
                 }
             }
         }
+        notifyUpdate();
     }
 
     private void endInfusing() {
@@ -161,12 +163,14 @@ public class TileRuneInfuser extends TileBase implements ITickable {
         currentDuration = 0;
         setRune(nextOutput);
         nextOutput = ItemStack.EMPTY;
+        notifyUpdate();
     }
 
     private void stopInfusing(){
         setModifier(ItemStack.EMPTY);
         infusing = false;
         currentDuration = 0;
+        notifyUpdate();
     }
 
     @SideOnly(Side.CLIENT)
