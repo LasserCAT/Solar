@@ -20,7 +20,7 @@ public class WorldGenSilverOre implements IWorldGenerator {
             for (int i = 0; i < 2; i++) {
                 int firstBlockXCoord = chunkX + rand.nextInt(16);
                 int firstBlockZCoord = chunkZ + rand.nextInt(16);
-                int blockY = rand.nextInt(31) + 1;
+                int blockY = rand.nextInt(28) + 2;
 
                 BlockPos blockPos = new BlockPos(firstBlockXCoord, blockY, firstBlockZCoord);
 

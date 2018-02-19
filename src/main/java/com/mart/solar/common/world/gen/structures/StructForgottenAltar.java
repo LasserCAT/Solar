@@ -58,11 +58,16 @@ public class StructForgottenAltar implements IWorldGenerator {
 
         if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)) {
             int chance = random.nextInt(200) + 1;
-            if (chance == 1) {
-
+            if (chance < 50) {
                 for (int y = 255; y > 0; y--) {
                     Block block = world.getBlockState(new BlockPos(randomX, y, randomZ)).getBlock();
-                    if (block != Blocks.AIR) {
+                    if (block != Blocks.AIR &&
+                            block != Blocks.WATER &&
+                            block != Blocks.FLOWING_WATER &&
+                            block != Blocks.LEAVES &&
+                            block != Blocks.LEAVES2 &&
+                            block != Blocks.LAVA &&
+                            block != Blocks.TALLGRASS) {
                         world.setBlockState(new BlockPos(randomX, y + 1, randomZ), ModBlocks.brokenTotem.getDefaultState());
                         spawnAltarRuins(world, randomX, y+1, randomZ);
                         return;
@@ -81,8 +86,17 @@ public class StructForgottenAltar implements IWorldGenerator {
 
             while(world.getBlockState(checkPos).getBlock() == Blocks.AIR ||
                     world.getBlockState(checkPos).getBlock() == Blocks.WATER ||
-                    world.getBlockState(checkPos).getBlock() == Blocks.FLOWING_WATER){
+                    world.getBlockState(checkPos).getBlock() == Blocks.FLOWING_WATER ||
+                    world.getBlockState(checkPos).getBlock() == Blocks.LEAVES ||
+                    world.getBlockState(checkPos).getBlock() == Blocks.LEAVES2 ||
+                    world.getBlockState(checkPos).getBlock() == Blocks.LAVA ||
+                    world.getBlockState(checkPos).getBlock() == Blocks.TALLGRASS){
                 yCoord--;
+
+                if(yCoord <= 0){
+                    yCoord = 1;
+                    break;
+                }
             }
 
             int amountOfBlocks = random.nextInt(6);
