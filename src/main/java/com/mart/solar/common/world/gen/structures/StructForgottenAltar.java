@@ -20,6 +20,9 @@ public class StructForgottenAltar implements IWorldGenerator {
 
     private List<Vector2d> ruinLocations = new ArrayList<>();
 
+    private Vector2d lastChunkGenerated = new Vector2d(0, 0);
+    private int chunksNotSpawned = 0;
+
     public StructForgottenAltar(){
         this.ruinLocations.add(new Vector2d(5, 0));
         this.ruinLocations.add(new Vector2d(4, 2));
@@ -52,28 +55,45 @@ public class StructForgottenAltar implements IWorldGenerator {
         int randomX = x + random.nextInt(16);
         int randomZ = z + random.nextInt(16);
         int randomY = 90;
-        BlockPos blockpos = new BlockPos(randomX, randomY, randomZ);
+        int chunkX = x / 16;
+        int chunkZ = z / 16;
 
+        BlockPos blockpos = new BlockPos(randomX, randomY, randomZ);
         Biome biome = world.getBiomeForCoordsBody(blockpos);
 
-        if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)) {
-            int chance = random.nextInt(200) + 1;
-            if (chance < 50) {
-                for (int y = 255; y > 0; y--) {
-                    Block block = world.getBlockState(new BlockPos(randomX, y, randomZ)).getBlock();
-                    if (block != Blocks.AIR &&
-                            block != Blocks.WATER &&
-                            block != Blocks.FLOWING_WATER &&
-                            block != Blocks.LEAVES &&
-                            block != Blocks.LEAVES2 &&
-                            block != Blocks.LAVA &&
-                            block != Blocks.TALLGRASS) {
-                        world.setBlockState(new BlockPos(randomX, y + 1, randomZ), ModBlocks.brokenTotem.getDefaultState());
-                        spawnAltarRuins(world, randomX, y+1, randomZ);
-                        return;
-                    }
-                }
+        if (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)) {
+            return;
+        }
 
+        if(!isNumberAwayOf(5, chunkX, (int) this.lastChunkGenerated.x) || !isNumberAwayOf(5, chunkZ, (int) this.lastChunkGenerated.y)){
+            return;
+        }
+
+        int chance = random.nextInt(200) + 1;
+        if (chance != 1) {
+            chunksNotSpawned++;
+
+            if(chunksNotSpawned < 100){
+                return;
+            }
+
+            chunksNotSpawned = 0;
+        }
+
+        this.lastChunkGenerated = new Vector2d(chunkX, chunkZ);
+
+        for (int y = 255; y > 0; y--) {
+            Block block = world.getBlockState(new BlockPos(randomX, y, randomZ)).getBlock();
+            if (block != Blocks.AIR &&
+                    block != Blocks.WATER &&
+                    block != Blocks.FLOWING_WATER &&
+                    block != Blocks.LEAVES &&
+                    block != Blocks.LEAVES2 &&
+                    block != Blocks.LAVA &&
+                    block != Blocks.TALLGRASS) {
+                world.setBlockState(new BlockPos(randomX, y + 1, randomZ), ModBlocks.brokenTotem.getDefaultState());
+                spawnAltarRuins(world, randomX, y+1, randomZ);
+                return;
             }
         }
     }
@@ -109,5 +129,20 @@ public class StructForgottenAltar implements IWorldGenerator {
                 }
             }
         }
+    }
+
+    private boolean isNumberAwayOf(int difference, int number1, int number2){
+        if(number1 > number2){
+            if(number1 - number2 > difference){
+                return true;
+            }
+        }
+        else{
+            if(number2 - number1 > 5){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

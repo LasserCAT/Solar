@@ -30,15 +30,14 @@ public class ItemEnum<T extends Enum<T>> extends Item {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if(tab != Solar.solarTab){
+            return;
+        }
         for (T type : types) {
             items.add(new ItemStack(this, 1, type.ordinal()));
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-
-    }
 
     public T getItemType(ItemStack stack) {
         return types[MathHelper.clamp(stack.getItemDamage(), 0, types.length)];
