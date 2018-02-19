@@ -30,23 +30,23 @@ guide.ritualclearskies.info=This ritual clears up the sky!
 guide.ritualclearskies.runes= 4 wind runes.
 
 guide.ritualrain.info=This ritual makes it rain!
-guide.ritualrain.info=2 water & 2 wind runes
+guide.ritualrain.runes=2 water & 2 wind runes
 
 guide.ritualhightide.info=By performing this ritual your amulet will be powered with a spell. Using this spell on water will try to raise the water level in an enclosed area. If the area is bigger than the spell can handle or it takes energy it doesn't have it will break and use all energy.
-guide.ritualhightide.info= 4 water runes
+guide.ritualhightide.runes= 4 water runes
 
 guide.ritualrisingmoon.info=This ritual makes it nighttime real quick!
-guide.ritualrisingmoon.info= 2 time & 2 moon runes
+guide.ritualrisingmoon.runes= 2 time & 2 moon runes
 
 guide.ritualrisingsun.info=This ritual makes it daytime real quick!
-guide.ritualrisingsun.info= 2 time & 2 sun runes
+guide.ritualrisingsun.runes= 2 time & 2 sun runes
 
 guide.ritualsolarprotection.info=This ritual holds a place able spell. Once its nighttime all the mobs in the spell its area will be burned or made passive.
-guide.ritualsolarprotection.info= 4 sun runes
+guide.ritualsolarprotection.runes= 4 sun runes
 
 guide.ritualstorm.info=This will make it storm!
-guide.ritualstorm.info= 2 time & 2 moon runes
+guide.ritualstorm.runes= 2 time & 2 moon runes
 
 guide.ritualsummerheat.info=This ritual gives you a spell on your amulet. Using this on water tries to lower its water level. If it needs to lower too many blocks the spell will fail. 40 blocks max.
-guide.ritualsummerheat.info= 4 fire runes
+guide.ritualsummerheat.runes= 4 fire runes
 

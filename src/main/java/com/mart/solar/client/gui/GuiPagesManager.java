@@ -50,41 +50,49 @@ public class GuiPagesManager {
 
         guiPages.add(new GuiPage("Rite of Clear Skies",
                 new PageTextComponent(I18n.format("guide.ritualclearskies.info")),
+                new PageTextComponent(I18n.format("guide.ritualclearskies.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/clearskies.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Rain",
                 new PageTextComponent(I18n.format("guide.ritualrain.info")),
+                new PageTextComponent(I18n.format("guide.ritualrain.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/rain.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Storms",
                 new PageTextComponent(I18n.format("guide.ritualstorm.info")),
+                new PageTextComponent(I18n.format("guide.ritualstorm.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/storm.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of High Tides",
                 new PageTextComponent(I18n.format("guide.ritualhightide.info")),
+                new PageTextComponent(I18n.format("guide.ritualhightide.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/hightides.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Summer Heat",
                 new PageTextComponent(I18n.format("guide.ritualsummerheat.info")),
+                new PageTextComponent(I18n.format("guide.ritualsummerheat.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/summerheat.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Rising Moon",
                 new PageTextComponent(I18n.format("guide.ritualrisingmoon.info")),
+                new PageTextComponent(I18n.format("guide.ritualrisingmoon.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/risingmoon.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Rising Sun",
                 new PageTextComponent(I18n.format("guide.ritualrisingsun.info")),
+                new PageTextComponent(I18n.format("guide.ritualrisingsun.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/risingsun.png"))
         ));
 
         guiPages.add(new GuiPage("Rite of Solar Protection",
                 new PageTextComponent(I18n.format("guide.ritualsolarprotection.info")),
+                new PageTextComponent(I18n.format("guide.ritualsolarprotection.runes")),
                 new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/solarprotection.png"))
         ));
 
