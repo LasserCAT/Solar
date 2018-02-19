@@ -16,6 +16,8 @@ public class GuiPage extends GuiBase{
     private Item representItem;
     private Block representBlock;
 
+    private int currentPage = 1;
+
     private LinkedList<PageComponent> pageComponents = new LinkedList<>();
 
     public GuiPage(String pageTitle, PageComponent... component){
@@ -33,18 +35,18 @@ public class GuiPage extends GuiBase{
         int y = (this.height - HEIGHT) / 2;
 
         GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
         float titleDistance = (WIDTH / 4) - (fontRenderer.getStringWidth(this.pageTitle) / 2);
         GL11.glTranslatef(x + titleDistance, y + 15, 0);
         fontRenderer.drawString(this.pageTitle, 0, 0, Color.BLACK.getRGB());
 
         GL11.glTranslatef(-titleDistance + 3, 12, 0);
 
-        for(PageComponent pageComponent : this.pageComponents){
-            pageComponent.draw(x, y, fontRenderer);
-        }
+        this.pageComponents.forEach(pg -> {
+            if(pg.getPageNumber() == currentPage){
+                pg.draw(x, y, fontRenderer);
+            }
+        });
 
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glPopMatrix();
     }
 

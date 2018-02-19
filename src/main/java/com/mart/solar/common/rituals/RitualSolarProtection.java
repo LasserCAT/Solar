@@ -15,7 +15,7 @@ import java.util.List;
 public class RitualSolarProtection extends Ritual {
 
     public RitualSolarProtection() {
-        super("Rite of Solar Protection", 1000, 0);
+        super("Rite of Solar Protection", 100, 0);
         setRegistryName("ritualsolarprotection");
     }
 

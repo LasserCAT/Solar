@@ -15,7 +15,7 @@ import java.util.List;
 public class RitualStorm extends Ritual {
 
     public RitualStorm() {
-        super("OldRitual of the Rising Storm", 0, 1000);
+        super("OldRitual of the Rising Storm", 0, 100);
 
         setRegistryName("ritualstorm");
     }

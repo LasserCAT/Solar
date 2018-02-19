@@ -9,11 +9,11 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class PageImageComponent extends PageComponent {
+public class PageImageLargeComponent extends PageComponent {
 
     private ResourceLocation resourceLocation;
 
-    public PageImageComponent(ResourceLocation location){
+    public PageImageLargeComponent(ResourceLocation location){
         this.resourceLocation = location;
     }
 
@@ -34,9 +34,9 @@ public class PageImageComponent extends PageComponent {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos(0, 106, 0.0D).tex(0, 1).endVertex();
-        bufferbuilder.pos(106, 106, 0.0D).tex(1, 1).endVertex();
-        bufferbuilder.pos(106,0, 0.0D).tex(1, 0).endVertex();
+        bufferbuilder.pos(0, 300, 0.0D).tex(0, 1).endVertex();
+        bufferbuilder.pos(300, 300, 0.0D).tex(1, 1).endVertex();
+        bufferbuilder.pos(300,0, 0.0D).tex(1, 0).endVertex();
         bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
         tessellator.draw();
 
