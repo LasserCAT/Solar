@@ -1,10 +1,20 @@
 package com.mart.solar.client.gui;
 
+import com.mart.solar.client.gui.pages.GuiPage;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiButtonExt;
+import org.lwjgl.opengl.GL11;
 
-public class GuiGuide extends GuiScreen {
+import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GuiGuide extends GuiBase {
+
+    private List<BookButton> guiButtons;
 
     public GuiGuide(){
 
@@ -13,6 +23,22 @@ public class GuiGuide extends GuiScreen {
     @Override
     public void initGui() {
         super.initGui();
+        List<GuiPage> guiPages = GuiPagesManager.getGuiPages();
+        this.guiButtons = new ArrayList<>();
+
+        int xOffset = 5;
+        int yOffset = 12;
+
+        int x = (this.width - WIDTH) / 2;
+        int y = (this.height - HEIGHT) / 2;
+
+        int buttonAmount = 0;
+        for(GuiPage guiPage : guiPages){
+            BookButton button = new BookButton(guiPage, x + xOffset, y + (buttonAmount * yOffset + yOffset), buttonAmount);
+            this.guiButtons.add(button);
+            this.addButton(button);
+            buttonAmount++;
+        }
     }
 
     @Override
@@ -22,8 +48,15 @@ public class GuiGuide extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        GlStateManager.color(1F, 1F, 1F, 1F);
-        mc.renderEngine.bindTexture(new ResourceLocation("solar", "textures/items/firerune.png"));
-        drawTexturedModalRect(100, 100, 0, 0, 100, 100);
+        super.drawScreen(mouseX, mouseY, partialTicks);
+
+
     }
+
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException {
+        BookButton bButton = (BookButton) button;
+        mc.displayGuiScreen(bButton.getPage());
+    }
+
 }

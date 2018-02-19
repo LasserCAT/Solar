@@ -26,7 +26,7 @@ public class ModEntities {
     {
         EntityEntry entry1 = EntityEntryBuilder.create()
                 .entity(EntitySpellContainer.class)
-                .id(new ResourceLocation(Solar.MODID + "spell_container"), ID++)
+                .id(new ResourceLocation(Solar.MODID, "spell_container"), ID++)
                 .name("spell_container")
                 .tracker(64, 20, false)
                 .build();
