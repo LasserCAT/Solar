@@ -11,9 +11,9 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
-public class WorldGenSilverOre implements IWorldGenerator {
+public class WorldGenSilverOre implements ISolarWorldGen {
 
-    private void generateSurface(World world, Random rand, int chunkX, int chunkZ) {
+    public void generateOverworld(World world, Random rand, int chunkX, int chunkZ) {
         for (int k = 0; k < 16; k++) {
             WorldGenerator silverGen = new WorldGenMinable(ModBlocks.silverOre.getDefaultState(), 9);
 
@@ -30,16 +30,13 @@ public class WorldGenSilverOre implements IWorldGenerator {
     }
 
     @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        switch (world.provider.getDimension()) {
-            case -1:
-                break;
-            case 0:
-                generateSurface(world, random, chunkX * 16, chunkZ * 16);
-                break;
-            case 1:
-                break;
-        }
+    public void generateNether(World world, Random rand, int chunkX, int chunkZ) {
+
+    }
+
+    @Override
+    public void generateEnd(World world, Random rand, int chunkX, int chunkZ) {
+
     }
 
 }

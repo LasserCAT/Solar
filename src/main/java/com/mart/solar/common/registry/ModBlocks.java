@@ -1,6 +1,8 @@
 package com.mart.solar.common.registry;
 
 import com.mart.solar.common.blocks.*;
+import com.mart.solar.common.blocks.base.BlockBase;
+import com.mart.solar.common.blocks.base.BlockFlowerBase;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -16,6 +18,8 @@ public class ModBlocks {
     public static BlockMenhir menhir;
     public static BlockRitualStone ritualStone;
 
+    public static BlockFlowerMoon flowerMoon;
+
     public static void init(RegistryEvent.Register<Block> event) {
         sunTotem = register(new BlockAltar("suntotem"), event);
         brokenTotem = register(new BlockBrokenTotem("brokentotem"), event);
@@ -24,6 +28,8 @@ public class ModBlocks {
         ritualStone = register(new BlockRitualStone(), event);
 
         menhir = register(new BlockMenhir("menhir"), event);
+
+        flowerMoon = register(new BlockFlowerMoon("flower_moon"), event);
     }
 
     public static void initItemBlocks(RegistryEvent.Register<Item> event) {
@@ -33,6 +39,7 @@ public class ModBlocks {
         registerItemBlock(silverOre, event);
         registerItemBlock(menhir, event);
         registerItemBlock(ritualStone, event);
+        registerItemBlock(flowerMoon, event);
     }
 
     private static <T extends Block> T register(T block, RegistryEvent.Register<Block> event) {
@@ -49,7 +56,12 @@ public class ModBlocks {
             ((BlockBase) block).registerItemModel(itemBlock);
         }
 
+        if(block instanceof BlockFlowerBase){
+            ((BlockFlowerBase) block).registerItemModel(itemBlock);
+        }
+
         event.getRegistry().register(itemBlock);
     }
+
 
 }

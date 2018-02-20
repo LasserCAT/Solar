@@ -1,13 +1,11 @@
 package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
-import com.mart.solar.common.tileentities.TileMenhir;
+import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.tileentities.TileRuneInfuser;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -18,7 +16,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockRuneInfuser extends BlockBase{
+public class BlockRuneInfuser extends BlockBase {
 
     public BlockRuneInfuser(String name) {
         super(Material.WOOD, name);

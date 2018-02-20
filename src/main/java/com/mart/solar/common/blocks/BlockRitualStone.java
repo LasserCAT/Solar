@@ -2,8 +2,7 @@ package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
-import com.mart.solar.common.recipes.AltarRecipe;
-import com.mart.solar.common.recipes.AltarRecipeManager;
+import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileRitualStone;
 import net.minecraft.block.ITileEntityProvider;

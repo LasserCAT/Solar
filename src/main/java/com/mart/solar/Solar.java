@@ -2,6 +2,7 @@ package com.mart.solar;
 
 import com.mart.solar.common.network.GuiHandler;
 import com.mart.solar.common.creativetabs.SolarTab;
+import com.mart.solar.common.world.gen.WorldGenHandler;
 import com.mart.solar.common.world.gen.WorldGenSilverOre;
 import com.mart.solar.common.network.handlers.ClientPacketHandler;
 import com.mart.solar.common.network.handlers.ServerPacketHandler;
@@ -67,10 +68,8 @@ public class Solar
         channel.register(new ServerPacketHandler());
         channel.register(new ClientPacketHandler());
 
-        StructForgottenAltar forgottenAltar = new StructForgottenAltar();
-        WorldGenSilverOre silverOre = new WorldGenSilverOre();
-        GameRegistry.registerWorldGenerator(forgottenAltar, 1);
-        GameRegistry.registerWorldGenerator(silverOre, 1);
+        WorldGenHandler worldGenHandler = new WorldGenHandler();
+        GameRegistry.registerWorldGenerator(worldGenHandler, 0);
 
         OreDictionary.registerOre("oreSilver", ModBlocks.silverOre);
         OreDictionary.registerOre("ingotSilver", ModItems.silverIngot);

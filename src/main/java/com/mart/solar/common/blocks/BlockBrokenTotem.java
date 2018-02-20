@@ -1,10 +1,9 @@
 package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
+import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.tileentities.TileBrokenTotem;
-import com.mart.solar.common.tileentities.TileMenhir;
 import com.mart.solar.common.world.data.InteractedWithAltarData;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +21,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockBrokenTotem extends BlockBase{
+public class BlockBrokenTotem extends BlockBase {
 
     private final String firstUseString = "It seems the altar has received a lot of corrosion damage from the weather " +
             "over thousands of years. The wood and metal bits have been compromised to such an extent that trying to " +

@@ -1,9 +1,8 @@
 package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
-import com.mart.solar.api.enums.CircleTypes;
+import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.tileentities.TileMenhir;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +18,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockMenhir extends BlockBase{
+public class BlockMenhir extends BlockBase {
 
     private final AxisAlignedBB menhirAabb = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.45D, 0.8D);
 

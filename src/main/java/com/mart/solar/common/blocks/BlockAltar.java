@@ -2,12 +2,11 @@ package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
+import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;
-import com.mart.solar.common.tileentities.TileMenhir;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -23,7 +22,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockAltar extends BlockBase{
+public class BlockAltar extends BlockBase {
 
     public BlockAltar(String name) {
         super(Material.WOOD, name);
