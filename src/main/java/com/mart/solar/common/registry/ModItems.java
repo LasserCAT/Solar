@@ -16,6 +16,7 @@ public class ModItems {
 
     public static ItemRitualAmulet ritualAmulet;
     public static ItemSilverIngot silverIngot;
+    public static ItemSilverNugget silverNugget;
     public static ItemGuideBook guideBook;
     public static ItemDullAmulet dullAmulet;
     public static ItemSolarFocus solarFocus;
@@ -27,7 +28,8 @@ public class ModItems {
 
         dullAmulet = register(new ItemDullAmulet(), event);
         ritualAmulet = register(new ItemRitualAmulet(), event);
-        silverIngot = register(new ItemSilverIngot("silverIngot"), event);
+        silverIngot = register(new ItemSilverIngot("silveringot"), event);
+        silverNugget = register(new ItemSilverNugget("silver_nugget"), event);
         guideBook = register(new ItemGuideBook(), event);
         solarFocus = register(new ItemSolarFocus(), event);
         lunarFocus = register(new ItemLunarFocus(), event);

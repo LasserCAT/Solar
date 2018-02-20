@@ -2,13 +2,19 @@
 tile.suntotem.name=Celestial Altar
 tile.brokentotem.name=Broken Altar
 tile.runeinfuser.name=Rune Infuser
+tile.silverore.name=Silver Ore
 
 
 #Items
 item.guidebook.name=Guide Book
 item.ritualamulet.name=Ritual Amulet
+item.dull_amulet.name=Dull Amulet
+item.silveringot.name=Silver Ingot
+item.silvernugget.name=Silver Nugget
+
 
 #Runes
+
 
 #Book
 guide.brokenaltar.info=There are broken altars scattered all over the world in biomes that have the best view of the sky. You can easily spot them by looking for broken menhirs that look like worn down pillars around the altars. These altars need to be repaired before I can do anything with them it seems. Right now I think one altar will suffice. But I may need to gather more for more difficult times.

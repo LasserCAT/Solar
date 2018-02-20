@@ -3,6 +3,7 @@ package com.mart.solar.common.tileentities;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualManager;
 import com.mart.solar.common.recipes.AltarRecipe;
+import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -44,15 +45,18 @@ public class TileAltar extends TileBase implements ITickable {
         if(this.currentRecipe != null){
             compound.setBoolean("recipeInProgress", true);
             compound.setInteger("recipeEnergyCost", this.currentRecipe.getEnergyCost());
+            compound.setString("currentRecipe", this.currentRecipe.getRegistryName().toString());
         }
         else{
             compound.setBoolean("recipeInProgress", false);
             compound.setInteger("recipeEnergyCost", 0);
+            compound.setString("currentRecipe", "");
         }
 
         compound.setInteger("recipeEnergyProgress", this.currentEnergyProgress);
         compound.setFloat("solarEnergy", this.solarEnergy);
         compound.setFloat("lunarEnergy", this.lunarEnergy);
+
 
         NBTTagList tagList = new NBTTagList();
         NBTTagCompound itemCompound = new NBTTagCompound();
@@ -71,6 +75,7 @@ public class TileAltar extends TileBase implements ITickable {
         this.lunarEnergy = compound.getFloat("lunarEnergy");
         this.energyCost = compound.getInteger("recipeEnergyCost");
         this.currentEnergyProgress = compound.getInteger("recipeEnergyProgress");
+        this.currentRecipe = AltarRecipeManager.getRecipeByRegistryName(compound.getString("currentRecipe"));
 
         NBTTagList tagList = (NBTTagList) compound.getTag("heldItem");
         NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
@@ -79,6 +84,7 @@ public class TileAltar extends TileBase implements ITickable {
 
     @Override
     public void update() {
+
         if(this.getWorld().getWorldTime() % 20 == 0){
             this.blocked = this.skyBlocked();
         }
@@ -95,15 +101,11 @@ public class TileAltar extends TileBase implements ITickable {
         }
 
         runAltarRecipe();
-
     }
 
     private void runAltarRecipe(){
-        if(this.getWorld().isRemote){
-            return;
-        }
-
         if(!this.heldItem.isEmpty() && this.currentRecipe != null){
+            System.out.println("KK2");
             if(this.currentEnergyProgress < this.currentRecipe.getEnergyCost()){
                 if(this.solarEnergy > 0 && this.lunarEnergy > 0){
                     this.currentEnergyProgress += 2;
@@ -123,7 +125,10 @@ public class TileAltar extends TileBase implements ITickable {
                 this.heldItem = new ItemStack(this.currentRecipe.getOutput(), 1);
                 this.currentRecipe = null;
                 this.currentEnergyProgress = 0;
-                notifyUpdate();
+                this.recipeInProgress = false;
+                if(!this.world.isRemote){
+                    notifyUpdate();
+                }
             }
         }
     }
@@ -217,6 +222,7 @@ public class TileAltar extends TileBase implements ITickable {
 
         this.currentRecipe = altarRecipe;
         this.energyCost = altarRecipe.getEnergyCost();
+        this.recipeInProgress = true;
         this.currentEnergyProgress = 0;
         this.heldItem = stack.copy();
         this.heldItem.setCount(1);

@@ -1,6 +1,7 @@
 package com.mart.solar.common.recipes;
 
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
@@ -25,5 +26,9 @@ public class AltarRecipeManager {
         }
 
         return null;
+    }
+
+    public static AltarRecipe getRecipeByRegistryName(String registryName){
+        return REGISTRY.getValue(new ResourceLocation(registryName));
     }
 }

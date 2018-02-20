@@ -14,8 +14,9 @@ import java.util.Random;
 public class WorldGenSilverOre implements ISolarWorldGen {
 
     public void generateOverworld(World world, Random rand, int chunkX, int chunkZ) {
-        for (int k = 0; k < 16; k++) {
-            WorldGenerator silverGen = new WorldGenMinable(ModBlocks.silverOre.getDefaultState(), 9);
+        for (int k = 0; k < 8; k++) {
+            int blockCount = rand.nextInt(6) + 1;
+            WorldGenerator silverGen = new WorldGenMinable(ModBlocks.silverOre.getDefaultState(), blockCount);
 
             for (int i = 0; i < 2; i++) {
                 int firstBlockXCoord = chunkX + rand.nextInt(16);

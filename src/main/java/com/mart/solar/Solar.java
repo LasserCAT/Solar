@@ -73,6 +73,7 @@ public class Solar
 
         OreDictionary.registerOre("oreSilver", ModBlocks.silverOre);
         OreDictionary.registerOre("ingotSilver", ModItems.silverIngot);
+        OreDictionary.registerOre("nuggetSilver", ModItems.silverNugget);
 
         GameRegistry.addSmelting(ModBlocks.silverOre, new ItemStack(ModItems.silverIngot, 1), 1.5f);
 
