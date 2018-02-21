@@ -28,7 +28,7 @@ public class BlockAltar extends BlockBase {
         super(Material.WOOD, name);
         setCreativeTab(Solar.solarTab);
 
-        this.setHardness(2.0F);
+        this.setHardness(4.0F);
         this.setSoundType(SoundType.WOOD);
     }
 

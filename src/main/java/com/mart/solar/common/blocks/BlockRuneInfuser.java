@@ -2,7 +2,9 @@ package com.mart.solar.common.blocks;
 
 import com.mart.solar.Solar;
 import com.mart.solar.common.blocks.base.BlockBase;
+import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileRuneInfuser;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +23,9 @@ public class BlockRuneInfuser extends BlockBase {
     public BlockRuneInfuser(String name) {
         super(Material.WOOD, name);
         setCreativeTab(Solar.solarTab);
+
+        this.setHardness(4.0F);
+        this.setSoundType(SoundType.WOOD);
     }
 
     @Override
@@ -46,13 +51,18 @@ public class BlockRuneInfuser extends BlockBase {
                     return true;
 
                 if(heldItem.isEmpty() && player.isSneaking()){
-                    player.swingArm(hand);
-                    //tileEntity.extractItem(player);
+                    tileEntity.extractItem(player);
                     return true;
                 }
 
                 if (!heldItem.isEmpty()) {
-                    //tileEntity.onUse(heldItem, player, hand);
+
+                    if(heldItem.getItem() == ModItems.RITUAL_AMULET){
+                        tileEntity.clearReagent();
+                        return true;
+                    }
+
+                    tileEntity.insertItem(player, hand);
                 }
             }
         }

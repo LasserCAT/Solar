@@ -3,6 +3,7 @@ package com.mart.solar.common.blocks;
 import com.mart.solar.Solar;
 import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.tileentities.TileMenhir;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +27,11 @@ public class BlockMenhir extends BlockBase {
         super(Material.ROCK, name);
         setCreativeTab(Solar.solarTab);
 
+        setHardness(3.0F);
+        setResistance(5.0F);
+        setSoundType(SoundType.STONE);
+
+        setHarvestLevel("pickaxe", 0);
     }
 
     @Override

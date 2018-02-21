@@ -14,7 +14,7 @@ public abstract class PageComponent {
     }
 
     public PageComponent pageNumber(int number){
-        this.pageNumber = 0;
+        this.pageNumber = number;
         return this;
     }
 

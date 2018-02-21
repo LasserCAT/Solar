@@ -1,13 +1,9 @@
 package com.mart.solar.client.gui;
 
+import com.mart.solar.client.gui.button.BookButton;
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.config.GuiButtonExt;
-import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.mart.solar.client.gui;
+package com.mart.solar.client.gui.button;
 
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.Minecraft;

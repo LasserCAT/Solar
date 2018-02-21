@@ -21,7 +21,7 @@ public class ModRecipes {
 
         addRitual(new InfuserReagent(Items.BLAZE_POWDER, RuneType.FIRE, 2, "blaze_fire"));
         addRitual(new InfuserReagent(Items.COAL, RuneType.FIRE, 1, "coal_fire"));
-        //addRitual(new InfuserReagent(Items.COAL, RuneType.FIRE)); Charcoal?
+        addRitual(new InfuserReagent(Items.GUNPOWDER, RuneType.FIRE, 3, "gunpowder_fire"));
 
         addRitual(new InfuserReagent(Items.POTIONITEM, RuneType.WATER, 1, "waterbottle_water"));
 

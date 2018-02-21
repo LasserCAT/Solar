@@ -14,6 +14,8 @@ public class GuiPagesManager {
 
     public static List<GuiPage> guiPages;
 
+
+
     public GuiPagesManager(){
 
     }
@@ -37,13 +39,15 @@ public class GuiPagesManager {
         ));
         guiPages.add(new GuiPage("Rune Infuser",
                 new PageTextComponent(I18n.format("guide.runeinfuser.info")),
-                new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")),
-                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/focus.png")),
-                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/infuser.png"))
+                new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")).pageNumber(2),
+                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/focus.png")).pageNumber(2),
+                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/infuser.png")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.runeinfuser.warning")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.runeinfuser.cheatsheet")).pageNumber(3)
         ));
         guiPages.add(new GuiPage("Runes",
                 new PageTextComponent(I18n.format("guide.runes.info")),
-                new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/crafting/infuserrecipe.png"))
+                new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/crafting/infuserrecipe.png")).pageNumber(2)
         ));
 
         //Rituals
@@ -68,8 +72,8 @@ public class GuiPagesManager {
 
         guiPages.add(new GuiPage("Rite of High Tides",
                 new PageTextComponent(I18n.format("guide.ritualhightide.info")),
-                new PageTextComponent(I18n.format("guide.ritualhightide.runes")),
-                new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/hightides.png"))
+                new PageTextComponent(I18n.format("guide.ritualhightide.runes")).pageNumber(2),
+                new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/rituallayout/hightides.png")).pageNumber(2)
         ));
 
         guiPages.add(new GuiPage("Rite of Summer Heat",

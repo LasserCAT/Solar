@@ -25,10 +25,12 @@ guide.ritualamulet.info=The Amulet is used for channeling rituals and spells. Th
 
 guide.menhir.info=It seems like the broken and worn down totems around the altar are menhirs. I can see some kind of slot in one of the menhirs. Looking like it can hold an item that is of use to the altar. I must be able to recreate the menhirs… why don’t I try putting 3 blocks of stone on top of each other. Will the amulet trigger a reaction when I use it on the altar?
 
-guide.runeinfuser.info=Now that I have created these magic stones I need to slot them with items. I should be able to create something that channels power from one item onto another. I should be able to create runes with different magical traits.
+guide.runeinfuser.info=Now that I have created these magic stones it seems that they are attracting some items. I should be able to create a structure that uses the energy to enhance this reaction. I should be able to create runes with different magical traits by putting a rune and the reagent in this structure. I have read that because every world has different energy flows, sometimes different reagents are needed per world for same type of runes.
 guide.runeinfuser.craftinginfo=These focusses have 2 types. One created with gold and the other with silver.
+guide.runeinfuser.warning=WARNING, NEXT PAGE CONTAINS A CHEATSHEET FOR INFUSION RECIPES.
+guide.runeinfuser.cheatsheet=COAL/CHARCOAL/BLAZEPOWDER=FIRE || WATER_BOTTLE=WATER || STONE=EARTH || FEATHER=WIND || DIAMOND=TIME || BONE=LIFE || GOLDNUGGET=SUN || SILVERNUGGET=MOON
 
-guide.runes.info=My father used to tell me stories about ancient magicians who used runes to channel power. I have tried carving runes myself for over 2 days. They are the exact size and form needed to be slotted into the menhirs, but they wouldn't be accepted. In anger I threw some wood on the altar.. then the wood started to float!
+guide.runes.info=My father used to tell me stories about ancient magicians who used runes to channel power. I have tried carving runes myself for over 2 days. They are the exact size and form needed to be slotted into the menhirs, but they wouldn't be accepted. In anger I threw some wooden planks on the altar.. then the wood started to float!
 
 #Book Rituals
 
