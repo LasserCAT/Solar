@@ -1,6 +1,8 @@
 package com.mart.solar.common.handler;
 
 import com.mart.solar.Solar;
+import com.mart.solar.api.infusing.InfuserReagent;
+import com.mart.solar.api.infusing.InfuserReagentManager;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualManager;
 import com.mart.solar.api.spell.Spell;
@@ -8,6 +10,7 @@ import com.mart.solar.api.spell.SpellManager;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModAltarRecipes;
+import com.mart.solar.common.registry.ModRecipes;
 import com.mart.solar.common.registry.ModRituals;
 import com.mart.solar.common.registry.ModSpells;
 import net.minecraft.util.ResourceLocation;
@@ -47,6 +50,15 @@ public class RegistrationHandler {
                         .allowModification()
                         .create()
         );
+
+        InfuserReagentManager.setRegistry(
+                new RegistryBuilder<InfuserReagent>()
+                        .setName(new ResourceLocation(Solar.MODID, "infuser_reagents"))
+                        .setType(InfuserReagent.class)
+                        .disableSaving()
+                        .allowModification()
+                        .create()
+        );
     }
 
     @SubscribeEvent
@@ -65,5 +77,11 @@ public class RegistrationHandler {
     public static void registerSpells(RegistryEvent.Register<Spell> event){
         IForgeRegistry<Spell> registry = event.getRegistry();
         registry.registerAll(ModSpells.getSpells());
+    }
+
+    @SubscribeEvent
+    public static void registerInfuserRecipes(RegistryEvent.Register<InfuserReagent> event){
+        IForgeRegistry<InfuserReagent> registry = event.getRegistry();
+        registry.registerAll(ModRecipes.getReagents());
     }
 }

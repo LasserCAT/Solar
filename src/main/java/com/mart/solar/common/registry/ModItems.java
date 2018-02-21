@@ -14,25 +14,25 @@ import java.util.Locale;
 
 public class ModItems {
 
-    public static ItemRitualAmulet ritualAmulet;
-    public static ItemSilverIngot silverIngot;
-    public static ItemSilverNugget silverNugget;
-    public static ItemGuideBook guideBook;
-    public static ItemDullAmulet dullAmulet;
-    public static ItemSolarFocus solarFocus;
-    public static ItemLunarFocus lunarFocus;
+    public static ItemRitualAmulet RITUAL_AMULET;
+    public static ItemSilverIngot SILVER_INGOT;
+    public static ItemSilverNugget SILVER_NUGGET;
+    public static ItemGuideBook GUIDE_BOOK;
+    public static ItemDullAmulet DULL_AMULET;
+    public static ItemSolarFocus SOLAR_FOCUS;
+    public static ItemLunarFocus LUNAR_FOCUS;
 
     public static final Item RUNES = new ItemRuneEnum<>(RuneType.class);
 
     public static void init(RegistryEvent.Register<Item> event) {
 
-        dullAmulet = register(new ItemDullAmulet(), event);
-        ritualAmulet = register(new ItemRitualAmulet(), event);
-        silverIngot = register(new ItemSilverIngot("silveringot"), event);
-        silverNugget = register(new ItemSilverNugget("silver_nugget"), event);
-        guideBook = register(new ItemGuideBook(), event);
-        solarFocus = register(new ItemSolarFocus(), event);
-        lunarFocus = register(new ItemLunarFocus(), event);
+        DULL_AMULET = register(new ItemDullAmulet(), event);
+        RITUAL_AMULET = register(new ItemRitualAmulet(), event);
+        SILVER_INGOT = register(new ItemSilverIngot("silveringot"), event);
+        SILVER_NUGGET = register(new ItemSilverNugget("silver_nugget"), event);
+        GUIDE_BOOK = register(new ItemGuideBook(), event);
+        SOLAR_FOCUS = register(new ItemSolarFocus(), event);
+        LUNAR_FOCUS = register(new ItemLunarFocus(), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
 

@@ -17,18 +17,18 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
 
     @Override
     public void render(TileRuneInfuser runeInfuser, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        ItemStack inputStack = runeInfuser.getRune();
-        ItemStack modifierStack = runeInfuser.getModifier();
-
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x, y, z);
-        RenderUtil.renderLayingOnBlock(inputStack, runeInfuser);
-        GlStateManager.popMatrix();
-
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x, y, z);
-        RenderUtil.renderItemFloatingOnTileEntity(modifierStack, runeInfuser);
-        GlStateManager.popMatrix();
+//        ItemStack inputStack = runeInfuser.getRune();
+//        ItemStack modifierStack = runeInfuser.getModifier();
+//
+//        GlStateManager.pushMatrix();
+//        GlStateManager.translate(x, y, z);
+//        RenderUtil.renderLayingOnBlock(inputStack, runeInfuser);
+//        GlStateManager.popMatrix();
+//
+//        GlStateManager.pushMatrix();
+//        GlStateManager.translate(x, y, z);
+//        RenderUtil.renderItemFloatingOnTileEntity(modifierStack, runeInfuser);
+//        GlStateManager.popMatrix();
     }
 
 

@@ -43,7 +43,7 @@ public class SpellSummerHeat extends Spell {
             return;
         }
 
-        if(itemStack.getItem() != ModItems.ritualAmulet){
+        if(itemStack.getItem() != ModItems.RITUAL_AMULET){
             return;
         }
 

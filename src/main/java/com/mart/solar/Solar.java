@@ -3,13 +3,11 @@ package com.mart.solar;
 import com.mart.solar.common.network.GuiHandler;
 import com.mart.solar.common.creativetabs.SolarTab;
 import com.mart.solar.common.world.gen.WorldGenHandler;
-import com.mart.solar.common.world.gen.WorldGenSilverOre;
 import com.mart.solar.common.network.handlers.ClientPacketHandler;
 import com.mart.solar.common.network.handlers.ServerPacketHandler;
 import com.mart.solar.common.network.SolarPacketHandler;
 import com.mart.solar.common.registry.*;
 import com.mart.solar.common.CommonProxy;
-import com.mart.solar.common.world.gen.structures.StructForgottenAltar;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -51,7 +49,6 @@ public class Solar
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModTiles.init();
-        ModRecipes.init();
 
         if(event.getSide() == Side.CLIENT){
             ModEntities.regRenders();
@@ -72,10 +69,10 @@ public class Solar
         GameRegistry.registerWorldGenerator(worldGenHandler, 0);
 
         OreDictionary.registerOre("oreSilver", ModBlocks.silverOre);
-        OreDictionary.registerOre("ingotSilver", ModItems.silverIngot);
-        OreDictionary.registerOre("nuggetSilver", ModItems.silverNugget);
+        OreDictionary.registerOre("ingotSilver", ModItems.SILVER_INGOT);
+        OreDictionary.registerOre("nuggetSilver", ModItems.SILVER_NUGGET);
 
-        GameRegistry.addSmelting(ModBlocks.silverOre, new ItemStack(ModItems.silverIngot, 1), 1.5f);
+        GameRegistry.addSmelting(ModBlocks.silverOre, new ItemStack(ModItems.SILVER_INGOT, 1), 1.5f);
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }

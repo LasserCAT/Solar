@@ -61,7 +61,7 @@ public class BlockRitualStone extends BlockBase implements ITileEntityProvider {
 
 
         if (playerItem.getItem() instanceof IAltarManipulator) {
-            if (playerItem.getItem() == ModItems.ritualAmulet) {
+            if (playerItem.getItem() == ModItems.RITUAL_AMULET) {
                 tileEntity.poop();
                 return true;
             }

@@ -105,7 +105,6 @@ public class TileAltar extends TileBase implements ITickable {
 
     private void runAltarRecipe(){
         if(!this.heldItem.isEmpty() && this.currentRecipe != null){
-            System.out.println("KK2");
             if(this.currentEnergyProgress < this.currentRecipe.getEnergyCost()){
                 if(this.solarEnergy > 0 && this.lunarEnergy > 0){
                     this.currentEnergyProgress += 2;

@@ -10,7 +10,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -43,7 +42,7 @@ public class SpellHighTide extends Spell {
             return;
         }
 
-        if(itemStack.getItem() != ModItems.ritualAmulet){
+        if(itemStack.getItem() != ModItems.RITUAL_AMULET){
             return;
         }
 

@@ -64,7 +64,7 @@ public class BlockAltar extends BlockBase {
 
 
             if (playerItem.getItem() instanceof IAltarManipulator) {
-                if (playerItem.getItem() == ModItems.ritualAmulet) {
+                if (playerItem.getItem() == ModItems.RITUAL_AMULET) {
                     tileEntity.useRitualAmulet(tileEntity.getPos(), tileEntity.getWorld(), player);
                     return true;
                 }

@@ -47,12 +47,12 @@ public class BlockRuneInfuser extends BlockBase {
 
                 if(heldItem.isEmpty() && player.isSneaking()){
                     player.swingArm(hand);
-                    tileEntity.extractItem(player);
+                    //tileEntity.extractItem(player);
                     return true;
                 }
 
                 if (!heldItem.isEmpty()) {
-                    tileEntity.onUse(heldItem, player, hand);
+                    //tileEntity.onUse(heldItem, player, hand);
                 }
             }
         }

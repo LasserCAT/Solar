@@ -18,15 +18,13 @@ public class WorldGenSilverOre implements ISolarWorldGen {
             int blockCount = rand.nextInt(6) + 1;
             WorldGenerator silverGen = new WorldGenMinable(ModBlocks.silverOre.getDefaultState(), blockCount);
 
-            for (int i = 0; i < 2; i++) {
-                int firstBlockXCoord = chunkX + rand.nextInt(16);
-                int firstBlockZCoord = chunkZ + rand.nextInt(16);
-                int blockY = rand.nextInt(28) + 2;
+            int firstBlockXCoord = chunkX + rand.nextInt(16);
+            int firstBlockZCoord = chunkZ + rand.nextInt(16);
+            int blockY = rand.nextInt(28) + 2;
 
-                BlockPos blockPos = new BlockPos(firstBlockXCoord, blockY, firstBlockZCoord);
+            BlockPos blockPos = new BlockPos(firstBlockXCoord, blockY, firstBlockZCoord);
 
-                silverGen.generate(world, rand, blockPos);
-            }
+            silverGen.generate(world, rand, blockPos);
         }
     }
 

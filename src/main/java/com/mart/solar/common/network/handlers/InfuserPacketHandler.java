@@ -15,8 +15,8 @@ public class InfuserPacketHandler implements IMessageHandler<InfuserPacket, IMes
         TileRuneInfuser runeInfuser = (TileRuneInfuser) message.world.getTileEntity(new BlockPos(message.x, message.y, message.z));
 
         if(runeInfuser != null){
-            runeInfuser.setRune(message.rune);
-            runeInfuser.setModifier(message.modifier);
+            //runeInfuser.setRune(message.rune);
+            //runeInfuser.setModifier(message.modifier);
         }
 
         return null;

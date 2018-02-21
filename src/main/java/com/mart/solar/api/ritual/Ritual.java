@@ -4,7 +4,6 @@ import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.common.items.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
-import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;
 import com.mart.solar.common.tileentities.TileMenhir;
@@ -14,7 +13,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.mart.solar.common.registry.ModBlocks.menhir;
@@ -73,9 +71,9 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         ItemStack offItem = player.getHeldItem(EnumHand.OFF_HAND);
         ItemStack itemStack;
 
-        if (mainItem.getItem() == ModItems.ritualAmulet) {
+        if (mainItem.getItem() == ModItems.RITUAL_AMULET) {
             itemStack = mainItem;
-        } else if (offItem.getItem() == ModItems.ritualAmulet) {
+        } else if (offItem.getItem() == ModItems.RITUAL_AMULET) {
             itemStack = offItem;
         } else {
             return;
