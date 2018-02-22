@@ -1,5 +1,6 @@
 package com.mart.solar.client.render.entityrender;
 
+import com.mart.solar.Solar;
 import com.mart.solar.common.entity.EntitySpellContainer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -25,23 +26,19 @@ public class RenderSpell<T extends Entity> extends Render<T> {
     public void doRender(T entity, double x, double y, double z, float entityYaw, float partialTicks) {
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.enableAlpha();
         GlStateManager.disableLighting();
         GlStateManager.translate((float)x, (float)y, (float)z);
+
+
+        //Draw Spell
+        GlStateManager.pushMatrix();
         GlStateManager.enableRescaleNormal();
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 
-//        EntitySpellContainer spellContainer = (EntitySpellContainer) entity;
-//todo: make spell dependent
-//        if(spellContainer.isDay()){
-//            GlStateManager.color(1.0f, 1.0f, 1.0f, 0.2f);
-//        }
-
         this.bindTexture(getEntityTexture(entity));
         Tessellator tessellatorSpell = Tessellator.getInstance();
         BufferBuilder bufferbuilderSpell = tessellatorSpell.getBuffer();
-        GlStateManager.enableRescaleNormal();
 
         bufferbuilderSpell.begin(7, DefaultVertexFormats.POSITION_TEX);
         bufferbuilderSpell.pos(-0.5D, 0.0D, 0.0D).tex(0D, 0.0D).endVertex();
@@ -51,23 +48,18 @@ public class RenderSpell<T extends Entity> extends Render<T> {
         tessellatorSpell.draw();
 
         GlStateManager.disableRescaleNormal();
-        GlStateManager.enableLighting();
-        GlStateManager.disableAlpha();
-        GlStateManager.disableBlend();
         GlStateManager.popMatrix();
+        //End drawing spell
 
+        //Draw Spell indicator
         GlStateManager.pushMatrix();
-        GlStateManager.enableBlend();
-        GlStateManager.enableAlpha();
-        GlStateManager.disableLighting();
-        GlStateManager.translate((float)x, (float)y + 0.01, (float)z);
+        GlStateManager.translate(0,  0.01, 0);
         GlStateManager.enableRescaleNormal();
         GlStateManager.rotate(-90, 1.0F, 0.0F, 0.0F);
 
-        this.bindTexture(new ResourceLocation("solar:textures/spell-border.png"));
+        this.bindTexture(new ResourceLocation(Solar.MODID, "textures/spell-border.png"));
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
-        GlStateManager.enableRescaleNormal();
 
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
         bufferbuilder.pos(-8D, -8.0D, 0.0D).tex(0D, 0.0D).endVertex();
@@ -77,8 +69,10 @@ public class RenderSpell<T extends Entity> extends Render<T> {
         tessellator.draw();
 
         GlStateManager.disableRescaleNormal();
+        GlStateManager.popMatrix();
+        //End drawing spell indicator
+
         GlStateManager.enableLighting();
-        GlStateManager.disableAlpha();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }
