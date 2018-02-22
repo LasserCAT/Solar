@@ -21,14 +21,14 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockBrokenTotem extends BlockBase {
+public class BlockBrokenAltar extends BlockBase {
 
     private final String firstUseString = "It seems the altar has received a lot of corrosion damage from the weather " +
             "over thousands of years. The wood and metal bits have been compromised to such an extent that trying to " +
             "move the broken altar will make it crumble into nothing. Maybe I should repair it first with some wood, " +
             "gold and silver.";
 
-    public BlockBrokenTotem(String name) {
+    public BlockBrokenAltar(String name) {
         super(Material.WOOD, name);
         setCreativeTab(Solar.solarTab);
 

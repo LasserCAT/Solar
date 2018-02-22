@@ -1,7 +1,7 @@
 package com.mart.solar.common.registry;
 
 import com.mart.solar.api.enums.RuneType;
-import com.mart.solar.api.util.ItemRuneEnum;
+import com.mart.solar.common.items.ItemRune;
 import com.mart.solar.common.items.*;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -22,7 +22,7 @@ public class ModItems {
     public static ItemSolarFocus SOLAR_FOCUS;
     public static ItemLunarFocus LUNAR_FOCUS;
 
-    public static final Item RUNES = new ItemRuneEnum<>(RuneType.class);
+    public static final Item RUNES = new ItemRune<>(RuneType.class);
 
     public static void init(RegistryEvent.Register<Item> event) {
 

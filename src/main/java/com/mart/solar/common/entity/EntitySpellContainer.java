@@ -1,19 +1,12 @@
 package com.mart.solar.common.entity;
 
-import com.mart.solar.api.interfaces.IPlaceAbleSpell;
+import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.api.spell.SpellManager;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.awt.*;
-import java.util.Optional;
 
 public class EntitySpellContainer extends Entity{
 
@@ -63,7 +56,7 @@ public class EntitySpellContainer extends Entity{
             return;
         }
 
-        if(!(spell instanceof IPlaceAbleSpell)){
+        if(!(spell instanceof IPlaceableSpell)){
             System.out.println("[EntitySpellContainer.java] Removing spell entity. spell was not an instance of a Spell.class");
             getEntityWorld().removeEntity(this);
         }
@@ -72,7 +65,7 @@ public class EntitySpellContainer extends Entity{
             getEntityWorld().removeEntity(this);
         }
 
-        IPlaceAbleSpell placeAbleSpell = (IPlaceAbleSpell) this.spell;
+        IPlaceableSpell placeAbleSpell = (IPlaceableSpell) this.spell;
         placeAbleSpell.tick(this.getEntityWorld(), this.getPosition(), this.lifeTime);
 
         this.lifeTime++;

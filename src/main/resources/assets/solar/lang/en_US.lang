@@ -17,22 +17,34 @@ item.silvernugget.name=Silver Nugget
 
 
 #Book
-guide.brokenaltar.info=There are broken altars scattered all over the world in biomes that have the best view of the sky. You can easily spot them by looking for broken menhirs that look like worn down pillars around the altars. These altars need to be repaired before I can do anything with them it seems. Right now I think one altar will suffice. But I may need to gather more for more difficult times.
+guide.brokenaltar.info=My father used to tell me stories about holy altars that could catch energy out of thin air. The Ancients used this energy to their advantage. Creating magical beings and using the energy to shape the world around them. It seems I have stumbled upon one of these altars and was able to repair it. If I hadn’t it would have probably crumbled to dust any time soon. The pillars around the altar look like menhirs that have corroded over the thousands, maybe even millions of years. But they did somehow survive. I should look into this further and write down my findings in this book that I found inside the altar. This is going to be an exciting journey!
 
-guide.celestialaltar.info=Now that the altar is repaired it seems to be collecting energy. If only I could do something with this energy. I’ll have to see if I can make an item that will be able to channel the energy to some form of sorts.
+guide.celestialaltar.info=Now that I have repaired on of the altars it is taking in some sort of energy. I am not so sure about it creating energy out of this air.. it think its collecting solar and lunar energy. I can see different kinds of energy flows depending on if it is day or night. I still need to learn more but I think I can start looking for more clues as to how to operate it. Maybe start with the strange trinket I found.
 
-guide.ritualamulet.info=The Amulet is used for channeling rituals and spells. The basic Amulet can only hold a spell and once its used it’ll disappear. Then you have to do the ritual again to use the spell again. The basic Amulet is made by placing a dull amulet on the altar. This will turn into a Ritual Amulet.
+guide.ritualamulet.info=Taking a good look at the trinket I think it was an amulet. But it has been worn down so much I might aswel try and make a new one. It looks like I just need some more gold and silver. I wonder if it triggers a reaction when I put it on the altar.
 
-guide.menhir.info=It seems like the broken and worn down totems around the altar are menhirs. I can see some kind of slot in one of the menhirs. Looking like it can hold an item that is of use to the altar. I must be able to recreate the menhirs… why don’t I try putting 3 blocks of stone on top of each other. Will the amulet trigger a reaction when I use it on the altar?
+guide.menhir.info=The broken down menhirs seem to be shifted around the altar by the land over the years. I do not think their position is right.. Marks on the ground tell me that they were more symmetrically placed around the altar. I can probably recreate the menhirs by placing Stone Blocks on top of eachother. Maybe the Ritual Amulet also plays a role in this? Let’s see if I can trigger a reaction again.
 
-guide.runeinfuser.info=Now that I have created these magic stones it seems that they are attracting some items. I should be able to create a structure that uses the energy to enhance this reaction. I should be able to create runes with different magical traits by putting a rune and the reagent in this structure. I have read that because every world has different energy flows, sometimes different reagents are needed per world for same type of runes.
-guide.runeinfuser.craftinginfo=These focusses have 2 types. One created with gold and the other with silver.
+guide.runes.info=The menhirs see to have slots burned into their bodys. They look like they can hold some sort of item. I tried carving some wood into items of the same exact size and shape but with all my effort it did not seem to have any effect. I place them in and they fall right out again. In anger I threw some of the wooden planks on top of the altar and they started to float! I think I figured it out. I will be calling them runes.
+
+guide.runeinfuser.info1=Sometimes when I walk past some chests I hear items rumbling. I decided to throw everything out and also throw a rune on the ground. The rune started attracting some of the items! I forgot which though.. I should try this again and remember what the reagents were.
+
+guide.runeinfuser.info2=The items on the ground do not seem to be doing much more than attracting eachother.. Sometimes I see them trying to merge but it will not succeed. I might have an idea as to how I can create a structure that will allow them to accept energy from the altar to aid the infusion. I can simply place a rune and one of the reagents in the infuser and see if it will work! I should be careful, once I place a reagent it might become bounded. I think I can remove it with my amulet though.
+
+guide.runeinfuser.info3=My father used to tell lots of stories about ancient times. One of them were that there exist different worlds. And each world would have a certain affinity. Some might be the same but they can also be different. Will this have any effect on the reagents for infusing? I guess the only way to find out it by trying.
+
+guide.runeinfuser.craftinginfo=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
+
 guide.runeinfuser.warning=WARNING, NEXT PAGE CONTAINS A CHEATSHEET FOR INFUSION RECIPES.
-guide.runeinfuser.cheatsheet=COAL/CHARCOAL/BLAZEPOWDER=FIRE || WATER_BOTTLE=WATER || STONE=EARTH || FEATHER=WIND || DIAMOND=TIME || BONE=LIFE || GOLDNUGGET=SUN || SILVERNUGGET=MOON
 
-guide.runes.info=My father used to tell me stories about ancient magicians who used runes to channel power. I have tried carving runes myself for over 2 days. They are the exact size and form needed to be slotted into the menhirs, but they wouldn't be accepted. In anger I threw some wooden planks on the altar.. then the wood started to float!
+guide.runeinfuser.cheatsheet=COAL/CHARCOAL/BLAZEPOWDER/GUNPOWDER=FIRE || WATER_BOTTLE=WATER || STONE=EARTH || FEATHER=WIND || DIAMOND=TIME || BONE=LIFE || GOLDNUGGET=SUN || SILVERNUGGET=MOON
+
 
 #Book Rituals
+
+guide.spells.info=Some rituals are build out of spells. These spells will be stored in your Ritual Amulet. Right click on the target block of your choice and something should happen. If nothing happens it means you probably didnt click on the right block. More lore for this will be added later on!
+
+guide.spells.rituals=Every menhir right now is 4 blocks away from the altar if aligned with it. So 3 blocks in between the menhir and altar. Every ritual needs 8 menhirs. You should be able to see where to place them according to the pictures. They will get replaced with special paages that show how a ritual has been build.
 
 guide.ritualclearskies.info=This ritual clears up the sky!
 guide.ritualclearskies.runes= 4 wind runes.
@@ -57,4 +69,3 @@ guide.ritualstorm.runes= 2 time & 2 moon runes
 
 guide.ritualsummerheat.info=This ritual gives you a spell on your amulet. Using this on water tries to lower its water level. If it needs to lower too many blocks the spell will fail. 40 blocks max.
 guide.ritualsummerheat.runes= 4 fire runes
-

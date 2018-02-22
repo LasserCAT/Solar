@@ -2,6 +2,7 @@ package com.mart.solar.client.gui.button;
 
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 
 import java.awt.*;
@@ -26,6 +27,10 @@ public class BookButton extends GuiButtonExt {
         this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
         this.mouseDragged(mc, mouseX, mouseY);
 
+        GlStateManager.enableBlend();
+        GlStateManager.enableAlpha();
+        GlStateManager.disableLighting();
+
         mc.fontRenderer.drawString(this.displayString, this.x, this.y, Color.BLACK.getRGB());
 
         if (this.hovered)
@@ -33,6 +38,9 @@ public class BookButton extends GuiButtonExt {
            this.drawHorizontalLine(this.x, this.x + this.width, this.y + this.height, Color.BLACK.getRGB());
         }
 
+        GlStateManager.enableLighting();
+        GlStateManager.disableAlpha();
+        GlStateManager.disableBlend();
     }
 
     public GuiPage getPage() {

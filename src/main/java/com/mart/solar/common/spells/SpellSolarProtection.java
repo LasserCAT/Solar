@@ -1,11 +1,9 @@
 package com.mart.solar.common.spells;
 
-import com.mart.solar.api.interfaces.IPlaceAbleSpell;
+import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
-import com.mart.solar.client.particle.SolarProtectionParticle;
 import com.mart.solar.common.entity.EntitySpellContainer;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITasks;
@@ -24,7 +22,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpellSolarProtection extends Spell implements IPlaceAbleSpell {
+public class SpellSolarProtection extends Spell implements IPlaceableSpell {
 
     private int spellRadius = 8;
 

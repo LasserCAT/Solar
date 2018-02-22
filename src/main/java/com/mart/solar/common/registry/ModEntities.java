@@ -3,6 +3,7 @@ package com.mart.solar.common.registry;
 import com.mart.solar.Solar;
 import com.mart.solar.client.render.entityrender.RenderSpell;
 import com.mart.solar.common.entity.EntitySpellContainer;
+import com.mart.solar.common.items.entity.RuneEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,14 +25,24 @@ public class ModEntities {
 
     public static void regEntities(RegistryEvent.Register<EntityEntry> event)
     {
-        EntityEntry entry1 = EntityEntryBuilder.create()
+        EntityEntry spellContainer = EntityEntryBuilder.create()
                 .entity(EntitySpellContainer.class)
                 .id(new ResourceLocation(Solar.MODID, "spell_container"), ID++)
                 .name("spell_container")
                 .tracker(64, 20, false)
                 .build();
 
-        event.getRegistry().register(entry1);
+        EntityEntry runeEntity = EntityEntryBuilder.create()
+                .entity(RuneEntity.class)
+                .id(new ResourceLocation(Solar.MODID, "rune_entity"), ID++)
+                .name("rune_entity")
+                .tracker(64, 20, false)
+                .build();
+
+
+
+        event.getRegistry().register(spellContainer);
+        event.getRegistry().register(runeEntity);
     }
 
     @SideOnly(Side.CLIENT)

@@ -23,10 +23,7 @@ import java.util.LinkedList;
 
 public class GuiPage extends GuiBase{
 
-    private String[] infoText;
     private String pageTitle;
-    private Item representItem;
-    private Block representBlock;
 
     private int currentPage = 1;
     private int pagesCount = 0;
@@ -46,9 +43,9 @@ public class GuiPage extends GuiBase{
 
         int x = (this.width - WIDTH) / 2;
         int y = (this.height - HEIGHT) / 2;
-        this.addButton(new BackButton(x + 191, y + 240, 100));
-        this.addButton(new NextButton(x + 384 , y + 240, 101, this));
-        this.addButton(new PreviousButton(x, y + 240, 102, this));
+        this.addButton(new BackButton(x + (WIDTH/2) - 8, y + HEIGHT - 18, 100));
+        this.addButton(new NextButton(x + WIDTH - 18 , y + HEIGHT - 18, 101, this));
+        this.addButton(new PreviousButton(x + 2, y + HEIGHT - 18, 102, this));
 
         for(PageComponent pageComponent : pageComponents){
             if(pageComponent.getPageNumber() > this.pagesCount){
@@ -96,7 +93,7 @@ public class GuiPage extends GuiBase{
 
         GL11.glPushMatrix();
 
-        GL11.glTranslatef(x + 210, y, 0);
+        GL11.glTranslatef(x + 195, y, 0);
 
         this.pageComponents.forEach(pg -> {
             if(pg.getPageNumber() == currentPage + 1){
@@ -142,7 +139,4 @@ public class GuiPage extends GuiBase{
         return pageTitle;
     }
 
-    public Item getRepresentItem() {
-        return representItem;
-    }
 }
