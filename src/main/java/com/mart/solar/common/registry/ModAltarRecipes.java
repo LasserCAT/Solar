@@ -2,6 +2,7 @@ package com.mart.solar.common.registry;
 
 import com.mart.solar.common.recipes.AltarRecipe;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class ModAltarRecipes {
 
         addAltarRecipe(new AltarRecipe(ModItems.DULL_AMULET, ModItems.RITUAL_AMULET, 1000, "ritualAmuletRecipe"));
         addAltarRecipe(new AltarRecipe(Item.getItemFromBlock(Blocks.PLANKS), ModItems.RUNES, 100, "runeRecipe"));
+        addAltarRecipe(new AltarRecipe(Items.BOOK, ModItems.GUIDE_BOOK, 100, "guideBookRecipe"));
     }
 
     public static AltarRecipe[] getAltarRecipes()

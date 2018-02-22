@@ -44,6 +44,10 @@ public class TileAltarItemHandler extends ItemStackHandler {
             return ItemStack.EMPTY;
         }
 
+        if(!tileAltar.getWorld().isRemote){
+            tileAltar.notifyUpdate();
+        }
+
         return super.extractItem(slot, amount, simulate);
     }
 }

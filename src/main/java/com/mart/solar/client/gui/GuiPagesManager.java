@@ -23,31 +23,43 @@ public class GuiPagesManager {
     private static void init(){
         guiPages = new ArrayList<>();
 
-        guiPages.add(new GuiPage("Broken Altar",
+        guiPages.add(new GuiPage("Solar",
                 new PageTextComponent(I18n.format("guide.brokenaltar.info"))));
 
-
-        guiPages.add(new GuiPage("Ritual Amulet",
-                new PageTextComponent(I18n.format("guide.ritualamulet.info")),
-                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/dull_amulet.png"))
-        ));
         guiPages.add(new GuiPage("Celestial Altar",
                 new PageTextComponent(I18n.format("guide.celestialaltar.info"))
         ));
+
+        guiPages.add(new GuiPage("Ritual Amulet",
+                new PageTextComponent(I18n.format("guide.ritualamulet.info")),
+                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/dull_amulet.png")).pageNumber(2)
+        ));
+
         guiPages.add(new GuiPage("Menhir",
                 new PageTextComponent(I18n.format("guide.menhir.info"))
         ));
-        guiPages.add(new GuiPage("Rune Infuser",
-                new PageTextComponent(I18n.format("guide.runeinfuser.info")),
-                new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")).pageNumber(2),
-                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/focus.png")).pageNumber(2),
-                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/infuser.png")).pageNumber(2),
-                new PageTextComponent(I18n.format("guide.runeinfuser.warning")).pageNumber(2),
-                new PageTextComponent(I18n.format("guide.runeinfuser.cheatsheet")).pageNumber(3)
-        ));
+
         guiPages.add(new GuiPage("Runes",
-                new PageTextComponent(I18n.format("guide.runes.info")),
-                new PageImageLargeComponent(new ResourceLocation("solar", "textures/gui/crafting/infuserrecipe.png")).pageNumber(2)
+                new PageTextComponent(I18n.format("guide.runes.info"))
+        ));
+
+        guiPages.add(new GuiPage("Rune Infuser",
+                new PageTextComponent(I18n.format("guide.runeinfuser.info1")),
+                new PageTextComponent(I18n.format("guide.runeinfuser.info2")),
+                new PageTextComponent(I18n.format("guide.runeinfuser.info3")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")).pageNumber(3),
+                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/focus.png")).pageNumber(3),
+                new PageImageComponent(new ResourceLocation("solar", "textures/gui/crafting/infuser.png")).pageNumber(3),
+                new PageTextComponent(I18n.format("guide.runeinfuser.warning")).pageNumber(3),
+                new PageTextComponent(I18n.format("guide.runeinfuser.cheatsheet")).pageNumber(4)
+        ));
+
+        guiPages.add(new GuiPage("Spells",
+                new PageTextComponent(I18n.format("guide.spells.info"))
+        ));
+
+        guiPages.add(new GuiPage("Rituals",
+                new PageTextComponent(I18n.format("guide.rituals.info"))
         ));
 
         //Rituals
