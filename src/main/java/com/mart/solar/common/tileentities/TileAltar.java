@@ -5,6 +5,8 @@ import com.mart.solar.api.ritual.RitualManager;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModBlocks;
+import com.mart.solar.common.util.TileAltarItemHandler;
+import com.mart.solar.common.util.TileRuneInfuserItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,15 +14,21 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
-public class TileAltar extends TileBase implements ITickable {
+public class TileAltar extends TileBase implements ITickable, ICapabilityProvider {
 
     //todo: change back to 0
     private float solarEnergy = 30000;
@@ -28,14 +36,15 @@ public class TileAltar extends TileBase implements ITickable {
 
     private boolean blocked = false;
 
-    private ItemStack heldItem = ItemStack.EMPTY;
     private AltarRecipe currentRecipe;
     private int energyCost = 0;
     private int currentEnergyProgress = 0;
     private boolean recipeInProgress = false;
 
-    public TileAltar() {
+    private TileAltarItemHandler itemStackHandler;
 
+    public TileAltar() {
+        itemStackHandler = new TileAltarItemHandler(this);
     }
 
     @Override
@@ -58,11 +67,7 @@ public class TileAltar extends TileBase implements ITickable {
         compound.setFloat("lunarEnergy", this.lunarEnergy);
 
 
-        NBTTagList tagList = new NBTTagList();
-        NBTTagCompound itemCompound = new NBTTagCompound();
-        this.heldItem.writeToNBT(itemCompound);
-        tagList.appendTag(itemCompound);
-        compound.setTag("heldItem", tagList);
+        compound.setTag("itemStackHandler", this.itemStackHandler.serializeNBT());
 
         return compound;
     }
@@ -77,9 +82,7 @@ public class TileAltar extends TileBase implements ITickable {
         this.currentEnergyProgress = compound.getInteger("recipeEnergyProgress");
         this.currentRecipe = AltarRecipeManager.getRecipeByRegistryName(compound.getString("currentRecipe"));
 
-        NBTTagList tagList = (NBTTagList) compound.getTag("heldItem");
-        NBTTagCompound tagCompound = tagList.getCompoundTagAt(0);
-        this.heldItem = new ItemStack(tagCompound);
+        this.itemStackHandler.deserializeNBT(compound.getCompoundTag("itemStackHandler"));
     }
 
     @Override
@@ -104,7 +107,7 @@ public class TileAltar extends TileBase implements ITickable {
     }
 
     private void runAltarRecipe(){
-        if(!this.heldItem.isEmpty() && this.currentRecipe != null){
+        if(!this.itemStackHandler.getStackInSlot(0).isEmpty() && this.currentRecipe != null){
             if(this.currentEnergyProgress < this.currentRecipe.getEnergyCost()){
                 if(this.solarEnergy > 0 && this.lunarEnergy > 0){
                     this.currentEnergyProgress += 2;
@@ -121,7 +124,7 @@ public class TileAltar extends TileBase implements ITickable {
                 }
             }
             else{
-                this.heldItem = new ItemStack(this.currentRecipe.getOutput(), 1);
+                this.itemStackHandler.setStackInSlot(0, new ItemStack(this.currentRecipe.getOutput(), 1));
                 this.currentRecipe = null;
                 this.currentEnergyProgress = 0;
                 this.recipeInProgress = false;
@@ -205,35 +208,77 @@ public class TileAltar extends TileBase implements ITickable {
     }
 
     public void retrieveItem(EntityPlayer player){
-        if(!this.heldItem.isEmpty()){
-            player.addItemStackToInventory(this.heldItem.copy());
-            this.heldItem = ItemStack.EMPTY;
+        ItemStack extractedItem = this.itemStackHandler.extractItem(0, 1, false);
+
+        player.addItemStackToInventory(extractedItem);
+        if(!this.world.isRemote){
             notifyUpdate();
         }
-
     }
 
-    public void startAltarRecipe(AltarRecipe altarRecipe, EntityPlayer player, ItemStack stack, EnumHand hand) {
-        if(altarRecipe.getEnergyCost() > (this.solarEnergy + lunarEnergy)){
-            player.sendMessage(new TextComponentString("Not enough energy in altar"));
+    public void insertItem(EntityPlayer player, EnumHand hand) {
+        if (world.isRemote) {
             return;
         }
 
+        ItemStack heldStack = player.getHeldItem(hand);
+        ItemStack insertStack = heldStack.copy();
+        insertStack.setCount(1);
+
+        AltarRecipe altarRecipe = isAltarRecipe(heldStack);
+
+        if(altarRecipe == null){
+            return;
+        }
+
+        ItemStack returnStack = this.itemStackHandler.insertItem(0, insertStack, false);
+
+        if(returnStack == insertStack){
+            return;
+        }
+
+        heldStack.setCount(heldStack.getCount() - 1);
+    }
+
+    public void startAltarRecipe(AltarRecipe altarRecipe) {
         this.currentRecipe = altarRecipe;
         this.energyCost = altarRecipe.getEnergyCost();
         this.recipeInProgress = true;
         this.currentEnergyProgress = 0;
-        this.heldItem = stack.copy();
-        this.heldItem.setCount(1);
 
-        player.setHeldItem(hand, ItemStack.EMPTY);
+        if(!this.world.isRemote){
+            notifyUpdate();
+        }
+    }
 
-        notifyUpdate();
+    public AltarRecipe isAltarRecipe(ItemStack stack){
+        AltarRecipe altarRecipe = AltarRecipeManager.findMatchingInput(stack.getItem());
+        if (altarRecipe == null) {
+            return null;
+        }
+        return altarRecipe;
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (T) this.itemStackHandler;
+        }
+        return super.getCapability(capability, facing);
     }
 
     //Getter Setters Adders Extractors
     public ItemStack getHeldItem() {
-        return heldItem;
+        return this.itemStackHandler.getStackInSlot(0);
     }
 
     public int getCurrentEnergyProgress() {

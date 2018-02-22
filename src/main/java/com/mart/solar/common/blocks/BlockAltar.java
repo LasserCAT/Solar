@@ -46,36 +46,32 @@ public class BlockAltar extends BlockBase {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            TileAltar tileEntity = (TileAltar) world.getTileEntity(pos);
-            ItemStack playerItem = player.inventory.getCurrentItem();
+            TileAltar tileAltar = (TileAltar) world.getTileEntity(pos);
+            ItemStack stack = player.inventory.getCurrentItem();
 
-            if (hand == EnumHand.OFF_HAND || tileEntity == null) {
+            if (hand == EnumHand.OFF_HAND || tileAltar == null) {
                 return true;
             }
 
             if (player.isSneaking()) {
-                tileEntity.retrieveItem(player);
+                tileAltar.retrieveItem(player);
                 return true;
             }
 
-            if(playerItem.isEmpty()){
+            if(stack.isEmpty()){
                 return true;
             }
 
-
-            if (playerItem.getItem() instanceof IAltarManipulator) {
-                if (playerItem.getItem() == ModItems.RITUAL_AMULET) {
-                    tileEntity.useRitualAmulet(tileEntity.getPos(), tileEntity.getWorld(), player);
+            if (stack.getItem() instanceof IAltarManipulator) {
+                if (stack.getItem() == ModItems.RITUAL_AMULET) {
+                    tileAltar.useRitualAmulet(tileAltar.getPos(), tileAltar.getWorld(), player);
                     return true;
                 }
             }
 
-            AltarRecipe altarRecipe = AltarRecipeManager.findMatchingInput(playerItem.getItem());
-            if(altarRecipe != null){
-                tileEntity.startAltarRecipe(altarRecipe, player, playerItem, hand);
-            }
+            tileAltar.insertItem(player, hand);
 
-            player.sendMessage(new TextComponentString("" + tileEntity.getSolarEnergy() + "/" + tileEntity.getLunarEnergy()));
+            player.sendMessage(new TextComponentString("" + tileAltar.getSolarEnergy() + "/" + tileAltar.getLunarEnergy()));
         }
 
         return true;
