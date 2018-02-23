@@ -14,7 +14,7 @@ public class GuiBase extends GuiScreen{
     public static int WIDTH = 380;
     public static int HEIGHT = 340;
 
-    private ResourceLocation old_book_background = new ResourceLocation("solar", "textures/gui/book.jpg");
+    private ResourceLocation old_book_background = new ResourceLocation("solar", "textures/gui/book/bookfull.png");
 
 
     @Override

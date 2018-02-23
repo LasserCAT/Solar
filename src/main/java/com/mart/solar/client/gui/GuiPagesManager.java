@@ -23,8 +23,14 @@ public class GuiPagesManager {
     private static void init(){
         guiPages = new ArrayList<>();
 
+        guiPages.add(new GuiPage("Me",
+                new PageTextComponent(I18n.format("guide.me.info1")),
+                new PageTextComponent(I18n.format("guide.me.info2")),
+                new PageTextComponent(I18n.format("guide.me.info2.2")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.me.info3")).pageNumber(2)));
+
         guiPages.add(new GuiPage("Solar",
-                new PageTextComponent(I18n.format("guide.brokenaltar.info"))));
+                new PageTextComponent(I18n.format("guide.solar.info"))));
 
         guiPages.add(new GuiPage("Celestial Altar",
                 new PageTextComponent(I18n.format("guide.celestialaltar.info"))

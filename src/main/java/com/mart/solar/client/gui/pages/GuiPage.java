@@ -44,8 +44,8 @@ public class GuiPage extends GuiBase{
         int x = (this.width - WIDTH) / 2;
         int y = (this.height - HEIGHT) / 2;
         this.addButton(new BackButton(x + (WIDTH/2) - 8, y + HEIGHT - 18, 100));
-        this.addButton(new NextButton(x + WIDTH - 18 , y + HEIGHT - 18, 101, this));
-        this.addButton(new PreviousButton(x + 2, y + HEIGHT - 18, 102, this));
+        this.addButton(new NextButton(x + WIDTH - 104 , y + HEIGHT - 18, 101, this));
+        this.addButton(new PreviousButton(x + 95, y + HEIGHT - 18, 102, this));
 
         for(PageComponent pageComponent : pageComponents){
             if(pageComponent.getPageNumber() > this.pagesCount){
@@ -70,17 +70,17 @@ public class GuiPage extends GuiBase{
             GlStateManager.disableLighting();
 
             float titleDistance = (WIDTH / 4) - (fontRenderer.getStringWidth(this.pageTitle) / 2);
-            GL11.glTranslatef(x + titleDistance, y + 15, 0);
+            GL11.glTranslatef(x + titleDistance, y + 12, 0);
             fontRenderer.drawString(this.pageTitle, 0, 0, Color.BLACK.getRGB());
 
             GlStateManager.enableLighting();
             GlStateManager.disableAlpha();
             GlStateManager.disableBlend();
 
-            GL11.glTranslatef(-titleDistance + 3, 12, 0);
+            GL11.glTranslatef(-titleDistance + 20, 12, 0);
         }
         else{
-            GL11.glTranslatef(x + 3, y, 0);
+            GL11.glTranslatef(x + 20, y + 20, 0);
         }
 
         this.pageComponents.forEach(pg -> {
@@ -93,7 +93,7 @@ public class GuiPage extends GuiBase{
 
         GL11.glPushMatrix();
 
-        GL11.glTranslatef(x + 195, y, 0);
+        GL11.glTranslatef(x + 195, y + 20, 0);
 
         this.pageComponents.forEach(pg -> {
             if(pg.getPageNumber() == currentPage + 1){

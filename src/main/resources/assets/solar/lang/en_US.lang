@@ -1,9 +1,9 @@
 # Blocks
+
 tile.suntotem.name=Celestial Altar
 tile.brokentotem.name=Broken Altar
 tile.runeinfuser.name=Rune Infuser
 tile.silverore.name=Silver Ore
-
 
 #Items
 item.guidebook.name=Guide Book
@@ -12,14 +12,19 @@ item.dull_amulet.name=Dull Amulet
 item.silveringot.name=Silver Ingot
 item.silvernugget.name=Silver Nugget
 
-
-#Runes
-
-
 #Book
-guide.brokenaltar.info=My father used to tell me stories about holy altars that could catch energy out of thin air. The Ancients used this energy to their advantage. Creating magical beings and using the energy to shape the world around them. It seems I have stumbled upon one of these altars and was able to repair it. If I hadn’t it would have probably crumbled to dust any time soon. The pillars around the altar look like menhirs that have corroded over the thousands, maybe even millions of years. But they did somehow survive. I should look into this further and write down my findings in this book that I found inside the altar. This is going to be an exciting journey!
 
-guide.celestialaltar.info=Now that I have repaired one of the altars it is taking in some sort of energy. I am not so sure about it creating energy out of thin air.. it think its collecting solar and lunar energy. I can see different kinds of energy flows depending on day and night. I still need to learn more, but I think I can start looking for more clues as to how to use the altar. Maybe start with the strange trinket I found.
+guide.me.info1=I found this empty book. I checked but nothing is written here. It looks old but sturdy enough to use. I decided to write down my story, and my experience through this magical journey. Or at least I hope it will be one. I will start from the beginning.
+
+guide.me.info2=My father was an amazing man. He was an explorer just like my grandpa. My grandpa used to tell my father amazing stories about ancient civilizations and then my father passed those stories on to me. They sounded so magical. Ancient people using powers beyond recognition. My father became an explorer, he found some pretty amazing things but was never satisfied it seemed.. He started searching for the stories his father used to tell him. He was always gone searching new found lands
+
+guide.me.info2.2=for these magical structures but never seemed to find anything of use. I was amazed by his determination, but it drove him mad. He changed a little bit every time he returned home. I hated seeing him like this.
+
+guide.me.info3=But… I did believe him. I also believed in the stories passed down from generation to generation. Now that I am old enough to follow in my father his footsteps I decided to just do it I guess. Roam through lands, see the world. And I am glad I did. Now that I found the first clue.. the stories might actually be real. This is going to be an exciting journey!
+
+guide.solar.info=In the stories that I got told I used to hear about holy altars that could syphon energy out of thin air. It was told the Ancients used this energy to their advantage. Creating magical beings and using the energy to shape the world around them. It seems I have stumbled upon one of these altars and was able to repair it. If I hadn’t it would have probably crumbled to dust any time soon. The pillars around the altar look like menhirs that have corroded over the thousands, maybe even millions of years. But they did somehow survive.
+
+guide.celestialaltar.info=Now that I have repaired one of the altars it is taking in some sort of energy. I am not so sure about it creating energy out of thin air.. it think its collecting solar and lunar energy. I can see different kinds of energy flows depending on day and night. I still need to learn more, but I think I can start looking for more clues as to how to use the altar. Maybe start with the strange trinket I found. I am also sure I can move the altar now that it  looks sturdy enough.
 
 guide.ritualamulet.info=Taking a good look at the trinket I think it was an amulet. But it has been worn down so much I might as well try to make a new one. It looks like I just need some more gold and silver. I wonder if it triggers a reaction when I put it on the altar.
 
@@ -42,7 +47,7 @@ guide.runeinfuser.cheatsheet=COAL/CHARCOAL/BLAZEPOWDER/GUNPOWDER=FIRE || WATER_B
 
 #Book Rituals
 
-guide.spells.info=Some rituals are build out of spells. These spells will be stored in your Ritual Amulet. Right click on the target block of your choice and something should happen. If nothing happens it means you probably didnt click on the right block. More lore for this will be added later on! Amulets get energy from a ritual. Using the spells might empty the energy and then the ritual will release from the amulet
+guide.spells.info=Some rituals create spells. These spells will be stored in your Ritual Amulet. Right click on the target block of your choice and something should happen. If nothing happens it means you probably didnt click on the right block. More lore for this will be added later on! Amulets get energy from a ritual. Using the spells might empty the energy and then the ritual will release from the amulet
 
 guide.rituals.info=Every menhir right now is 4 blocks away from the altar if aligned with it. So 3 blocks in between the menhir and altar. Every ritual needs 8 menhirs. You should be able to see where to place them according to the pictures. They will get replaced with special paages that show how a ritual has been build.
 

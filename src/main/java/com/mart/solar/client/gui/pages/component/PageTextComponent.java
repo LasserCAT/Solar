@@ -12,7 +12,7 @@ public class PageTextComponent extends PageComponent{
     private final String[] text;
 
     public PageTextComponent(String text){
-        this.text = WordUtils.wrap(text, 35).split("\r\n");
+        this.text = WordUtils.wrap(text, 30).split("\r\n");
     }
 
     @Override
@@ -26,6 +26,7 @@ public class PageTextComponent extends PageComponent{
         GlStateManager.color(255, 255, 255);
 
         for(String text : this.text){
+            fontRenderer.FONT_HEIGHT = 10;
             fontRenderer.drawString(text, 0, 0, Color.BLACK.getRGB());
             GL11.glTranslatef(0, 10, 0);
         }

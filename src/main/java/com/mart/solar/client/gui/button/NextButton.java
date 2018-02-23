@@ -39,23 +39,28 @@ public class NextButton extends GuiButtonExt{
         GlStateManager.enableAlpha();
         GlStateManager.disableLighting();
 
-        if(this.hovered){
-            Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("solar", "textures/gui/hover_next_arrow.png"));
-        }
-        else{
-            Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("solar", "textures/gui/next_arrow.png"));
-        }
 
 
         GL11.glTranslatef(this.x, this.y, 0);
 
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
-        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos(0, 16, 0.0D).tex(0, 1).endVertex();
-        bufferbuilder.pos(16, 16, 0.0D).tex(1, 1).endVertex();
-        bufferbuilder.pos(16,0, 0.0D).tex(1, 0).endVertex();
-        bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
+        if(this.hovered){
+            Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("solar", "textures/gui/hover_next_arrow.png"));
+            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+            bufferbuilder.pos(0, 10, 0.0D).tex(0, 1).endVertex();
+            bufferbuilder.pos(18, 10, 0.0D).tex(1, 1).endVertex();
+            bufferbuilder.pos(18,0, 0.0D).tex(1, 0).endVertex();
+            bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
+        }
+        else{
+            Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("solar", "textures/gui/next_arrow.png"));
+            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+            bufferbuilder.pos(0, 10, 0.0D).tex(0, 1).endVertex();
+            bufferbuilder.pos(18, 10, 0.0D).tex(1, 1).endVertex();
+            bufferbuilder.pos(18,0, 0.0D).tex(1, 0).endVertex();
+            bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
+        }
         tessellator.draw();
 
         GlStateManager.enableLighting();

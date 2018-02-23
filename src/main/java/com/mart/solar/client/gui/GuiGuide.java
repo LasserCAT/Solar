@@ -22,15 +22,15 @@ public class GuiGuide extends GuiBase {
         List<GuiPage> guiPages = GuiPagesManager.getGuiPages();
         this.guiButtons = new ArrayList<>();
 
-        int xOffset = 5;
-        int yOffset = 12;
+        int xOffset = 20;
+        int yOffset = 25;
 
         int x = (this.width - WIDTH) / 2;
         int y = (this.height - HEIGHT) / 2;
 
         int buttonAmount = 0;
         for(GuiPage guiPage : guiPages){
-            BookButton button = new BookButton(guiPage, x + xOffset, y + (buttonAmount * yOffset + yOffset), buttonAmount);
+            BookButton button = new BookButton(guiPage, x + xOffset, y + yOffset + (buttonAmount * 10), buttonAmount);
             this.guiButtons.add(button);
             this.addButton(button);
             buttonAmount++;

@@ -53,9 +53,9 @@ public class PreviousButton extends GuiButtonExt {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos(0, 16, 0.0D).tex(0, 1).endVertex();
-        bufferbuilder.pos(16, 16, 0.0D).tex(1, 1).endVertex();
-        bufferbuilder.pos(16,0, 0.0D).tex(1, 0).endVertex();
+        bufferbuilder.pos(0, 10, 0.0D).tex(0, 1).endVertex();
+        bufferbuilder.pos(18, 10, 0.0D).tex(1, 1).endVertex();
+        bufferbuilder.pos(18,0, 0.0D).tex(1, 0).endVertex();
         bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
         tessellator.draw();
 
