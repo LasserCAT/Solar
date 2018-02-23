@@ -77,7 +77,7 @@ public class StructForgottenAltar implements ISolarWorldGen {
                     block != Blocks.LEAVES2 &&
                     block != Blocks.LAVA &&
                     block != Blocks.TALLGRASS) {
-                world.setBlockState(new BlockPos(randomX, y + 1, randomZ), ModBlocks.brokenTotem.getDefaultState());
+                world.setBlockState(new BlockPos(randomX, y + 1, randomZ), ModBlocks.brokenAltar.getDefaultState());
                 spawnAltarRuins(world, randomX, y+1, randomZ);
                 return;
             }

@@ -10,35 +10,40 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class ModBlocks {
 
-    public static BlockAltar sunTotem;
-    public static BlockBrokenAltar brokenTotem;
+    public static BlockAltar blockAltar;
+    public static BlockBrokenAltar brokenAltar;
     public static BlockRuneInfuser runeInfuser;
-    public static BlockSilverOre silverOre;
-
     public static BlockMenhir menhir;
     public static BlockRitualStone ritualStone;
+    public static BlockSunDial sunDial;
+
+    public static BlockSilverOre silverOre;
 
     public static BlockFlowerMoon flowerMoon;
 
     public static void init(RegistryEvent.Register<Block> event) {
-        sunTotem = register(new BlockAltar("suntotem"), event);
-        brokenTotem = register(new BlockBrokenAltar("brokentotem"), event);
+        blockAltar = register(new BlockAltar("suntotem"), event);
+        brokenAltar = register(new BlockBrokenAltar("brokentotem"), event);
         runeInfuser = register(new BlockRuneInfuser("runeinfuser"), event);
-        silverOre = register(new BlockSilverOre("silverore"), event);
         ritualStone = register(new BlockRitualStone(), event);
-
         menhir = register(new BlockMenhir("menhir"), event);
+        sunDial = register(new BlockSunDial("sun_dial"), event);
+
+        silverOre = register(new BlockSilverOre("silverore"), event);
 
         flowerMoon = register(new BlockFlowerMoon("flower_moon"), event);
     }
 
     public static void initItemBlocks(RegistryEvent.Register<Item> event) {
-        registerItemBlock(sunTotem, event);
-        registerItemBlock(brokenTotem, event);
+        registerItemBlock(blockAltar, event);
+        registerItemBlock(brokenAltar, event);
         registerItemBlock(runeInfuser, event);
-        registerItemBlock(silverOre, event);
         registerItemBlock(menhir, event);
         registerItemBlock(ritualStone, event);
+        registerItemBlock(sunDial, event);
+
+        registerItemBlock(silverOre, event);
+
         registerItemBlock(flowerMoon, event);
     }
 
