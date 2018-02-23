@@ -122,16 +122,7 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
 
 
     public void extractItem(EntityPlayer player) {
-        if(this.infusing){
-            return;
-        }
-
-        ItemStack extractedItem = this.itemStackHandler.extractItem(0, 1, false);
-
-        player.addItemStackToInventory(extractedItem);
-        if(!this.world.isRemote){
-            notifyUpdate();
-        }
+        this.itemStackHandler.extractItemPlayer(0, 1, false, player);
     }
 
     public void insertItem(EntityPlayer player, EnumHand hand) {
@@ -165,7 +156,13 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
             }
         }
 
-        if(canInfuse()){
+        if(!this.world.isRemote){
+            notifyUpdate();
+        }
+    }
+
+    public void infuse(ItemStack insertStack){
+        if(!this.itemStackHandler.getStackInSlot(0).isEmpty() && !this.itemStackHandler.getStackInSlot(1).isEmpty()){
             if(reagentName.equalsIgnoreCase("")){
                 for(InfuserReagent reagent : infuserReagents){
                     if(reagent.getReagent() == insertStack.getItem()){
@@ -180,15 +177,6 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
                 this.infusing = true;
             }
         }
-
-
-        if(!this.world.isRemote){
-            notifyUpdate();
-        }
-    }
-
-    private boolean canInfuse(){
-        return !this.itemStackHandler.getStackInSlot(0).isEmpty() && !this.itemStackHandler.getStackInSlot(1).isEmpty();
     }
 
     private void endInfusing() {
@@ -267,5 +255,9 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
 
     public void clearReagent() {
         this.itemStackHandler.extractItem(1, 1, false);
+    }
+
+    public boolean isInfusing() {
+        return infusing;
     }
 }
