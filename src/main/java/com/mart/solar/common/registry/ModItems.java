@@ -17,7 +17,7 @@ public class ModItems {
     public static ItemRitualAmulet RITUAL_AMULET;
     public static ItemSilverIngot SILVER_INGOT;
     public static ItemSilverNugget SILVER_NUGGET;
-    public static ItemGuideBook GUIDE_BOOK;
+    public static ItemGuideBook JOURNAL;
     public static ItemDullAmulet DULL_AMULET;
     public static ItemSolarFocus SOLAR_FOCUS;
     public static ItemLunarFocus LUNAR_FOCUS;
@@ -30,7 +30,7 @@ public class ModItems {
         RITUAL_AMULET = register(new ItemRitualAmulet(), event);
         SILVER_INGOT = register(new ItemSilverIngot("silveringot"), event);
         SILVER_NUGGET = register(new ItemSilverNugget("silver_nugget"), event);
-        GUIDE_BOOK = register(new ItemGuideBook(), event);
+        JOURNAL = register(new ItemGuideBook(), event);
         SOLAR_FOCUS = register(new ItemSolarFocus(), event);
         LUNAR_FOCUS = register(new ItemLunarFocus(), event);
 

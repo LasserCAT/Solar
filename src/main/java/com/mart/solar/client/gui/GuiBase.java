@@ -1,6 +1,8 @@
 package com.mart.solar.client.gui;
 
+import com.mart.solar.client.gui.button.GuiCategoryButton;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,6 +11,8 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+import java.io.IOException;
+
 public class GuiBase extends GuiScreen{
 
     public static int WIDTH = 380;
@@ -16,16 +20,26 @@ public class GuiBase extends GuiScreen{
 
     private ResourceLocation old_book_background = new ResourceLocation("solar", "textures/gui/book/bookfull.png");
 
+    @Override
+    public void initGui() {
+        super.initGui();
+        int buttonAmount = 0;
+
+        int x = (this.width - WIDTH) / 2;
+        int y = (this.height - HEIGHT) / 2;
+
+        for(GuiCategory category : GuiPagesManager.getCategories()){
+            this.addButton(new GuiCategoryButton(category, buttonAmount, x-40, y + (buttonAmount * 40), ""));
+            buttonAmount++;
+        }
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();
 
-        int height = 340;
-
-
         int x = (this.width - WIDTH) / 2;
-        int y = (this.height - height) / 2;
+        int y = (this.height - HEIGHT) / 2;
 
         GlStateManager.pushMatrix();
 
@@ -42,8 +56,8 @@ public class GuiBase extends GuiScreen{
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos(0, height, 0.0D).tex(0, 1).endVertex();
-        bufferbuilder.pos(WIDTH, height, 0.0D).tex(1, 1).endVertex();
+        bufferbuilder.pos(0, HEIGHT, 0.0D).tex(0, 1).endVertex();
+        bufferbuilder.pos(WIDTH, HEIGHT, 0.0D).tex(1, 1).endVertex();
         bufferbuilder.pos(WIDTH,0, 0.0D).tex(1, 0).endVertex();
         bufferbuilder.pos(0, 0, 0.0D).tex(0, 0).endVertex();
         tessellator.draw();
@@ -54,12 +68,15 @@ public class GuiBase extends GuiScreen{
 
         GlStateManager.popMatrix();
 
-//
-//        mc.renderEngine.bindTexture(old_book_background);
-//
-//        drawScaledCustomSizeModalRect(x, y, 0, 0, 470, 363, WIDTH, HEIGHT, 470, 363);
-
         super.drawScreen(mouseX, mouseY, partialTicks);
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException {
+        if(button instanceof GuiCategoryButton){
+            GuiCategoryButton categoryButton = (GuiCategoryButton) button;
+            categoryButton.openCategory();
+        }
     }
 
     @Override

@@ -34,43 +34,32 @@ guide.runes.info=The menhirs seem to have slots burned into their bodys. They lo
 
 guide.runeinfuser.info1=Sometimes when I walk past some chests I hear items rumbling. I decided to throw everything out and also throw a rune on the ground. The rune started attracting some of the items! I forgot which though.. I should try this again and remember what the reagents were.
 
-guide.runeinfuser.info2=The items on the ground do not seem to be doing much more than attracting eachother.. Sometimes I see them trying to merge but it will not succeed. I might have an idea as to how I can create a structure that will allow them to accept energy from the altar to aid the infusion. I can simply place a rune and one of the reagents in the infuser and see if it will work! I should be careful, once I place a reagent it might become bounded. I think I can remove it with my amulet though.
+guide.runeinfuser.info2=The items on the ground do not seem to be doing much more than attracting each other.. They are trying to merge together but are failing. I might have an idea as to how I can create a structure that will allow them to syphon energy out of the altar to aid the infusion. I can place a rune and one of the reagents in the infuser to infuse the rune. I should be careful, once I place a reagent it will be bound to the infuser and I can not get it back. I should be able remove it with my amulet if I did something wrong. Now all that I have to do is figure out what reagents in this world work.
 
 guide.runeinfuser.info3=My father used to tell lots of stories about ancient times. One of them was that there exist different worlds. And each world would have a certain affinity. Some might be the same but they can also be different. Will this have any effect on the reagents for infusing? I guess the only way to find out it by trying.
 
 guide.runeinfuser.craftinginfo=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
 
-guide.runeinfuser.warning=WARNING, NEXT PAGE CONTAINS A CHEATSHEET FOR INFUSION RECIPES.
-
-guide.runeinfuser.cheatsheet=COAL/CHARCOAL/BLAZEPOWDER/GUNPOWDER=FIRE || WATER_BOTTLE=WATER || STONE=EARTH || FEATHER=WIND || DIAMOND=TIME || BONE=LIFE || GOLDNUGGET=SUN || SILVERNUGGET=MOON
-
+guide.moonflower.info=I saw some interesting flowers grow in the biomes that also house the altars. They looked very weak when it was day. I think they might night flowers so I should probably not try to collect them at daytime. Night time looks like a better chance to gather some.
 
 #Book Rituals
 
-guide.spells.info=Some rituals create spells. These spells will be stored in your Ritual Amulet. Right click on the target block of your choice and something should happen. If nothing happens it means you probably didnt click on the right block. More lore for this will be added later on! Amulets get energy from a ritual. Using the spells might empty the energy and then the ritual will release from the amulet
+guide.spells.info=Some rituals won’t only release its magic, but they create a power that can be channeled into my Ritual Amulet. These powers are not infinite but either seem to have a duration or they use the power accumulated in the amulet. The amulet description should tell me what spell I currently have. It won’t show anything anymore if the spell is used or the energy is depleted. It gets  the power from the Altar and the amount of power depends on the ritual. I wonder if I will ever be able to increase the power I get from the rituals.
 
-guide.rituals.info=Every menhir right now is 4 blocks away from the altar if aligned with it. So 3 blocks in between the menhir and altar. Every ritual needs 8 menhirs. You should be able to see where to place them according to the pictures. They will get replaced with special paages that show how a ritual has been build.
+guide.rituals.info=Now that I know how to create menhirs I think I can start doing rituals. Depending on the placement of the menhirs and the slotted runes magic should be channeled to the altar which will then output it in forms I cannot even begin to imagine. My grandfather showed me some drawings of rituals and how they were performed. I should have a good idea of how some rituals might be performed. I’ll write down everything I remember in a different section of the book and add the drawings to the pages.
 
-guide.ritualclearskies.info=This ritual clears up the sky!
-guide.ritualclearskies.runes= 4 wind runes.
+guide.rituals.layout=Every square in the drawing is a meter. Menhirs that have no runes are drawn by an outlined rune. The actual runes will have their representation drawn in their square.
 
-guide.ritualrain.info=This ritual makes it rain!
-guide.ritualrain.runes=2 water & 2 wind runes
+guide.ritualclearskies.info=I really hate the rain. It’s noisy and blocks my vision too much. And then there is getting wet.. Ugh.. Some wind runes should do the trick this time. If I am lucky it will even clear the heaviest storms.
 
-guide.ritualhightide.info=By performing this ritual your amulet will be powered with a spell. Using this spell on water will try to raise the water level in an enclosed area. If the area is bigger than the spell can handle or it takes energy it doesn't have it will break and use all energy.
-guide.ritualhightide.runes= 4 water runes
+guide.ritualrain.info=Even though I hate the rain, sometimes we need it. Water runes and wind runes should give the altar enough power to shift the winds to some more wet type of weather.
 
-guide.ritualrisingmoon.info=This ritual makes it nighttime real quick!
-guide.ritualrisingmoon.runes= 2 time & 2 moon runes
+guide.ritualhightide.info=With this ritual I can put a spell on my amulet which lets me raise water levels of small ponds. It can only manifest some amount of water so I should be careful I do not try to raise the water level of a too big area. The spell is unstable enough to fall apart.
 
-guide.ritualrisingsun.info=This ritual makes it daytime real quick!
-guide.ritualrisingsun.runes= 2 time & 2 sun runes
+guide.ritualsummerheat.info=This ritual is a counterpart of the Rite of High Tide. Instead of leveling water up it will vaporize the top layer of a small pond. Just like with the counterpart I should be careful with how big of an area I try to vaporize.
 
-guide.ritualsolarprotection.info=This ritual holds a place able spell. Once its nighttime all the mobs in the spell its area will be burned or made passive.
-guide.ritualsolarprotection.runes= 4 sun runes
+guide.ritualrisingmoon.info=With these powerful time runes and moon runes I should be able to speed up the time in this world. This speed up the day cycle by a lot. This ritual will only speed up the world until the sun has set. It also can only be performed at day time because it needs the energy of the sun to form with the magic of the moon runes.
 
-guide.ritualstorm.info=This will make it storm!
-guide.ritualstorm.runes= 2 time & 2 moon runes
+guide.ritualrisingsun.info=This ritual is the counterpart of the Rite of Rising Moon. It uses Sun Runes and needs it to be night time to be able to activate. This will speed up time until the sun has risen above the horizon.
 
-guide.ritualsummerheat.info=This ritual gives you a spell on your amulet. Using this on water tries to lower its water level. If it needs to lower too many blocks the spell will fail. 40 blocks max.
-guide.ritualsummerheat.runes= 4 fire runes
+guide.ritualsolarprotection.info=I may have found a way to replicate the power of the sun for a small area. With the Sun runes and energy of the sun this will create a spell which I can activate in the world. When it is placed it should make spiders passive and burn the undead. This does however mean I am still a target for the rest of the night creatures. But it will make an area a lot safer if I need it to be. The spell only lasts a night, so I should be careful when I use it.

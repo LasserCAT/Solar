@@ -1,24 +1,19 @@
 package com.mart.solar.client.gui.pages;
 
 import com.mart.solar.client.gui.GuiBase;
-import com.mart.solar.client.gui.GuiGuide;
-import com.mart.solar.client.gui.button.BackButton;
+import com.mart.solar.client.gui.GuiBook;
+import com.mart.solar.client.gui.GuiPagesManager;
 import com.mart.solar.client.gui.button.NextButton;
 import com.mart.solar.client.gui.button.PreviousButton;
 import com.mart.solar.client.gui.pages.component.PageComponent;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class GuiPage extends GuiBase{
@@ -32,9 +27,12 @@ public class GuiPage extends GuiBase{
 
     public GuiPage(String pageTitle, PageComponent... component){
         this.pageTitle = pageTitle;
-        for(PageComponent pageComponent : component){
-            this.pageComponents.add(pageComponent);
-        }
+        this.pageComponents.addAll(Arrays.asList(component));
+    }
+
+    public GuiPage(String pageTitle, LinkedList<PageComponent> pageComponents){
+        this.pageTitle = pageTitle;
+        this.pageComponents = pageComponents;
     }
 
     @Override
@@ -43,7 +41,6 @@ public class GuiPage extends GuiBase{
 
         int x = (this.width - WIDTH) / 2;
         int y = (this.height - HEIGHT) / 2;
-        this.addButton(new BackButton(x + (WIDTH/2) - 8, y + HEIGHT - 18, 100));
         this.addButton(new NextButton(x + WIDTH - 104 , y + HEIGHT - 18, 101, this));
         this.addButton(new PreviousButton(x + 95, y + HEIGHT - 18, 102, this));
 
@@ -85,7 +82,7 @@ public class GuiPage extends GuiBase{
 
         this.pageComponents.forEach(pg -> {
             if(pg.getPageNumber() == currentPage){
-                pg.draw(x, y, fontRenderer);
+                pg.draw(mouseX, mouseY, fontRenderer);
             }
         });
 
@@ -97,7 +94,7 @@ public class GuiPage extends GuiBase{
 
         this.pageComponents.forEach(pg -> {
             if(pg.getPageNumber() == currentPage + 1){
-                pg.draw(x, y, fontRenderer);
+                pg.draw(mouseX, mouseY, fontRenderer);
             }
         });
 
@@ -106,11 +103,21 @@ public class GuiPage extends GuiBase{
     }
 
     @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
-        if (button instanceof BackButton) {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiGuide());
-            return;
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+
+        if(mouseButton == 1){
+            GuiBook playerGui = GuiPagesManager.getPlayerGUI(Minecraft.getMinecraft().player);
+            Minecraft.getMinecraft().displayGuiScreen(playerGui.getPreviousGui());
         }
+
+        this.pageComponents.forEach(pg -> pg.mouseClicked(mouseX, mouseY));
+
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException {
+        super.actionPerformed(button);
 
         if(button instanceof NextButton){
             if(this.currentPage+1 >= getPagesCount()){
@@ -125,6 +132,10 @@ public class GuiPage extends GuiBase{
             }
             this.currentPage--;
         }
+    }
+
+    public GuiPage getNewInstance(){
+        return new GuiPage(this.pageTitle, this.pageComponents);
     }
 
     public int getPagesCount(){

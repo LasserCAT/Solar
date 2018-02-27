@@ -1,5 +1,7 @@
 package com.mart.solar.client.gui.button;
 
+import com.mart.solar.client.gui.GuiBook;
+import com.mart.solar.client.gui.GuiPagesManager;
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -43,7 +45,11 @@ public class BookButton extends GuiButtonExt {
         GlStateManager.disableBlend();
     }
 
-    public GuiPage getPage() {
-        return page;
+    public void openPage() {
+        GuiPage newPage =  page.getNewInstance();
+
+        GuiBook guiBook = GuiPagesManager.getPlayerGUI(Minecraft.getMinecraft().player);
+        guiBook.setCurrentGui(newPage);
+        Minecraft.getMinecraft().displayGuiScreen(newPage);
     }
 }

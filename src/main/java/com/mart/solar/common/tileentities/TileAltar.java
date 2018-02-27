@@ -9,6 +9,7 @@ import com.mart.solar.common.util.TileAltarItemHandler;
 import com.mart.solar.common.util.TileRuneInfuserItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -90,6 +92,16 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
 
         if(this.getWorld().getWorldTime() % 20 == 0){
             this.blocked = this.skyBlocked();
+
+            if(!this.world.isRemote) {
+                List<EntityItem> entitiesInRange = getWorld().getEntitiesWithinAABB(EntityItem.class,
+                        new AxisAlignedBB(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(),
+                                this.getPos().getX() + 1, this.getPos().getY() + 2, this.getPos().getZ() + 1));
+
+                if(entitiesInRange.size() >= 1){
+                    insertItemOnTop(entitiesInRange.get(0).getItem());
+                }
+            }
         }
 
         if(!blocked){
@@ -238,6 +250,21 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
         }
 
         heldStack.setCount(heldStack.getCount() - 1);
+    }
+
+    private void insertItemOnTop(ItemStack item) {
+        ItemStack insertStack = item.copy();
+        insertStack.setCount(1);
+
+        if(isAltarRecipe(item) == null){
+            return;
+        }
+
+        if(this.itemStackHandler.insertItem(0, insertStack, false) == insertStack){
+            return;
+        }
+
+        item.setCount(item.getCount() - 1);
     }
 
     public void startAltarRecipe(AltarRecipe altarRecipe) {

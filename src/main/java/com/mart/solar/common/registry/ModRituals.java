@@ -20,7 +20,6 @@ public class ModRituals {
         addRitual(new RitualRisingSun());
         addRitual(new RitualRisingMoon());
         addRitual(new RitualRain());
-        addRitual(new RitualStorm());
         addRitual(new RitualClearSkies());
         addRitual(new RitualSummerHeat());
         addRitual(new RitualHighTide());

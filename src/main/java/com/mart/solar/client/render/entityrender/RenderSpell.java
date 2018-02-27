@@ -57,7 +57,7 @@ public class RenderSpell<T extends Entity> extends Render<T> {
         GlStateManager.enableRescaleNormal();
         GlStateManager.rotate(-90, 1.0F, 0.0F, 0.0F);
 
-        this.bindTexture(new ResourceLocation(Solar.MODID, "textures/spell-border.png"));
+        this.bindTexture(new ResourceLocation(Solar.MODID, "textures/spell_border.png"));
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
 

@@ -32,7 +32,7 @@ public class TileRuneInfuserItemHandler extends ItemStackHandler {
             }
 
             ItemStack returnItem = super.insertItem(slot, stack, simulate);
-            tileRuneInfuser.infuse(stack);
+            tileRuneInfuser.infuse();
             return returnItem;
         }
 
@@ -42,7 +42,7 @@ public class TileRuneInfuserItemHandler extends ItemStackHandler {
             }
 
             ItemStack returnItem = super.insertItem(slot, stack, simulate);
-            tileRuneInfuser.infuse(stack);
+            tileRuneInfuser.infuse();
             return returnItem;
         }
 

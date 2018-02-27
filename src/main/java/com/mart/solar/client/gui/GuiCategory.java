@@ -3,25 +3,21 @@ package com.mart.solar.client.gui;
 import com.mart.solar.client.gui.button.BookButton;
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.item.Item;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiGuide extends GuiBase {
+public class GuiCategory extends GuiBase{
 
-    private List<BookButton> guiButtons;
+    private final Item displayItem;
 
-    public GuiGuide(){
-
-    }
+    private List<GuiPage> pages = new ArrayList<>();
 
     @Override
     public void initGui() {
         super.initGui();
-        List<GuiPage> guiPages = GuiPagesManager.getGuiPages();
-        this.guiButtons = new ArrayList<>();
-
         int xOffset = 20;
         int yOffset = 25;
 
@@ -29,30 +25,31 @@ public class GuiGuide extends GuiBase {
         int y = (this.height - HEIGHT) / 2;
 
         int buttonAmount = 0;
-        for(GuiPage guiPage : guiPages){
+        for(GuiPage guiPage : this.pages){
             BookButton button = new BookButton(guiPage, x + xOffset, y + yOffset + (buttonAmount * 10), buttonAmount);
-            this.guiButtons.add(button);
             this.addButton(button);
             buttonAmount++;
         }
     }
 
     @Override
-    public void updateScreen() {
-        super.updateScreen();
-    }
-
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-
-
-    }
-
-    @Override
     protected void actionPerformed(GuiButton button) throws IOException {
-        BookButton bButton = (BookButton) button;
-        mc.displayGuiScreen(bButton.getPage());
+        super.actionPerformed(button);
+        if(button instanceof BookButton){
+            BookButton bookButton = (BookButton) button;
+            bookButton.openPage();
+        }
     }
 
+    public GuiCategory(Item displayItem) {
+        this.displayItem = displayItem;
+    }
+
+    public Item getDisplayItem() {
+        return displayItem;
+    }
+
+    public void addPage(GuiPage page){
+        this.pages.add(page);
+    }
 }

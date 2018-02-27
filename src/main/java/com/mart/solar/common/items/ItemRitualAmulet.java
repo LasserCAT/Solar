@@ -4,6 +4,7 @@ import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.api.spell.SpellManager;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +12,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Optional;
 
 public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
@@ -27,17 +30,32 @@ public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
         if (!world.isRemote) {
             ItemStack stack = player.getHeldItem(hand);
 
-            System.out.println(Spell.getSpellHandleFromNBT(getCompound(stack)));
-
-
-
             Spell spell = SpellManager.getSpellByName(Spell.getSpellHandleFromNBT(getCompound(stack)));
+
+            if(spell == null){
+                return super.onItemRightClick(world, player, hand);
+            }
+
             Spell copySpell = spell.getNewInstance();
             copySpell.getDataFromNBT(getCompound(stack));
             copySpell.activateSpell(player, stack);
 
         }
         return super.onItemRightClick(world, player, hand);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        Spell spell = SpellManager.getSpellByName(Spell.getSpellHandleFromNBT(getCompound(stack)));
+
+        if(spell == null){
+            return;
+        }
+
+        String spellName = spell.getName();
+        tooltip.add("Spell: " + spellName);
+
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     public static void setEnergy(ItemStack stack, int energy) {

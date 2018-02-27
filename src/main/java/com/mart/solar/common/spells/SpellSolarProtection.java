@@ -3,6 +3,8 @@ package com.mart.solar.common.spells;
 import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.common.entity.EntitySpellContainer;
+import com.mart.solar.common.items.ItemBase;
+import com.mart.solar.common.items.ItemRitualAmulet;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -28,7 +30,7 @@ public class SpellSolarProtection extends Spell implements IPlaceableSpell {
 
     public SpellSolarProtection() {
         super("Solar Protection");
-        this.lifeSpan = 2000;
+        this.lifeSpan = 12000;
         this.spellRadius = 8;
     }
 
@@ -61,6 +63,9 @@ public class SpellSolarProtection extends Spell implements IPlaceableSpell {
         }
 
         player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), result.getBlockPos(), this));
+
+        setSpellToNullOnNBT(ItemBase.getCompound(itemStack));
+        ItemRitualAmulet.setEnergy(itemStack, 0);
     }
 
     @Override

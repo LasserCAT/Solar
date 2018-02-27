@@ -5,6 +5,7 @@ import com.mart.solar.api.spell.Spell;
 import com.mart.solar.api.spell.SpellManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -23,15 +24,23 @@ public class EntitySpellContainer extends Entity{
 
         this.setWorld(worldIn);
 
-        this.setPosition(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5);
+        this.setPosition(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ());
 
         this.spell = iPlaceAbleSpell;
+        this.setSize(8, 8);
 
         writeEntityToNBT(getEntityData());
     }
 
     @Override
     protected void entityInit() {
+    }
+
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        return new AxisAlignedBB(this.getPosition().getX() - 8, this.getPosition().getY(), this.getPosition().getZ() - 8,
+                this.getPosition().getX() + 8, this.getPosition().getY() + 1, this.getPosition().getZ() + 8);
+
     }
 
     @Override
@@ -69,14 +78,6 @@ public class EntitySpellContainer extends Entity{
         placeAbleSpell.tick(this.getEntityWorld(), this.getPosition(), this.lifeTime);
 
         this.lifeTime++;
-    }
-
-    public boolean isDay() {
-        long worldTime = world.getWorldTime();
-        long dayTime = worldTime % 24000;
-
-        return dayTime < 12566 || dayTime > 23450;
-
     }
 
 }

@@ -2,7 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "solar:blocks/brokentotem"
+      "up": "solar:blocks/altar/altar_top_damaged",
+      "down": "solar:blocks/altar/altar_bottom",
+      "north": "solar:blocks/altar/altar_side",
+      "south": "solar:blocks/altar/altar_side",
+      "east": "solar:blocks/altar/altar_side",
+      "west": "solar:blocks/altar/altar_side",
+      "particle": "solar:blocks/altar/altar_top_damaged"
     }
   },
   "variants": {

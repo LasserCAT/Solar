@@ -21,7 +21,7 @@ public class ModAltarRecipes {
 
         addAltarRecipe(new AltarRecipe(ModItems.DULL_AMULET, ModItems.RITUAL_AMULET, 1000, "ritualAmuletRecipe"));
         addAltarRecipe(new AltarRecipe(Item.getItemFromBlock(Blocks.PLANKS), ModItems.RUNES, 100, "runeRecipe"));
-        addAltarRecipe(new AltarRecipe(Items.BOOK, ModItems.GUIDE_BOOK, 100, "guideBookRecipe"));
+        addAltarRecipe(new AltarRecipe(Items.BOOK, ModItems.JOURNAL, 100, "guideBookRecipe"));
     }
 
     public static AltarRecipe[] getAltarRecipes()

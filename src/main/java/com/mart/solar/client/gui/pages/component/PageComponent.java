@@ -21,4 +21,7 @@ public abstract class PageComponent {
     public int getPageNumber() {
         return pageNumber;
     }
+
+    public void mouseClicked(int mouseX, int mouseY) {
+    }
 }

@@ -51,6 +51,7 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         }
         if(infuserReagents == null){ setupInfuserReagents();}
 
+        infuse();
     }
 
     @Override
@@ -161,11 +162,11 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         }
     }
 
-    public void infuse(ItemStack insertStack){
+    public void infuse(){
         if(!this.itemStackHandler.getStackInSlot(0).isEmpty() && !this.itemStackHandler.getStackInSlot(1).isEmpty()){
             if(reagentName.equalsIgnoreCase("")){
                 for(InfuserReagent reagent : infuserReagents){
-                    if(reagent.getReagent() == insertStack.getItem()){
+                    if(reagent.getReagent() == this.itemStackHandler.getStackInSlot(1).getItem()){
                         this.infusing = true;
                         this.reagentName = reagent.getRegistryName().toString();
                         this.reagentUses = reagent.getReagentUses();
@@ -254,7 +255,10 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
     }
 
     public void clearReagent() {
-        this.itemStackHandler.extractItem(1, 1, false);
+        this.itemStackHandler.setStackInSlot(1, ItemStack.EMPTY);
+        if(!this.world.isRemote){
+            notifyUpdate();
+        }
     }
 
     public boolean isInfusing() {

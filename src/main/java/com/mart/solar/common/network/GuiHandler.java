@@ -1,6 +1,6 @@
 package com.mart.solar.common.network;
 
-import com.mart.solar.client.gui.GuiGuide;
+import com.mart.solar.client.gui.GuiPagesManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -21,7 +21,7 @@ public class GuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID){
             case 0:
-                return new GuiGuide();
+                return GuiPagesManager.getPlayerGUI(player).getCurrentGui();
         }
 
         return null;
