@@ -26,13 +26,13 @@ public class ModItems {
 
     public static void init(RegistryEvent.Register<Item> event) {
 
-        DULL_AMULET = register(new ItemDullAmulet(), event);
-        RITUAL_AMULET = register(new ItemRitualAmulet(), event);
-        SILVER_INGOT = register(new ItemSilverIngot("silveringot"), event);
+        DULL_AMULET = register(new ItemDullAmulet("dull_amulet"), event);
+        RITUAL_AMULET = register(new ItemRitualAmulet("ritual_amulet"), event);
+        SILVER_INGOT = register(new ItemSilverIngot("silver_ingot"), event);
         SILVER_NUGGET = register(new ItemSilverNugget("silver_nugget"), event);
-        JOURNAL = register(new ItemGuideBook(), event);
-        SOLAR_FOCUS = register(new ItemSolarFocus(), event);
-        LUNAR_FOCUS = register(new ItemLunarFocus(), event);
+        JOURNAL = register(new ItemGuideBook("journal"), event);
+        SOLAR_FOCUS = register(new ItemSolarFocus("solar_focus"), event);
+        LUNAR_FOCUS = register(new ItemLunarFocus("lunar_focus"), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
 

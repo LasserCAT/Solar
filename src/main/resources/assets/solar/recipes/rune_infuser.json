@@ -2,13 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "WWW",
-    "WCW",
-    "WWW"  ],
+    "GLG",
+    "SFS"  ],
   "key": {
-    "C": [
+    "G": [
       {
-        "item": "minecraft:clock",
+        "item": "minecraft:gold_ingot",
         "data": 0
+      }
+    ],
+    "S": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingotSilver"
       }
     ],
     "W": [
@@ -36,10 +42,22 @@
         "item": "minecraft:planks",
         "data": 5
       }
-    ]
+    ],
+    "L": [
+      {
+        "item": "solar:solar_focus",
+        "data": 0
+      }
+    ],
+    "F": [
+      {
+        "item": "solar:lunar_focus",
+        "data": 0
+      }
+     ]
   },
   "result": {
-    "item": "solar:sun_dial",
+    "item": "solar:rune_infuser",
     "data": 0
   }
 }

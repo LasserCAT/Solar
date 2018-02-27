@@ -18,8 +18,8 @@ import java.util.Optional;
 
 public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
 
-    public ItemRitualAmulet() {
-        super("ritualamulet");
+    public ItemRitualAmulet(String registryName) {
+        super(registryName);
         setCreativeTab(Solar.solarTab);
         setMaxStackSize(1);
     }

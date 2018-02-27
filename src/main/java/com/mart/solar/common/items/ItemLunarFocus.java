@@ -4,8 +4,8 @@ import com.mart.solar.Solar;
 
 public class ItemLunarFocus extends ItemBase {
 
-    public ItemLunarFocus() {
-        super("lunarfocus");
+    public ItemLunarFocus(String registryName) {
+        super(registryName);
         setCreativeTab(Solar.solarTab);
     }
 }

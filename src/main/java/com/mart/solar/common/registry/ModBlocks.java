@@ -22,14 +22,14 @@ public class ModBlocks {
     public static BlockFlowerMoon flowerMoon;
 
     public static void init(RegistryEvent.Register<Block> event) {
-        blockAltar = register(new BlockAltar("suntotem"), event);
-        brokenAltar = register(new BlockBrokenAltar("brokentotem"), event);
-        runeInfuser = register(new BlockRuneInfuser("runeinfuser"), event);
+        blockAltar = register(new BlockAltar("altar"), event);
+        brokenAltar = register(new BlockBrokenAltar("broken_altar"), event);
+        runeInfuser = register(new BlockRuneInfuser("rune_infuser"), event);
         ritualStone = register(new BlockRitualStone(), event);
         menhir = register(new BlockMenhir("menhir"), event);
         sundial = register(new BlockSunDial("sundial"), event);
 
-        silverOre = register(new BlockSilverOre("silverore"), event);
+        silverOre = register(new BlockSilverOre("silver_ore"), event);
 
         flowerMoon = register(new BlockFlowerMoon("flower_moon"), event);
     }

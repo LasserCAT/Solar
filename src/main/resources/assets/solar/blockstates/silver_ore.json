@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "solar:blocks/silverore"
+      "all": "solar:blocks/silver_ore"
     }
   },
   "variants": {

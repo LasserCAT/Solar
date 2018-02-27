@@ -1,16 +1,23 @@
 # Blocks
 
-tile.suntotem.name=Celestial Altar
-tile.brokentotem.name=Broken Altar
-tile.runeinfuser.name=Rune Infuser
-tile.silverore.name=Silver Ore
+tile.altar.name=Celestial Altar
+tile.broken_altar.name=Broken Altar
+tile.rune_infuser.name=Rune Infuser
+tile.silver_ore.name=Silver Ore
+tile.menhir.name=Menhir
+tile.sundial.name=Sundial
+tile.flower_moon.name=Moon Flower
 
 #Items
-item.guidebook.name=Guide Book
-item.ritualamulet.name=Ritual Amulet
+item.journal.name=Journal
+item.ritual_amulet.name=Ritual Amulet
 item.dull_amulet.name=Dull Amulet
-item.silveringot.name=Silver Ingot
-item.silvernugget.name=Silver Nugget
+item.silver_ingot.name=Silver Ingot
+item.silver_nugget.name=Silver Nugget
+item.solar_focus.name=Solar Focus
+item.lunar_focus=Lunar Focus
+
+#Runes
 
 #Book
 
@@ -41,6 +48,8 @@ guide.runeinfuser.info3=My father used to tell lots of stories about ancient tim
 guide.runeinfuser.craftinginfo=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
 
 guide.moonflower.info=I saw some interesting flowers grow in the biomes that also house the altars. They looked very weak when it was day. I think they might night flowers so I should probably not try to collect them at daytime. Night time looks like a better chance to gather some.
+
+guide.sundial.info=I really needed a better way of telling the current time. This clock is not as accurate as I want it to be so I have to find something different. I have seen people in my town using sundials. If I use the clock while creating one I should definitely be able to create a precise dial to be able to tell the time.
 
 #Book Rituals
 

@@ -5,8 +5,8 @@ import com.mart.solar.api.interfaces.IRune;
 
 public class ItemDullAmulet extends ItemBase implements IRune{
 
-    public ItemDullAmulet() {
-        super("dull_amulet");
+    public ItemDullAmulet(String registryName) {
+        super(registryName);
         setCreativeTab(Solar.solarTab);
         setMaxStackSize(1);
     }

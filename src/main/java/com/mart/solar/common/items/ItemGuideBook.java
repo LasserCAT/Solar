@@ -12,8 +12,8 @@ public class ItemGuideBook extends ItemBase {
 
 
 
-    public ItemGuideBook() {
-        super("guidebook");
+    public ItemGuideBook(String registryName) {
+        super(registryName);
         setCreativeTab(Solar.solarTab);
         setMaxStackSize(1);
     }
