@@ -23,7 +23,7 @@ public class RitualRisingMoon extends Ritual {
     private boolean activated = false;
 
     public RitualRisingMoon() {
-        super("Ritual of the Rising Moon", 100, 0);
+        super("Rite of Rising Moon", 100, 0);
 
         setRegistryName("ritualrisingmoon");
 

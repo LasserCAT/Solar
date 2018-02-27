@@ -94,6 +94,16 @@ public class GuiPagesManager {
                 new PageTextComponent(I18n.format("guide.moonflower.info"))
         ));
 
+        journalCategory.addPage(new GuiPage("Sundial",
+                new PageTextComponent(I18n.format("guide.sundial.info")),
+                new CraftingGridComponent(
+                        Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
+                        Item.getItemFromBlock(Blocks.PLANKS), Items.CLOCK,                          Item.getItemFromBlock(Blocks.PLANKS),
+                        Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS))
+                        .setCraftedItem(Item.getItemFromBlock(ModBlocks.sundial))
+                        .pageNumber(4)
+        ));
+
         journalCategory.addPage(new GuiPage("Rituals",
                 new PageTextComponent(I18n.format("guide.rituals.info")),
                 new PageTextComponent(I18n.format("guide.rituals.layout8"))

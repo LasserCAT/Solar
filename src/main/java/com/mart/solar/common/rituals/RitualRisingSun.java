@@ -21,7 +21,7 @@ public class RitualRisingSun extends Ritual {
     private boolean activated = false;
 
     public RitualRisingSun() {
-        super("Ritual of the Rising Sun", 100, 0);
+        super("Rite of Rising Sun", 100, 0);
 
         this.setRegistryName("ritualrisingsun");
 

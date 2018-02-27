@@ -15,7 +15,7 @@ public class ModBlocks {
     public static BlockRuneInfuser runeInfuser;
     public static BlockMenhir menhir;
     public static BlockRitualStone ritualStone;
-    public static BlockSunDial sunDial;
+    public static BlockSunDial sundial;
 
     public static BlockSilverOre silverOre;
 
@@ -27,7 +27,7 @@ public class ModBlocks {
         runeInfuser = register(new BlockRuneInfuser("runeinfuser"), event);
         ritualStone = register(new BlockRitualStone(), event);
         menhir = register(new BlockMenhir("menhir"), event);
-        sunDial = register(new BlockSunDial("sun_dial"), event);
+        sundial = register(new BlockSunDial("sundial"), event);
 
         silverOre = register(new BlockSilverOre("silverore"), event);
 
@@ -40,7 +40,7 @@ public class ModBlocks {
         registerItemBlock(runeInfuser, event);
         registerItemBlock(menhir, event);
         registerItemBlock(ritualStone, event);
-        registerItemBlock(sunDial, event);
+        registerItemBlock(sundial, event);
 
         registerItemBlock(silverOre, event);
 
