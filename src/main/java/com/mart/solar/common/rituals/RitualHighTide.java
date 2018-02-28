@@ -15,7 +15,7 @@ import java.util.List;
 public class RitualHighTide extends Ritual {
 
     public RitualHighTide() {
-        super("Rite of the High Tide", 0, 100);
+        super("Rite of the High Tide");
         setRegistryName("ritualhightide");
     }
 

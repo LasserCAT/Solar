@@ -21,7 +21,7 @@ public class RitualRisingSun extends Ritual {
     private boolean activated = false;
 
     public RitualRisingSun() {
-        super("Rite of Rising Sun", 100, 0);
+        super("Rite of Rising Sun");
 
         this.setRegistryName("ritualrisingsun");
 
@@ -43,7 +43,7 @@ public class RitualRisingSun extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        if ((altar.getWorld().getWorldTime() % 24000 <= 0 || altar.getWorld().getWorldTime() % 24000 >= 13000) && altar.getSolarEnergy() >= getRitualSolarCost()) {
+        if ((altar.getWorld().getWorldTime() % 24000 <= 0 || altar.getWorld().getWorldTime() % 24000 >= 13000)) {
             activated = true;
         }
     }

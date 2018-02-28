@@ -71,7 +71,6 @@ public class BlockAltar extends BlockBase {
 
             tileAltar.insertItem(player, hand);
 
-            player.sendMessage(new TextComponentString("" + tileAltar.getSolarEnergy() + "/" + tileAltar.getLunarEnergy()));
         }
 
         return true;

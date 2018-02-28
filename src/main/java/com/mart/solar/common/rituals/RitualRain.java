@@ -13,7 +13,7 @@ import java.util.List;
 public class RitualRain extends Ritual {
 
     public RitualRain() {
-        super("Rite of Rain", 0, 100);
+        super("Rite of Rain");
 
         setRegistryName("ritualrain");
     }

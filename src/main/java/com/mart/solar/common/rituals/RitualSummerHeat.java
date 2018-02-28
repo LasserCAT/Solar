@@ -15,7 +15,7 @@ import java.util.List;
 public class RitualSummerHeat extends Ritual {
 
     public RitualSummerHeat() {
-        super("Ritual of Summer Heat", 100, 0);
+        super("Ritual of Summer Heat");
         setRegistryName("ritualsummerheat");
     }
 

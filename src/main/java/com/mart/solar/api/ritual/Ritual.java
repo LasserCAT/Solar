@@ -20,13 +20,9 @@ import static com.mart.solar.common.registry.ModBlocks.menhir;
 public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
     private String ritualName;
-    private float ritualSolarCost;
-    private float ritualLunarCost;
 
-    public Ritual(String ritualName, float ritualSolarCost, float ritualLunarCost) {
+    public Ritual(String ritualName) {
         this.ritualName = ritualName;
-        this.ritualSolarCost = ritualSolarCost;
-        this.ritualLunarCost = ritualLunarCost;
     }
 
     public boolean isSetup(TileAltar altar) {
@@ -114,11 +110,4 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         return ritualName;
     }
 
-    public float getRitualSolarCost() {
-        return ritualSolarCost;
-    }
-
-    public float getRitualLunarCost() {
-        return ritualLunarCost;
-    }
 }

@@ -23,7 +23,7 @@ public class RitualRisingMoon extends Ritual {
     private boolean activated = false;
 
     public RitualRisingMoon() {
-        super("Rite of Rising Moon", 100, 0);
+        super("Rite of Rising Moon");
 
         setRegistryName("ritualrisingmoon");
 
@@ -45,7 +45,7 @@ public class RitualRisingMoon extends Ritual {
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        if ((altar.getWorld().getWorldTime() % 24000 <= 13000 || altar.getWorld().getWorldTime() % 24000 >= 23999) && altar.getLunarEnergy() >= getRitualLunarCost()) {
+        if ((altar.getWorld().getWorldTime() % 24000 <= 13000 || altar.getWorld().getWorldTime() % 24000 >= 23999)) {
             activated = true;
         }
     }

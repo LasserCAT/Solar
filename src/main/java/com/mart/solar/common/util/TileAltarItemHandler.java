@@ -19,7 +19,6 @@ public class TileAltarItemHandler extends ItemStackHandler {
     @Nonnull
     @Override
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-
         AltarRecipe altarRecipe = tileAltar.isAltarRecipe(stack);
 
         if(altarRecipe == null){

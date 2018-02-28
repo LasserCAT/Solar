@@ -33,9 +33,6 @@ import java.util.*;
 public class TileAltar extends TileBase implements ITickable, ICapabilityProvider {
 
     //todo: change back to 0
-    private float solarEnergy = 30000;
-    private float lunarEnergy = 30000;
-
     private boolean blocked = false;
 
     private AltarRecipe currentRecipe;
@@ -65,9 +62,6 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
         }
 
         compound.setInteger("recipeEnergyProgress", this.currentEnergyProgress);
-        compound.setFloat("solarEnergy", this.solarEnergy);
-        compound.setFloat("lunarEnergy", this.lunarEnergy);
-
 
         compound.setTag("itemStackHandler", this.itemStackHandler.serializeNBT());
 
@@ -78,8 +72,6 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.recipeInProgress = compound.getBoolean("recipeInProgress");
-        this.solarEnergy = compound.getFloat("solarEnergy");
-        this.lunarEnergy = compound.getFloat("lunarEnergy");
         this.energyCost = compound.getInteger("recipeEnergyCost");
         this.currentEnergyProgress = compound.getInteger("recipeEnergyProgress");
         this.currentRecipe = AltarRecipeManager.getRecipeByRegistryName(compound.getString("currentRecipe"));
@@ -89,7 +81,6 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
 
     @Override
     public void update() {
-
         if(this.getWorld().getWorldTime() % 20 == 0){
             this.blocked = this.skyBlocked();
 
@@ -104,36 +95,17 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
             }
         }
 
-        if(!blocked){
-            if (this.getWorld().getWorldTime() % 24000 > 0 && this.getWorld().getWorldTime() % 24000 < 13000) {
-                addSolarEnergy();
-                extractLunarEnergy(2);
-            }
-            if (this.getWorld().getWorldTime() % 24000 >= 13000 && this.getWorld().getWorldTime() % 24000 <= 24000) {
-                addLunarEnergy();
-                extractSolarEnergy(2);
-            }
-        }
-
         runAltarRecipe();
     }
 
     private void runAltarRecipe(){
-        if(!this.itemStackHandler.getStackInSlot(0).isEmpty() && this.currentRecipe != null){
+        if(blocked){
+            return;
+        }
+
+        if (!this.itemStackHandler.getStackInSlot(0).isEmpty() && this.currentRecipe != null){
             if(this.currentEnergyProgress < this.currentRecipe.getEnergyCost()){
-                if(this.solarEnergy > 0 && this.lunarEnergy > 0){
-                    this.currentEnergyProgress += 2;
-                    this.solarEnergy--;
-                    this.lunarEnergy--;
-                }
-                else if(this.solarEnergy <= 0 && this.lunarEnergy > 0){
-                    this.currentEnergyProgress++;
-                    this.lunarEnergy--;
-                }
-                else if(this.lunarEnergy <= 0 && this.solarEnergy > 0){
-                    this.currentEnergyProgress++;
-                    this.solarEnergy--;
-                }
+                this.currentEnergyProgress++;
             }
             else{
                 this.itemStackHandler.setStackInSlot(0, new ItemStack(this.currentRecipe.getOutput(), 1));
@@ -148,6 +120,9 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
     }
 
     public void useRitualAmulet(BlockPos pos, World world, EntityPlayer player) {
+        if(blocked){
+            return;
+        }
         int radius = 5;
         int startingY = pos.getY();
 
@@ -165,12 +140,8 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
         //Check Ritual
         Optional<Ritual> ritual = RitualManager.getRituals().stream().filter(r -> r.isSetup(this)).findFirst();
         if(ritual.isPresent()){
-            if(this.solarEnergy >= ritual.get().getRitualSolarCost() && this.lunarEnergy >= ritual.get().getRitualLunarCost() ){
-                ritual.get().performRitual(this, player);
-                ritual.get().clearRunes(this);
-                this.lunarEnergy -= ritual.get().getRitualLunarCost();
-                this.solarEnergy -= ritual.get().getRitualSolarCost();
-            }
+            ritual.get().performRitual(this, player);
+            ritual.get().clearRunes(this);
         }
     }
 
@@ -268,6 +239,9 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
     }
 
     public void startAltarRecipe(AltarRecipe altarRecipe) {
+        if(blocked){
+            return;
+        }
         this.currentRecipe = altarRecipe;
         this.energyCost = altarRecipe.getEnergyCost();
         this.recipeInProgress = true;
@@ -318,31 +292,5 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
 
     public int getEnergyCost() {
         return energyCost;
-    }
-
-    public void addSolarEnergy() {
-        solarEnergy++;
-    }
-
-    public void addLunarEnergy() {
-        lunarEnergy++;
-    }
-
-    public void extractSolarEnergy(float amount) {
-        if (solarEnergy > 0)
-            solarEnergy -= amount;
-    }
-
-    public void extractLunarEnergy(float amount) {
-        if (lunarEnergy > 0)
-            lunarEnergy -= amount;
-    }
-
-    public float getSolarEnergy() {
-        return solarEnergy;
-    }
-
-    public float getLunarEnergy() {
-        return lunarEnergy;
     }
 }
