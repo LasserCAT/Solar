@@ -24,4 +24,17 @@ public class WorldGenUtil {
         return new BlockPos(pos.getX(), 1, pos.getZ());
     }
 
+    public static BlockPos getFirstBlockInNether(BlockPos blockPos, World world) {
+        for (int y = 32; y < 125; y++) {
+            Block block = world.getBlockState(new BlockPos(blockPos.getX(), y, blockPos.getZ())).getBlock();
+            if (block == Blocks.NETHERRACK){
+                Block blockAbove = world.getBlockState(new BlockPos(blockPos.getX(), y+1, blockPos.getZ())).getBlock();
+                if(blockAbove == Blocks.AIR){
+                    return new BlockPos(blockPos.getX(), y+1, blockPos.getZ());
+                }
+            }
+        }
+
+        return new BlockPos(blockPos.getX(), 200, blockPos.getZ());
+    }
 }

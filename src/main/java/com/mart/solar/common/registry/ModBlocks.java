@@ -20,6 +20,7 @@ public class ModBlocks {
     public static BlockSilverOre silverOre;
 
     public static BlockFlowerMoon flowerMoon;
+    public static BlockFlowerFiery flowerFiery;
 
     public static void init(RegistryEvent.Register<Block> event) {
         blockAltar = register(new BlockAltar("altar"), event);
@@ -32,6 +33,7 @@ public class ModBlocks {
         silverOre = register(new BlockSilverOre("silver_ore"), event);
 
         flowerMoon = register(new BlockFlowerMoon("flower_moon"), event);
+        flowerFiery = register(new BlockFlowerFiery("flower_fiery"), event);
     }
 
     public static void initItemBlocks(RegistryEvent.Register<Item> event) {
@@ -45,6 +47,7 @@ public class ModBlocks {
         registerItemBlock(silverOre, event);
 
         registerItemBlock(flowerMoon, event);
+        registerItemBlock(flowerFiery, event);
     }
 
     private static <T extends Block> T register(T block, RegistryEvent.Register<Block> event) {

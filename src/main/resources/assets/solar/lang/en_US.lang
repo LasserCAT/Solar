@@ -10,6 +10,7 @@ tile.silver_ore.name=Silver Ore
 tile.menhir.name=Menhir
 tile.sundial.name=Sundial
 tile.flower_moon.name=Moon Flower
+tile.flower_fiery.name=Fiery Flower
 
 #Items
 item.journal.name=Journal

@@ -12,14 +12,12 @@ public class WorldGenFlowerMoon implements ISolarWorldGen {
 
     @Override
     public void generateOverworld(World world, Random rand, int chunkX, int chunkZ) {
-
         int randomChance = rand.nextInt(16);
         if(randomChance != 1){
             return;
         }
 
-        int chunkBlockLocX = (chunkX * 16);
-        int chunkBlockLocZ = (chunkZ * 16);
+        int chunkBlockLocX = (chunkX * 16), chunkBlockLocZ = (chunkZ * 16);
         int randomY = 100;
 
         BlockPos blockpos = new BlockPos(chunkBlockLocX, randomY, chunkBlockLocZ);
@@ -28,7 +26,6 @@ public class WorldGenFlowerMoon implements ISolarWorldGen {
         if (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)) {
             return;
         }
-
 
         int flowers = rand.nextInt(8) + 1;
 
