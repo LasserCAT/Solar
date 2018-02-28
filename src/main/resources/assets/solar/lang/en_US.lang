@@ -1,3 +1,6 @@
+# Tab
+itemGroup.solar=Solar
+
 # Blocks
 
 tile.altar.name=Celestial Altar
@@ -15,9 +18,18 @@ item.dull_amulet.name=Dull Amulet
 item.silver_ingot.name=Silver Ingot
 item.silver_nugget.name=Silver Nugget
 item.solar_focus.name=Solar Focus
-item.lunar_focus=Lunar Focus
+item.lunar_focus.name=Lunar Focus
 
 #Runes
+item.solar_rune.normal.name=Rune
+item.solar_rune.fire.name=Fire Rune
+item.solar_rune.water.name=Water Rune
+item.solar_rune.earth.name=Earth Rune
+item.solar_rune.wind.name=Wind Rune
+item.solar_rune.time.name=Time Rune
+item.solar_rune.life.name=Life Rune
+item.solar_rune.sun.name=Sun Rune
+item.solar_rune.moon.name=Moon Rune
 
 #Book
 
