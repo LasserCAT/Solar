@@ -85,9 +85,7 @@ public class GuiPagesManager {
                         Items.GOLD_INGOT, ModItems.SOLAR_FOCUS, Items.GOLD_INGOT,
                         ModItems.SILVER_INGOT, ModItems.LUNAR_FOCUS, ModItems.SILVER_INGOT)
                         .setCraftedItem(Item.getItemFromBlock(ModBlocks.runeInfuser))
-                        .pageNumber(4),
-                new PageTextComponent(I18n.format("guide.runeinfuser.warning")).pageNumber(4),
-                new PageTextComponent(I18n.format("guide.runeinfuser.cheatsheet")).pageNumber(5)
+                        .pageNumber(4)
         ));
 
         journalCategory.addPage(new GuiPage("Moon Flower",
@@ -106,7 +104,7 @@ public class GuiPagesManager {
 
         journalCategory.addPage(new GuiPage("Rituals",
                 new PageTextComponent(I18n.format("guide.rituals.info")),
-                new PageTextComponent(I18n.format("guide.rituals.layout8"))
+                new PageTextComponent(I18n.format("guide.rituals.layout"))
         ));
 
         journalCategory.addPage(new GuiPage("Spells",
