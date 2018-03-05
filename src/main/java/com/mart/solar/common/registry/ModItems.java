@@ -5,13 +5,17 @@ import com.mart.solar.common.items.ItemRune;
 import com.mart.solar.common.items.*;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Locale;
 
+@Mod.EventBusSubscriber
 public class ModItems {
 
     public static ItemRitualAmulet RITUAL_AMULET;
@@ -35,8 +39,6 @@ public class ModItems {
         LUNAR_FOCUS = register(new ItemLunarFocus("lunar_focus"), event);
 
         event.getRegistry().register(RUNES.setRegistryName("runes"));
-
-        registerModels();
     }
 
     private static <T extends Item> T register(T item, RegistryEvent.Register<Item> event) {
@@ -49,10 +51,17 @@ public class ModItems {
         return item;
     }
 
-    @SideOnly(Side.CLIENT)
-    private static void registerModels() {
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        init(event);
+        ModBlocks.initItemBlocks(event);
+    }
+
+    @SubscribeEvent
+    public static void registerItems(ModelRegistryEvent event) {
         for (RuneType type : RuneType.values())
             ModelLoader.setCustomModelResourceLocation(RUNES, type.ordinal(), new ModelResourceLocation(RUNES.getRegistryName(), "type=" + type.name().toLowerCase(Locale.ENGLISH)));
+
     }
 
 }
