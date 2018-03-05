@@ -17,12 +17,12 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        RenderUtil.renderLayingOnBlock(inputStack, runeInfuser);
+        RenderUtil.renderLayingOnBlock(inputStack);
         GlStateManager.popMatrix();
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        RenderUtil.renderItemFloatingOnTileEntity(modifierStack, runeInfuser);
+        RenderUtil.renderItemFloatingOnTileEntity(modifierStack);
         GlStateManager.popMatrix();
     }
 

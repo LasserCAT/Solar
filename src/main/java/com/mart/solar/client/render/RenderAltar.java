@@ -25,10 +25,10 @@ public class RenderAltar extends TileEntitySpecialRenderer<TileAltar> {
                 rotateModifier = 180 - (currentPercent * 1.8f);
             }
 
-            RenderUtil.renderRisingFromTopOfBlock(renderItem, tileEntity, heightModifier, rotateModifier);
+            RenderUtil.renderRisingFromTopOfBlock(renderItem, heightModifier, rotateModifier);
         }
         else{
-            RenderUtil.renderItemFloatingOnTileEntity(renderItem, tileEntity);
+            RenderUtil.renderItemFloatingOnTileEntity(renderItem);
         }
 
         GlStateManager.popMatrix();

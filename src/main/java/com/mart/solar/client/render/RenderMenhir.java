@@ -17,7 +17,7 @@ public class RenderMenhir extends TileEntitySpecialRenderer<TileMenhir> {
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        RenderUtil.renderLayingOnBlockWithCoords(inputStack, tileEntity, 0.5, 0.45, 0.5);
+        RenderUtil.renderLayingOnBlockWithCoords(inputStack, 0.5, 0.45, 0.5);
         GlStateManager.popMatrix();
     }
 }
