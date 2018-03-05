@@ -4,39 +4,57 @@ import com.mart.solar.common.blocks.*;
 import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.blocks.base.BlockFlowerBase;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod.EventBusSubscriber
+@GameRegistry.ObjectHolder("solar")
+@Mod.EventBusSubscriber(modid = "solar")
 public class ModBlocks {
 
-    public static BlockAltar blockAltar;
-    public static BlockBrokenAltar brokenAltar;
-    public static BlockRuneInfuser runeInfuser;
-    public static BlockMenhir menhir;
-    public static BlockRitualStone ritualStone;
-    public static BlockSunDial sundial;
+    @GameRegistry.ObjectHolder("altar")
+    public static Block blockAltar = Blocks.AIR;
 
-    public static BlockSilverOre silverOre;
+    @GameRegistry.ObjectHolder("broken_altar")
+    public static Block brokenAltar = Blocks.AIR;
 
-    public static BlockFlowerMoon flowerMoon;
-    public static BlockFlowerFiery flowerFiery;
+    @GameRegistry.ObjectHolder("rune_infuser")
+    public static Block runeInfuser = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("menhir")
+    public static Block menhir = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("ritual_stone")
+    public static Block ritualStone = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("sundial")
+    public static Block sundial = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("silver_ore")
+    public static Block silverOre = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("flower_moon")
+    public static Block flowerMoon = Blocks.AIR;
+
+    @GameRegistry.ObjectHolder("flower_fiery")
+    public static Block flowerFiery = Blocks.AIR;
 
     public static void init(RegistryEvent.Register<Block> event) {
-        blockAltar = register(new BlockAltar("altar"), event);
-        brokenAltar = register(new BlockBrokenAltar("broken_altar"), event);
-        runeInfuser = register(new BlockRuneInfuser("rune_infuser"), event);
-        ritualStone = register(new BlockRitualStone(), event);
-        menhir = register(new BlockMenhir("menhir"), event);
-        sundial = register(new BlockSunDial("sundial"), event);
+        event.getRegistry().register(new BlockAltar("altar"));
+        event.getRegistry().register(new BlockBrokenAltar("broken_altar"));
+        event.getRegistry().register(new BlockRuneInfuser("rune_infuser"));
+        event.getRegistry().register(new BlockRitualStone("ritual_stone"));
+        event.getRegistry().register(new BlockMenhir("menhir"));
+        event.getRegistry().register(new BlockSunDial("sundial"));
 
-        silverOre = register(new BlockSilverOre("silver_ore"), event);
+        event.getRegistry().register(new BlockSilverOre("silver_ore"));
 
-        flowerMoon = register(new BlockFlowerMoon("flower_moon"), event);
-        flowerFiery = register(new BlockFlowerFiery("flower_fiery"), event);
+        event.getRegistry().register(new BlockFlowerMoon("flower_moon"));
+        event.getRegistry().register(new BlockFlowerFiery("flower_fiery"));
     }
 
     public static void initItemBlocks(RegistryEvent.Register<Item> event) {
@@ -51,12 +69,6 @@ public class ModBlocks {
 
         registerItemBlock(flowerMoon, event);
         registerItemBlock(flowerFiery, event);
-    }
-
-    private static <T extends Block> T register(T block, RegistryEvent.Register<Block> event) {
-        event.getRegistry().register(block);
-
-        return block;
     }
 
     private static void registerItemBlock(Block block, RegistryEvent.Register<Item> event) {

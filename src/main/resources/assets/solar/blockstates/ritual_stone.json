@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "solar:blocks/ritualstone"
+      "all": "solar:blocks/ritual_stone"
     }
   },
   "variants": {

@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 
 public class BlockRitualStone extends BlockBase implements ITileEntityProvider {
 
-    public BlockRitualStone() {
-        super(Material.ROCK, "ritualstone");
+    public BlockRitualStone(String registryName) {
+        super(Material.ROCK, registryName);
         setCreativeTab(Solar.solarTab);
     }
 
