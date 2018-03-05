@@ -13,10 +13,10 @@ public class ModTiles {
     static TileRitualStone ritualStone = new TileRitualStone();
 
     public static void init() {
-        GameRegistry.registerTileEntity(brokenTotem.getClass(), Solar.MODID + "tiletotem");
-        GameRegistry.registerTileEntity(totem.getClass(), Solar.MODID + "totem");
-        GameRegistry.registerTileEntity(runeInfuser.getClass(), Solar.MODID + "runeinfuser");
-        GameRegistry.registerTileEntity(menhir.getClass(), Solar.MODID + "menhir");
-        GameRegistry.registerTileEntity(ritualStone.getClass(), Solar.MODID + "ritualstone");
+        GameRegistry.registerTileEntity(brokenTotem.getClass(), Solar.MODID + ":tiletotem");
+        GameRegistry.registerTileEntity(totem.getClass(), Solar.MODID + ":totem");
+        GameRegistry.registerTileEntity(runeInfuser.getClass(), Solar.MODID + ":runeinfuser");
+        GameRegistry.registerTileEntity(menhir.getClass(), Solar.MODID + ":menhir");
+        GameRegistry.registerTileEntity(ritualStone.getClass(), Solar.MODID + ":ritualstone");
     }
 }
