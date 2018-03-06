@@ -9,7 +9,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntitySpellContainer extends Entity{
+public class EntitySpellContainer extends Entity {
 
     private Spell spell;
 
@@ -40,7 +40,6 @@ public class EntitySpellContainer extends Entity{
     public AxisAlignedBB getRenderBoundingBox() {
         return new AxisAlignedBB(this.getPosition().getX() - 8, this.getPosition().getY(), this.getPosition().getZ() - 8,
                 this.getPosition().getX() + 8, this.getPosition().getY() + 1, this.getPosition().getZ() + 8);
-
     }
 
     @Override
@@ -61,16 +60,16 @@ public class EntitySpellContainer extends Entity{
 
     @Override
     public void onEntityUpdate() {
-        if(this.getEntityWorld().isRemote){
+        if (this.getEntityWorld().isRemote) {
             return;
         }
 
-        if(!(spell instanceof IPlaceableSpell)){
+        if (!(spell instanceof IPlaceableSpell)) {
             System.out.println("[EntitySpellContainer.java] Removing spell entity. spell was not an instance of a Spell.class");
             getEntityWorld().removeEntity(this);
         }
 
-        if(spell.getLifeSpan() <= this.lifeTime){
+        if (spell.getLifeSpan() <= this.lifeTime) {
             getEntityWorld().removeEntity(this);
         }
 

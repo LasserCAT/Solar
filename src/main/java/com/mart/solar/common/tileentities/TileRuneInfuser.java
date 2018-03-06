@@ -1,12 +1,13 @@
 package com.mart.solar.common.tileentities;
 
-//https://pastebin.com/9Tj891ua
-
 import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.infusing.InfuserReagent;
 import com.mart.solar.api.infusing.InfuserReagentManager;
+import com.mart.solar.client.particle.EnergyParticle;
+import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.util.TileRuneInfuserItemHandler;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,7 +31,7 @@ import java.util.Random;
 
 public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityProvider {
 
-    private static int INFUSE_DURATION = 140;
+    private static final int INFUSE_DURATION = 140;
     private static List<InfuserReagent> infuserReagents;
 
     private TileRuneInfuserItemHandler itemStackHandler;
@@ -40,15 +41,20 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
     private String reagentName = "";
     private boolean infusing = false;
 
+    private TileAltar linkedAltar = null;
+
     public TileRuneInfuser(){
         itemStackHandler = new TileRuneInfuserItemHandler(this);
     }
 
     @Override
     public void onLoad() {
+        getNearbyAltar();
+
         if(this.getWorld().isRemote){
             return;
         }
+
         if(infuserReagents == null){ setupInfuserReagents();}
 
         infuse();
@@ -57,6 +63,17 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
     @Override
     public void update() {
         if (infusing) {
+            if(linkedAltar == null){
+                stopInfusing();
+                return;
+            }
+
+            if(world.isRemote){
+                if(this.world.getWorldTime() % 5 == 0){
+                    spawnEnergyParticle(this.linkedAltar.getPos(), this.pos);
+                }
+            }
+
             spawnInfuseParticle();
             if (currentDuration <= INFUSE_DURATION) {
                 currentDuration++;
@@ -163,6 +180,10 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
     }
 
     public void infuse(){
+        if(!getNearbyAltar()){
+            return;
+        }
+
         if(!this.itemStackHandler.getStackInSlot(0).isEmpty() && !this.itemStackHandler.getStackInSlot(1).isEmpty()){
             if(reagentName.equalsIgnoreCase("")){
                 for(InfuserReagent reagent : infuserReagents){
@@ -180,6 +201,17 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         }
     }
 
+    /*
+    Force stop the infusing because something happened, infusion did not succeed
+     */
+    private void stopInfusing(){
+        infusing = false;
+        currentDuration = 0;
+    }
+
+    /*
+    End the infusing in the appropriate way. This means the infusion has succeeded
+     */
     private void endInfusing() {
         if (this.world.isRemote) {
             return;
@@ -205,6 +237,23 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         }
     }
 
+    private boolean getNearbyAltar(){
+        int y = this.getPos().getY();
+        for(int x = this.getPos().getX() - 5; x < this.getPos().getX() + 5; x++){
+            for(int z = this.getPos().getZ() - 5; z < this.getPos().getZ() + 5; z++){
+
+                if(this.world.getBlockState(new BlockPos(x, y, z)).getBlock() == ModBlocks.ALTAR){
+                    this.linkedAltar = (TileAltar) this.world.getTileEntity(new BlockPos(x, y, z));
+                    return true;
+                }
+
+            }
+        }
+
+        return false;
+    }
+
+    //Infusing particle spawn
     @SideOnly(Side.CLIENT)
     private void spawnInfuseParticle() {
         int[] array = {Item.getIdFromItem(this.itemStackHandler.getStackInSlot(1).getItem())};
@@ -225,6 +274,8 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         return new Vec3d[]{p, v};
     }
 
+
+    //Capability
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
@@ -240,10 +291,6 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
             return (T) this.itemStackHandler;
         }
         return super.getCapability(capability, facing);
-    }
-
-    public static List<InfuserReagent> getInfuserReagents() {
-        return infuserReagents;
     }
 
     public ItemStack getReagent() {
@@ -263,5 +310,13 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
 
     public boolean isInfusing() {
         return infusing;
+    }
+
+    public boolean isLinkedToAltar(){
+        return this.linkedAltar != null;
+    }
+
+    public TileRuneInfuserItemHandler getItemStackHandler() {
+        return itemStackHandler;
     }
 }

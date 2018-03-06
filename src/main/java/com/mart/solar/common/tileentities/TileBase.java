@@ -1,6 +1,8 @@
 package com.mart.solar.common.tileentities;
 
+import com.mart.solar.client.particle.EnergyParticle;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -41,6 +43,17 @@ public class TileBase extends TileEntity {
     @Override
     public final void handleUpdateTag(NBTTagCompound tag) {
         readFromNBT(tag);
+    }
+
+    public void spawnEnergyParticle(BlockPos beginPos, BlockPos endPos){
+        Minecraft.getMinecraft().effectRenderer.addEffect(
+                new EnergyParticle(this.getWorld(),
+                        beginPos.getX(),
+                        beginPos.getY(),
+                        beginPos.getZ(),
+                        endPos.getX(),
+                        endPos.getY(),
+                        endPos.getZ()));
     }
 
 }

@@ -7,6 +7,7 @@ import com.mart.solar.common.tileentities.TileRuneInfuser;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -67,6 +68,26 @@ public class BlockRuneInfuser extends BlockBase {
             }
         }
         return true;
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        TileRuneInfuser tileEntity = (TileRuneInfuser) world.getTileEntity(pos);
+
+        if (world.isRemote || tileEntity == null) {
+            return;
+        }
+
+        if (tileEntity.getItemStackHandler().getStackInSlot(0).isEmpty()) {
+            return;
+        }
+
+        double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+        double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+        double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+        EntityItem dropItem = new EntityItem(world, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, tileEntity.getItemStackHandler().extractItem(0, 1, false));
+        dropItem.setDefaultPickupDelay();
+        world.spawnEntity(dropItem);
     }
 
     @Override
