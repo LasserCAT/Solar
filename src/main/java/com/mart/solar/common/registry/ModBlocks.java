@@ -35,8 +35,8 @@ public class ModBlocks {
         event.getRegistry().register(new BlockBrokenAltar("broken_altar"));
         event.getRegistry().register(new BlockRuneInfuser("rune_infuser"));
         event.getRegistry().register(new BlockRitualStone("ritual_stone"));
-        event.getRegistry().register(new BlockMenhir("MENHIR"));
-        event.getRegistry().register(new BlockSunDial("SUNDIAL"));
+        event.getRegistry().register(new BlockMenhir("menhir"));
+        event.getRegistry().register(new BlockSunDial("sundial"));
 
         event.getRegistry().register(new BlockSilverOre("silver_ore"));
 
