@@ -62,8 +62,8 @@ public class GuiPagesManager {
         ));
 
         journalCategory.addPage(new GuiPage("Menhir",
-                new PageTextComponent(I18n.format("guide.MENHIR.info")),
-                new PageTextComponent(I18n.format("guide.MENHIR.creation"))
+                new PageTextComponent(I18n.format("guide.menhir.info")),
+                new PageTextComponent(I18n.format("guide.menhir.creation"))
         ));
 
         journalCategory.addPage(new GuiPage("Runes",
@@ -95,7 +95,7 @@ public class GuiPagesManager {
         ));
 
         journalCategory.addPage(new GuiPage("Sundial",
-                new PageTextComponent(I18n.format("guide.SUNDIAL.info")),
+                new PageTextComponent(I18n.format("guide.sundial.info")),
                 new CraftingGridComponent(
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
                         Item.getItemFromBlock(Blocks.PLANKS), Items.CLOCK,                          Item.getItemFromBlock(Blocks.PLANKS),
