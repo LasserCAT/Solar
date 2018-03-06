@@ -15,7 +15,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 
-import static com.mart.solar.common.registry.ModBlocks.menhir;
+import static com.mart.solar.common.registry.ModBlocks.MENHIR;
 
 public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
@@ -32,7 +32,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         for (RitualComponent component : components) {
             BlockPos checkPos = altarPos.add(component.getComponentPos());
 
-            if (altar.getWorld().getBlockState(checkPos).getBlock() != menhir) {
+            if (altar.getWorld().getBlockState(checkPos).getBlock() != MENHIR) {
                 return false;
             }
 
@@ -85,7 +85,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
         for(RitualComponent component : getRitualComponents()){
             BlockPos checkPos = altarPos.add(component.getComponentPos());
 
-            if (altar.getWorld().getBlockState(checkPos).getBlock() != menhir) {
+            if (altar.getWorld().getBlockState(checkPos).getBlock() != MENHIR) {
                 return;
             }
 

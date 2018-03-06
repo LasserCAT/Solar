@@ -16,7 +16,7 @@ public class ModTiles {
         GameRegistry.registerTileEntity(brokenTotem.getClass(), Solar.MODID + ":tiletotem");
         GameRegistry.registerTileEntity(totem.getClass(), Solar.MODID + ":totem");
         GameRegistry.registerTileEntity(runeInfuser.getClass(), Solar.MODID + ":runeinfuser");
-        GameRegistry.registerTileEntity(menhir.getClass(), Solar.MODID + ":menhir");
+        GameRegistry.registerTileEntity(menhir.getClass(), Solar.MODID + ":MENHIR");
         GameRegistry.registerTileEntity(ritualStone.getClass(), Solar.MODID + ":ritualstone");
     }
 }

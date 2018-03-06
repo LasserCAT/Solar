@@ -2,17 +2,13 @@ package com.mart.solar.client.gui;
 
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
-import com.mart.solar.client.gui.button.GuiCategoryButton;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.registry.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -86,7 +82,7 @@ public class GuiRitualVisualizer extends GuiBase {
         GlStateManager.translate(10 * 16, 10 * 16, 0);
 
         RenderHelper.enableGUIStandardItemLighting();
-        Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(new ItemStack(Item.getItemFromBlock(ModBlocks.blockAltar)), 0, 0);
+        Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(new ItemStack(Item.getItemFromBlock(ModBlocks.ALTAR)), 0, 0);
 
         for(RitualComponent component : ritual.getRitualComponents()){
             BlockPos pos = component.getComponentPos();

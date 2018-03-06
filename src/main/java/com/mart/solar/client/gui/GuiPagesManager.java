@@ -62,8 +62,8 @@ public class GuiPagesManager {
         ));
 
         journalCategory.addPage(new GuiPage("Menhir",
-                new PageTextComponent(I18n.format("guide.menhir.info")),
-                new PageTextComponent(I18n.format("guide.menhir.creation"))
+                new PageTextComponent(I18n.format("guide.MENHIR.info")),
+                new PageTextComponent(I18n.format("guide.MENHIR.creation"))
         ));
 
         journalCategory.addPage(new GuiPage("Runes",
@@ -86,7 +86,7 @@ public class GuiPagesManager {
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
                         Items.GOLD_INGOT, ModItems.SOLAR_FOCUS, Items.GOLD_INGOT,
                         ModItems.SILVER_INGOT, ModItems.LUNAR_FOCUS, ModItems.SILVER_INGOT)
-                        .setCraftedItem(Item.getItemFromBlock(ModBlocks.runeInfuser))
+                        .setCraftedItem(Item.getItemFromBlock(ModBlocks.RUNE_INFUSER))
                         .pageNumber(4)
         ));
 
@@ -95,12 +95,12 @@ public class GuiPagesManager {
         ));
 
         journalCategory.addPage(new GuiPage("Sundial",
-                new PageTextComponent(I18n.format("guide.sundial.info")),
+                new PageTextComponent(I18n.format("guide.SUNDIAL.info")),
                 new CraftingGridComponent(
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
                         Item.getItemFromBlock(Blocks.PLANKS), Items.CLOCK,                          Item.getItemFromBlock(Blocks.PLANKS),
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS))
-                        .setCraftedItem(Item.getItemFromBlock(ModBlocks.sundial))
+                        .setCraftedItem(Item.getItemFromBlock(ModBlocks.SUNDIAL))
                         .pageNumber(4)
         ));
 

@@ -16,18 +16,13 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = Solar.MODID)
 public class ModEntities {
 
     private static int ID = 0;
 
-    private static <T extends Entity> void regRender(Class<T> entityClass, IRenderFactory<? super T> renderFactory)
-    {
-        RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
-    }
-
-    public static void regEntities(RegistryEvent.Register<EntityEntry> event)
-    {
+    @SubscribeEvent
+    public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
         EntityEntry spellContainer = EntityEntryBuilder.create()
                 .entity(EntitySpellContainer.class)
                 .id(new ResourceLocation(Solar.MODID, "spell_container"), ID++)
@@ -48,14 +43,15 @@ public class ModEntities {
         event.getRegistry().register(runeEntity);
     }
 
+    private static <T extends Entity> void regRender(Class<T> entityClass, IRenderFactory<? super T> renderFactory)
+    {
+        RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
+    }
+
     @SideOnly(Side.CLIENT)
     public static void regRenders()
     {
         regRender(EntitySpellContainer.class, RenderSpell.FACTORY);
     }
 
-    @SubscribeEvent
-    public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
-        regEntities(event);
-    }
 }

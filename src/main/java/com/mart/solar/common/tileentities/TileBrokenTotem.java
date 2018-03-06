@@ -93,7 +93,7 @@ public class TileBrokenTotem extends TileBase {
 
     public void checkTransform(BlockPos pos, EntityPlayer player) {
         if (getGoldIngots() == 4 && getSilverIngots() == 4 && getWoodenBlocks() == 8) {
-            player.getEntityWorld().setBlockState(pos, ModBlocks.blockAltar.getDefaultState());
+            player.getEntityWorld().setBlockState(pos, ModBlocks.ALTAR.getDefaultState());
             if(!this.getWorld().isRemote){
                 EntityItem bookItem = new EntityItem(this.getWorld(), pos.getX(), pos.getY()+1, pos.getZ(), new ItemStack(ModItems.JOURNAL) );
                 this.getWorld().spawnEntity(bookItem);

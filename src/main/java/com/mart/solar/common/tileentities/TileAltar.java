@@ -6,7 +6,6 @@ import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.util.TileAltarItemHandler;
-import com.mart.solar.common.util.TileRuneInfuserItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -14,18 +13,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -163,7 +159,7 @@ public class TileAltar extends TileBase implements ITickable, ICapabilityProvide
             BlockPos blockPlusOnePos = new BlockPos(b.getX(), b.getY() + 1, b.getZ());
             BlockPos blockPlusTwoPos = new BlockPos(b.getX(), b.getY() + 2, b.getZ());
             if(world.getBlockState(blockPlusOnePos).getBlock() == Blocks.STONE && world.getBlockState(blockPlusTwoPos).getBlock() == Blocks.STONE){
-                world.setBlockState(b, ModBlocks.menhir.getDefaultState());
+                world.setBlockState(b, ModBlocks.MENHIR.getDefaultState());
                 world.setBlockState(blockPlusOnePos, Blocks.AIR.getDefaultState());
                 world.setBlockState(blockPlusTwoPos, Blocks.AIR.getDefaultState());
             }

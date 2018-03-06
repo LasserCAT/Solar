@@ -33,7 +33,7 @@ public class Solar
 
     public static final String MODID = "solar";
     public static final String NAME = "Solar";
-    public static final String VERSION = "0.0.1.1";
+    public static final String VERSION = "0.0.1.2";
 
     public static Logger logger;
 
@@ -65,11 +65,11 @@ public class Solar
         WorldGenHandler worldGenHandler = new WorldGenHandler();
         GameRegistry.registerWorldGenerator(worldGenHandler, 0);
 
-        OreDictionary.registerOre("oreSilver", ModBlocks.silverOre);
+        OreDictionary.registerOre("oreSilver", ModBlocks.SILVER_ORE);
         OreDictionary.registerOre("ingotSilver", ModItems.SILVER_INGOT);
         OreDictionary.registerOre("nuggetSilver", ModItems.SILVER_NUGGET);
 
-        GameRegistry.addSmelting(ModBlocks.silverOre, new ItemStack(ModItems.SILVER_INGOT, 1), 1.5f);
+        GameRegistry.addSmelting(ModBlocks.SILVER_ORE, new ItemStack(ModItems.SILVER_INGOT, 1), 1.5f);
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }

@@ -34,8 +34,8 @@ public class WorldGenFlowerMoon implements ISolarWorldGen {
             int randomZ = chunkBlockLocZ + rand.nextInt(16);
             BlockPos flowerPos = WorldGenUtil.getBlockAboveGround(new BlockPos(randomX, randomY, randomZ), world);
 
-            if(ModBlocks.flowerMoon.canPlaceBlockAt(world, flowerPos)){
-                world.setBlockState(flowerPos, ModBlocks.flowerMoon.getDefaultState());
+            if(ModBlocks.FLOWER_MOON.canPlaceBlockAt(world, flowerPos)){
+                world.setBlockState(flowerPos, ModBlocks.FLOWER_MOON.getDefaultState());
             }
 
         }

@@ -1,5 +1,6 @@
 package com.mart.solar.common.registry;
 
+import com.mart.solar.Solar;
 import com.mart.solar.common.blocks.*;
 import com.mart.solar.common.blocks.base.BlockBase;
 import com.mart.solar.common.blocks.base.BlockFlowerBase;
@@ -12,44 +13,30 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@GameRegistry.ObjectHolder("solar")
-@Mod.EventBusSubscriber(modid = "solar")
+@GameRegistry.ObjectHolder(Solar.MODID)
+@Mod.EventBusSubscriber(modid = Solar.MODID)
 public class ModBlocks {
 
-    @GameRegistry.ObjectHolder("altar")
-    public static Block blockAltar = Blocks.AIR;
+    public static final Block ALTAR = Blocks.AIR;
+    public static final Block BROKEN_ALTAR = Blocks.AIR;
+    public static final Block RUNE_INFUSER = Blocks.AIR;
+    public static final Block MENHIR = Blocks.AIR;
+    public static final Block RITUAL_STONE = Blocks.AIR;
+    public static final Block SUNDIAL = Blocks.AIR;
 
-    @GameRegistry.ObjectHolder("broken_altar")
-    public static Block brokenAltar = Blocks.AIR;
+    public static final Block SILVER_ORE = Blocks.AIR;
 
-    @GameRegistry.ObjectHolder("rune_infuser")
-    public static Block runeInfuser = Blocks.AIR;
+    public static final Block FLOWER_MOON = Blocks.AIR;
+    public static final Block FLOWER_FIERY = Blocks.AIR;
 
-    @GameRegistry.ObjectHolder("menhir")
-    public static Block menhir = Blocks.AIR;
-
-    @GameRegistry.ObjectHolder("ritual_stone")
-    public static Block ritualStone = Blocks.AIR;
-
-    @GameRegistry.ObjectHolder("sundial")
-    public static Block sundial = Blocks.AIR;
-
-    @GameRegistry.ObjectHolder("silver_ore")
-    public static Block silverOre = Blocks.AIR;
-
-    @GameRegistry.ObjectHolder("flower_moon")
-    public static Block flowerMoon = Blocks.AIR;
-
-    @GameRegistry.ObjectHolder("flower_fiery")
-    public static Block flowerFiery = Blocks.AIR;
-
-    public static void init(RegistryEvent.Register<Block> event) {
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().register(new BlockAltar("altar"));
         event.getRegistry().register(new BlockBrokenAltar("broken_altar"));
         event.getRegistry().register(new BlockRuneInfuser("rune_infuser"));
         event.getRegistry().register(new BlockRitualStone("ritual_stone"));
-        event.getRegistry().register(new BlockMenhir("menhir"));
-        event.getRegistry().register(new BlockSunDial("sundial"));
+        event.getRegistry().register(new BlockMenhir("MENHIR"));
+        event.getRegistry().register(new BlockSunDial("SUNDIAL"));
 
         event.getRegistry().register(new BlockSilverOre("silver_ore"));
 
@@ -58,17 +45,17 @@ public class ModBlocks {
     }
 
     public static void initItemBlocks(RegistryEvent.Register<Item> event) {
-        registerItemBlock(blockAltar, event);
-        registerItemBlock(brokenAltar, event);
-        registerItemBlock(runeInfuser, event);
-        registerItemBlock(menhir, event);
-        registerItemBlock(ritualStone, event);
-        registerItemBlock(sundial, event);
+        registerItemBlock(ALTAR, event);
+        registerItemBlock(BROKEN_ALTAR, event);
+        registerItemBlock(RUNE_INFUSER, event);
+        registerItemBlock(MENHIR, event);
+        registerItemBlock(RITUAL_STONE, event);
+        registerItemBlock(SUNDIAL, event);
 
-        registerItemBlock(silverOre, event);
+        registerItemBlock(SILVER_ORE, event);
 
-        registerItemBlock(flowerMoon, event);
-        registerItemBlock(flowerFiery, event);
+        registerItemBlock(FLOWER_MOON, event);
+        registerItemBlock(FLOWER_FIERY, event);
     }
 
     private static void registerItemBlock(Block block, RegistryEvent.Register<Item> event) {
@@ -85,11 +72,5 @@ public class ModBlocks {
 
         event.getRegistry().register(itemBlock);
     }
-
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        init(event);
-    }
-
 
 }

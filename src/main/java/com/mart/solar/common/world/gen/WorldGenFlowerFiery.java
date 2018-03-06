@@ -35,8 +35,8 @@ public class WorldGenFlowerFiery implements ISolarWorldGen {
             int randomX = rand.nextInt(6) -3;
             BlockPos flowerPos = WorldGenUtil.getBlockAboveGround(new BlockPos(chunkBlockLocX + baseX + randomX, randomY, chunkBlockLocZ + baseZ + randomZ), world);
 
-            if(ModBlocks.flowerFiery.canPlaceBlockAt(world, flowerPos)){
-                world.setBlockState(flowerPos, ModBlocks.flowerFiery.getDefaultState());
+            if(ModBlocks.FLOWER_FIERY.canPlaceBlockAt(world, flowerPos)){
+                world.setBlockState(flowerPos, ModBlocks.FLOWER_FIERY.getDefaultState());
             }
 
         }
@@ -61,8 +61,8 @@ public class WorldGenFlowerFiery implements ISolarWorldGen {
             int randomZ = rand.nextInt(6) -3;
             int randomX = rand.nextInt(6) -3;
             BlockPos flowerPos = WorldGenUtil.getFirstBlockInNether(new BlockPos(chunkBlockLocX + baseX + randomX, randomY, chunkBlockLocZ + baseZ + randomZ), world);
-            if(ModBlocks.flowerFiery.canPlaceBlockAt(world, flowerPos)){
-                world.setBlockState(flowerPos, ModBlocks.flowerFiery.getDefaultState());
+            if(ModBlocks.FLOWER_FIERY.canPlaceBlockAt(world, flowerPos)){
+                world.setBlockState(flowerPos, ModBlocks.FLOWER_FIERY.getDefaultState());
             }
 
         }
