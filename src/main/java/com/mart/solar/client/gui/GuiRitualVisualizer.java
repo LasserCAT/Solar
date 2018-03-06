@@ -132,6 +132,15 @@ public class GuiRitualVisualizer extends GuiBase {
     }
 
     @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        if (keyCode == 1)
+        {
+            GuiBook playerGui = GuiPagesManager.getPlayerGUI(Minecraft.getMinecraft().player);
+            Minecraft.getMinecraft().displayGuiScreen(playerGui.getPreviousGui());
+        }
+    }
+
+    @Override
     public boolean doesGuiPauseGame() {
         return false;
     }

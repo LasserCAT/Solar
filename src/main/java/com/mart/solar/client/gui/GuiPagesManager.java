@@ -62,7 +62,8 @@ public class GuiPagesManager {
         ));
 
         journalCategory.addPage(new GuiPage("Menhir",
-                new PageTextComponent(I18n.format("guide.menhir.info"))
+                new PageTextComponent(I18n.format("guide.menhir.info")),
+                new PageTextComponent(I18n.format("guide.menhir.creation"))
         ));
 
         journalCategory.addPage(new GuiPage("Runes",
@@ -72,6 +73,7 @@ public class GuiPagesManager {
         journalCategory.addPage(new GuiPage("Rune Infuser",
                 new PageTextComponent(I18n.format("guide.runeinfuser.info1")),
                 new PageTextComponent(I18n.format("guide.runeinfuser.info2")),
+                new PageTextComponent(I18n.format("guide.runeinfuser.info2.1")).pageNumber(2),
                 new PageTextComponent(I18n.format("guide.runeinfuser.info3")).pageNumber(2),
                 new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")).pageNumber(2),
                 new CraftingGridComponent(
