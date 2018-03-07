@@ -2,14 +2,12 @@ package com.mart.solar.common.tileentities;
 
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualManager;
-import com.mart.solar.client.particle.EnergyParticle;
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.recipes.AltarRecipeManager;
 import com.mart.solar.common.registry.ModBlocks;
-import com.mart.solar.common.util.TileAltarItemHandler;
+import com.mart.solar.common.util.itemhandler.TileAltarItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

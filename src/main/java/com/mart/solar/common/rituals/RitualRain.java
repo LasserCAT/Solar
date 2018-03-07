@@ -23,6 +23,7 @@ public class RitualRain extends Ritual {
         if (!altar.getWorld().isRemote) {
             altar.getWorld().getWorldInfo().setThundering(false);
             altar.getWorld().getWorldInfo().setRaining(true);
+            altar.getWorld().getWorldInfo().setRainTime(14000);
         }
     }
 

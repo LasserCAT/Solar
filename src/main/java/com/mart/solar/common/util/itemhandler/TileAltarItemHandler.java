@@ -1,4 +1,4 @@
-package com.mart.solar.common.util;
+package com.mart.solar.common.util.itemhandler;
 
 import com.mart.solar.common.recipes.AltarRecipe;
 import com.mart.solar.common.tileentities.TileAltar;

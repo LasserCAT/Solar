@@ -42,7 +42,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
                 return false;
             }
 
-            ItemStack rune = menhirTile.getRune();
+            ItemStack rune = menhirTile.getItemStackHandler().getStackInSlot(0);
 
             if (rune.isEmpty() && component.getRuneType() == null) {
                 continue;

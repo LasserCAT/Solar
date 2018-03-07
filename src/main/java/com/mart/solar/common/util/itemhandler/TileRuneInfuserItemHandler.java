@@ -1,4 +1,4 @@
-package com.mart.solar.common.util;
+package com.mart.solar.common.util.itemhandler;
 
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileRuneInfuser;

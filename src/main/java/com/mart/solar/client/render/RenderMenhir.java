@@ -9,7 +9,7 @@ public class RenderMenhir extends TileEntitySpecialRenderer<TileMenhir> {
 
     @Override
     public void render(TileMenhir tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        ItemStack inputStack = tileEntity.getRune();
+        ItemStack inputStack = tileEntity.getItemStackHandler().getStackInSlot(0);
 
         if(inputStack.isEmpty()){
             return;
