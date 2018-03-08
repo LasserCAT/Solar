@@ -1,10 +1,7 @@
 package com.mart.solar.common.registry;
 
 import com.mart.solar.api.spell.Spell;
-import com.mart.solar.common.spells.SpellHighTide;
-import com.mart.solar.common.spells.SpellLunarEmbrace;
-import com.mart.solar.common.spells.SpellSolarProtection;
-import com.mart.solar.common.spells.SpellSummerHeat;
+import com.mart.solar.common.spells.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +18,7 @@ public class ModSpells {
         SPELLS.add(new SpellHighTide());
         SPELLS.add(new SpellSolarProtection());
         SPELLS.add(new SpellLunarEmbrace());
+        SPELLS.add(new SpellHunt());
     }
 
     public static Spell[] getSpells()

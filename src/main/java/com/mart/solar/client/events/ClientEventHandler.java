@@ -22,14 +22,4 @@ public class ClientEventHandler {
         event.getMap().registerSprite(new ResourceLocation(Solar.MODID, "light"));
     }
 
-    @SubscribeEvent
-    public static void onMobDamage(LivingDamageEvent event){
-        if (event.getSource() == DamageSource.ON_FIRE) {
-            if(event.getEntityLiving().getEntityData().getBoolean(SpellLunarEmbrace.MOB_TAG)){
-                event.getEntityLiving().setFire(0);
-                event.setCanceled(true);
-            }
-        }
-    }
-
 }

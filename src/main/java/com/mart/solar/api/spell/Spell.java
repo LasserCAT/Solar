@@ -1,9 +1,16 @@
 package com.mart.solar.api.spell;
 
 import com.mart.solar.Solar;
+import com.mart.solar.common.entity.EntitySpellContainer;
+import com.mart.solar.common.items.ItemBase;
+import com.mart.solar.common.items.ItemRitualAmulet;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.awt.*;
@@ -22,6 +29,29 @@ public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
         this.name = name;
 
         setRegistryName(Solar.MODID, getSpellRegistryName());
+    }
+
+    protected void placeSpell(EntityPlayer player, ItemStack stack){
+        if (player.getEntityWorld().isRemote) {
+            return;
+        }
+
+        Vec3d vec3d = player.getPositionEyes(0.1F);
+        Vec3d vec3d1 = player.getLook(0.1F);
+        Vec3d vec3d2 = vec3d.addVector(vec3d1.x * 5, vec3d1.y * 5, vec3d1.z * 5);
+        RayTraceResult result = player.getEntityWorld().rayTraceBlocks(vec3d, vec3d2, true, false, true);
+
+        assert result != null;
+        Block b = player.getEntityWorld().getBlockState(result.getBlockPos()).getBlock();
+
+        if (b == Blocks.AIR) {
+            return;
+        }
+
+        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), result.getBlockPos(), this));
+
+        setSpellToNullOnNBT(ItemBase.getCompound(stack));
+        ItemRitualAmulet.setEnergy(stack, 0);
     }
 
     public abstract void activateSpell(EntityPlayer player, ItemStack stack);

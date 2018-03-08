@@ -102,7 +102,7 @@ public class SpellHighTide extends Spell {
 
     @Override
     public String getSpellRegistryName() {
-        return "spellhightide";
+        return "spell_high_tide";
     }
 
     private void setWater(List<BlockPos> list, World world) {

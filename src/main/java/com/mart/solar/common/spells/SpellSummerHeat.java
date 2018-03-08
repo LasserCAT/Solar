@@ -107,7 +107,7 @@ public class SpellSummerHeat extends Spell {
 
     @Override
     public String getSpellRegistryName() {
-        return "spellsummerheat";
+        return "spell_summer_heat";
     }
 
     private void setAir(List<BlockPos> list, World world) {
