@@ -21,7 +21,7 @@ public class ModBlocks {
     public static final Block BROKEN_ALTAR = Blocks.AIR;
     public static final Block RUNE_INFUSER = Blocks.AIR;
     public static final Block MENHIR = Blocks.AIR;
-    public static final Block RITUAL_STONE = Blocks.AIR;
+    //public static final Block RITUAL_STONE = Blocks.AIR;
     public static final Block SUNDIAL = Blocks.AIR;
 
     public static final Block SILVER_ORE = Blocks.AIR;
@@ -34,7 +34,7 @@ public class ModBlocks {
         event.getRegistry().register(new BlockAltar("altar"));
         event.getRegistry().register(new BlockBrokenAltar("broken_altar"));
         event.getRegistry().register(new BlockRuneInfuser("rune_infuser"));
-        event.getRegistry().register(new BlockRitualStone("ritual_stone"));
+        //event.getRegistry().register(new BlockRitualStone("ritual_stone"));
         event.getRegistry().register(new BlockMenhir("menhir"));
         event.getRegistry().register(new BlockSunDial("sundial"));
 
@@ -49,7 +49,7 @@ public class ModBlocks {
         registerItemBlock(BROKEN_ALTAR, event);
         registerItemBlock(RUNE_INFUSER, event);
         registerItemBlock(MENHIR, event);
-        registerItemBlock(RITUAL_STONE, event);
+        //registerItemBlock(RITUAL_STONE, event);
         registerItemBlock(SUNDIAL, event);
 
         registerItemBlock(SILVER_ORE, event);

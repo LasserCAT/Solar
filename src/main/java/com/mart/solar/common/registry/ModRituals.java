@@ -10,20 +10,17 @@ public class ModRituals {
 
     public static List<Ritual> RITUALS;
 
-    public static void addRitual(Ritual ritual){
-        RITUALS.add(ritual);
-    }
-
     private static void init(){
         RITUALS = new ArrayList<>();
 
-        addRitual(new RitualRisingSun());
-        addRitual(new RitualRisingMoon());
-        addRitual(new RitualRain());
-        addRitual(new RitualClearSkies());
-        addRitual(new RitualSummerHeat());
-        addRitual(new RitualHighTide());
-        addRitual(new RitualSolarProtection());
+        RITUALS.add(new RitualRisingSun());
+        RITUALS.add(new RitualRisingMoon());
+        RITUALS.add(new RitualRain());
+        RITUALS.add(new RitualClearSkies());
+        RITUALS.add(new RitualSummerHeat());
+        RITUALS.add(new RitualHighTide());
+        RITUALS.add(new RitualSolarProtection());
+        RITUALS.add(new RitualLunarEmbrace());
     }
 
     public static Ritual[] getRituals()
