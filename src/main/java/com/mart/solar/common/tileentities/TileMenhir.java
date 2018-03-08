@@ -28,8 +28,9 @@ public class TileMenhir extends TileBase implements ITickable {
     }
 
     public void addRune(ItemStack heldItem, EntityPlayer player, EnumHand hand) {
-
-        ItemStack returnStack = this.itemStackHandler.insertItem(0, heldItem, false);
+        ItemStack insertStack = heldItem.copy();
+        insertStack.setCount(1);
+        ItemStack returnStack = this.itemStackHandler.insertItem(0, insertStack, false);
 
         if(returnStack == heldItem){
             return;

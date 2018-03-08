@@ -3,14 +3,8 @@ package com.mart.solar.common.spells;
 import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAITasks;
-import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -23,8 +17,6 @@ import java.util.Random;
 
 public class SpellHunt extends Spell implements IPlaceableSpell {
 
-    private int spellRadius;
-
     private final static int MIN_SPAWN_DELAY = 100;
     private final static int MAX_SPAWN_DELAY = 200;
     private final static int MAX_MOBS = 10;
@@ -36,7 +28,6 @@ public class SpellHunt extends Spell implements IPlaceableSpell {
         super("Spell of the Hunt");
 
         this.lifeSpan = 14000;
-        this.spellRadius = 8;
     }
 
     @Override
