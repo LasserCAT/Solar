@@ -5,10 +5,12 @@ import com.mart.solar.common.entity.EntitySpellContainer;
 import com.mart.solar.common.items.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -42,13 +44,22 @@ public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
         RayTraceResult result = player.getEntityWorld().rayTraceBlocks(vec3d, vec3d2, true, false, true);
 
         assert result != null;
-        Block b = player.getEntityWorld().getBlockState(result.getBlockPos()).getBlock();
 
-        if (b == Blocks.AIR) {
+        BlockPos resultPos = result.getBlockPos();
+
+        if (player.getEntityWorld().getBlockState(resultPos).getBlock() == Blocks.AIR) {
             return;
         }
 
-        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), result.getBlockPos(), this));
+        if(player.getEntityWorld().getBlockState(resultPos).getBlock() instanceof IGrowable){
+            System.out.println("This is true");
+            resultPos = resultPos.add(0, -1, 0);
+        }
+        else{
+            System.out.println("Nah Boi");
+        }
+
+        player.getEntityWorld().spawnEntity(new EntitySpellContainer(player.getEntityWorld(), resultPos, this));
 
         setSpellToNullOnNBT(ItemBase.getCompound(stack));
         ItemRitualAmulet.setEnergy(stack, 0);

@@ -2,6 +2,7 @@ package com.mart.solar.common.spells;
 
 import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
+import com.mart.solar.common.util.CommonUtils;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,8 +24,15 @@ public class SpellBotanicalGrowth extends Spell implements IPlaceableSpell {
 
     @Override
     public void tick(World world, BlockPos pos, int tickValue) {
-        if(tickValue % 20 != 0){
-            return;
+        if(CommonUtils.isDay(world)){
+            if(tickValue % 20 != 0){
+                return;
+            }
+        }
+        else{
+            if(tickValue % 40 != 0){
+                return;
+            }
         }
 
         Random rand = new Random();

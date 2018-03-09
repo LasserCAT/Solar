@@ -94,7 +94,11 @@ public class GuiPagesManager {
                 new PageTextComponent(I18n.format("guide.moon_flower.info"))
         ));
 
-        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.flower_moon.name"),
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.flower_fiery.name"),
+                new PageTextComponent(I18n.format("guide.fiery_flower.info"))
+        ));
+
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.sundial.name"),
                 new PageTextComponent(I18n.format("guide.sundial.info")),
                 new CraftingGridComponent(
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
