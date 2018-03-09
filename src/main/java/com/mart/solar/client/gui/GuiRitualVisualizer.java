@@ -5,6 +5,7 @@ import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.registry.ModBlocks;
 import com.mart.solar.common.registry.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -14,8 +15,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.client.config.GuiUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiRitualVisualizer extends GuiBase {
 
@@ -44,6 +48,8 @@ public class GuiRitualVisualizer extends GuiBase {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();
+
+        List<String> tooltipList = new ArrayList<>();
 
         int x = (this.width - WIDTH) / 2;
         int y = (this.height - HEIGHT) / 2;
@@ -84,6 +90,7 @@ public class GuiRitualVisualizer extends GuiBase {
         RenderHelper.enableGUIStandardItemLighting();
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(new ItemStack(Item.getItemFromBlock(ModBlocks.ALTAR)), 0, 0);
 
+
         for(RitualComponent component : ritual.getRitualComponents()){
             BlockPos pos = component.getComponentPos();
 
@@ -100,6 +107,15 @@ public class GuiRitualVisualizer extends GuiBase {
                 bruneBuffer.pos(0,     0,     0.0D).tex(0, 0).endVertex();
                 tessellator.draw();
                 GlStateManager.popMatrix();
+
+                int currentPositionX = x + 22 + (10 * 16) + (16 * pos.getX());
+                int currentPositionY = y + 2 + (10 * 16) + (16 * pos.getZ());
+
+                boolean hovered = mouseX >= currentPositionX && mouseY >= currentPositionY && mouseX < currentPositionX + 16 && mouseY < currentPositionY + 16;
+                if(hovered){
+                    tooltipList.add("Empty Menhir");
+                }
+
                 continue;
             }
 
@@ -107,6 +123,14 @@ public class GuiRitualVisualizer extends GuiBase {
 
 
             Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(new ItemStack(ModItems.RUNES, 1, runeByte), 16 * pos.getX(), 16 * pos.getZ());
+
+            int currentPositionX = x + 22 + (10 * 16) + (16 * pos.getX());
+            int currentPositionY = y + 2 + (10 * 16) + (16 * pos.getZ());
+
+            boolean hovered = mouseX >= currentPositionX && mouseY >= currentPositionY && mouseX < currentPositionX + 16 && mouseY < currentPositionY + 16;
+            if(hovered){
+                tooltipList.add(new ItemStack(ModItems.RUNES, 1, runeByte).getDisplayName());
+            }
 
         }
 
@@ -117,6 +141,12 @@ public class GuiRitualVisualizer extends GuiBase {
         GlStateManager.disableBlend();
 
         GlStateManager.popMatrix();
+
+        if(tooltipList.size() == 1){
+            ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+            GuiUtils.drawHoveringText(tooltipList, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), 200, Minecraft.getMinecraft().fontRenderer);
+
+        }
     }
 
     @Override
