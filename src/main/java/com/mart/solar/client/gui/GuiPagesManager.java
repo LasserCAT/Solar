@@ -29,8 +29,8 @@ public class GuiPagesManager {
     private static void init(){
         categories = new ArrayList<>();
 
-        GuiCategory journalCategory = new GuiCategory(ModItems.JOURNAL);
-        GuiCategory ritualCategory = new GuiCategory(ModItems.RITUAL_AMULET);
+        GuiCategory journalCategory = new GuiCategory(ModItems.JOURNAL, "Solar");
+        GuiCategory ritualCategory = new GuiCategory(ModItems.RITUAL_AMULET, "Rituals");
 
         categories.add(journalCategory);
         categories.add(ritualCategory);

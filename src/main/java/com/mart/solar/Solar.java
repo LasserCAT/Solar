@@ -33,7 +33,7 @@ public class Solar
 
     public static final String MODID = "solar";
     public static final String NAME = "Solar";
-    public static final String VERSION = "0.0.2";
+    public static final String VERSION = "0.0.2.1";
 
     public static Logger logger;
 

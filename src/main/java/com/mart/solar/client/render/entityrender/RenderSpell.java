@@ -29,7 +29,6 @@ public class RenderSpell<T extends Entity> extends Render<T> {
         GlStateManager.disableLighting();
         GlStateManager.translate((float)x, (float)y, (float)z);
 
-
         //Draw Spell
         GlStateManager.pushMatrix();
         GlStateManager.enableRescaleNormal();

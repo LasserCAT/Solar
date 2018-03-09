@@ -5,6 +5,7 @@ import com.mart.solar.common.entity.EntitySpellContainer;
 import com.mart.solar.common.items.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -51,7 +52,7 @@ public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
             return;
         }
 
-        if(player.getEntityWorld().getBlockState(resultPos).getBlock() instanceof IGrowable){
+        if(player.getEntityWorld().getBlockState(resultPos).getBlock() instanceof IGrowable && player.getEntityWorld().getBlockState(resultPos).getBlock() instanceof BlockCrops){
             System.out.println("This is true");
             resultPos = resultPos.add(0, -1, 0);
         }

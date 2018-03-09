@@ -5,6 +5,7 @@ import com.mart.solar.client.gui.GuiCategory;
 import com.mart.solar.client.gui.GuiPagesManager;
 import com.mart.solar.client.gui.pages.GuiPage;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -14,7 +15,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GuiCategoryButton extends GuiButtonExt{
 
@@ -74,6 +80,13 @@ public class GuiCategoryButton extends GuiButtonExt{
         GlStateManager.disableBlend();
 
         GL11.glPopMatrix();
+
+        if(this.hovered){
+            ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+            List<String> text = new ArrayList<>();
+            text.add(category.getCategoryName());
+            GuiUtils.drawHoveringText(text, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), 200, Minecraft.getMinecraft().fontRenderer);
+        }
     }
 
     public void openCategory(){

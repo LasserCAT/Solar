@@ -12,6 +12,7 @@ import java.util.List;
 public class GuiCategory extends GuiBase{
 
     private final Item displayItem;
+    private String categoryName;
 
     private List<GuiPage> pages = new ArrayList<>();
 
@@ -30,6 +31,7 @@ public class GuiCategory extends GuiBase{
             this.addButton(button);
             buttonAmount++;
         }
+
     }
 
     @Override
@@ -41,8 +43,9 @@ public class GuiCategory extends GuiBase{
         }
     }
 
-    public GuiCategory(Item displayItem) {
+    public GuiCategory(Item displayItem, String categoryName) {
         this.displayItem = displayItem;
+        this.categoryName = categoryName;
     }
 
     public Item getDisplayItem() {
@@ -51,5 +54,9 @@ public class GuiCategory extends GuiBase{
 
     public void addPage(GuiPage page){
         this.pages.add(page);
+    }
+
+    public String getCategoryName() {
+        return categoryName;
     }
 }
