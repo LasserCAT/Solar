@@ -22,6 +22,7 @@ public class ModRituals {
         RITUALS.add(new RitualSolarProtection());
         RITUALS.add(new RitualLunarEmbrace());
         RITUALS.add(new RitualHunt());
+        RITUALS.add(new RitualBotanica("ritual_botanica"));
     }
 
     public static Ritual[] getRituals()

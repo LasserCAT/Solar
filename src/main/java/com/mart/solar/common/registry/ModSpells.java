@@ -19,6 +19,7 @@ public class ModSpells {
         SPELLS.add(new SpellSolarProtection());
         SPELLS.add(new SpellLunarEmbrace());
         SPELLS.add(new SpellHunt());
+        SPELLS.add(new SpellBotanica());
     }
 
     public static Spell[] getSpells()
