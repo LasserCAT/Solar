@@ -74,7 +74,8 @@ public class GuiPagesManager {
                 new PageTextComponent(I18n.format("guide.rune_infuser.info2")),
                 new PageTextComponent(I18n.format("guide.rune_infuser.info2.1")).pageNumber(2),
                 new PageTextComponent(I18n.format("guide.rune_infuser.info3")).pageNumber(2),
-                new PageTextComponent(I18n.format("guide.rune_infuser.crafting_info")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.rune_infuser.info4")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.rune_infuser.crafting_info")).pageNumber(3),
                 new CraftingGridComponent(
                         Items.AIR,                              Items.GOLD_INGOT,                       Items.AIR,
                         Items.GOLD_INGOT,                       Item.getItemFromBlock(Blocks.PLANKS),   Items.GOLD_INGOT,
@@ -147,6 +148,21 @@ public class GuiPagesManager {
         ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_solar_protection"),
                 new PageTextComponent(I18n.format("guide.ritual_solar_protection.info")),
                 new PageRitualComponent(RitualManager.getByRegName("ritual_solar_protection"))
+        ));
+
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_lunar_embrace"),
+                new PageTextComponent(I18n.format("guide.ritual_lunar_embrace.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_lunar_embrace"))
+        ));
+
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_hunt"),
+                new PageTextComponent(I18n.format("guide.ritual_hunt.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_hunt"))
+        ));
+
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_botanical_growth"),
+                new PageTextComponent(I18n.format("guide.ritual_botanical_growth.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_botanical_growth"))
         ));
     }
 

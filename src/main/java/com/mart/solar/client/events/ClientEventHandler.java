@@ -19,7 +19,7 @@ public class ClientEventHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent event){
-        event.getMap().registerSprite(new ResourceLocation(Solar.MODID, "light"));
+        event.getMap().registerSprite(new ResourceLocation(Solar.MODID, "particles/energy_particle"));
     }
 
 }

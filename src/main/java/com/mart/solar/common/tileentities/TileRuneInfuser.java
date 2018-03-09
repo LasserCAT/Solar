@@ -49,10 +49,6 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
     public void onLoad() {
         getNearbyAltar();
 
-        if(this.getWorld().isRemote){
-            return;
-        }
-
         if(infuserReagents == null){ setupInfuserReagents();}
 
         infuse();
@@ -235,7 +231,7 @@ public class TileRuneInfuser extends TileBase implements ITickable, ICapabilityP
         }
     }
 
-    private boolean getNearbyAltar(){
+    public boolean getNearbyAltar(){
         int y = this.getPos().getY();
         for(int x = this.getPos().getX() - 5; x < this.getPos().getX() + 5; x++){
             for(int z = this.getPos().getZ() - 5; z < this.getPos().getZ() + 5; z++){

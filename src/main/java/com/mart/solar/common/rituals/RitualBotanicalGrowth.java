@@ -3,7 +3,7 @@ package com.mart.solar.common.rituals;
 import com.mart.solar.api.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
-import com.mart.solar.common.spells.SpellBotanica;
+import com.mart.solar.common.spells.SpellBotanicalGrowth;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -11,16 +11,16 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RitualBotanica extends Ritual {
+public class RitualBotanicalGrowth extends Ritual {
 
 
-    public RitualBotanica(String registryName) {
+    public RitualBotanicalGrowth(String registryName) {
         super(registryName);
     }
 
     @Override
     public void performRitual(TileAltar altar, EntityPlayer player) {
-        givePlayerSpell(player, new SpellBotanica(), amuletEnergy());
+        givePlayerSpell(player, new SpellBotanicalGrowth(), amuletEnergy());
     }
 
     @Override

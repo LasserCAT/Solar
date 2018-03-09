@@ -2,7 +2,6 @@ package com.mart.solar.common.spells;
 
 import com.mart.solar.api.interfaces.IPlaceableSpell;
 import com.mart.solar.api.spell.Spell;
-import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,12 +12,11 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class SpellBotanica extends Spell implements IPlaceableSpell {
+public class SpellBotanicalGrowth extends Spell implements IPlaceableSpell {
 
 
-
-    public SpellBotanica() {
-        super("Botanica");
+    public SpellBotanicalGrowth() {
+        super("Botanical Growth");
 
         this.lifeSpan = 24000;
     }
@@ -37,8 +35,6 @@ public class SpellBotanica extends Spell implements IPlaceableSpell {
         BlockPos randomPos = pos.add(randX, 0, randZ);
 
         IBlockState state = world.getBlockState(randomPos);
-
-        System.out.println("X: " + randomPos.getX() + "Y: " + randomPos.getY() + "Z: " + randomPos.getZ());
 
         if(!(state.getBlock() instanceof IGrowable)){
             return;
@@ -66,7 +62,7 @@ public class SpellBotanica extends Spell implements IPlaceableSpell {
 
     @Override
     public String getSpellRegistryName() {
-        return "spell_botanica";
+        return "spell_botanical_growth";
     }
 
     @Override
@@ -81,6 +77,6 @@ public class SpellBotanica extends Spell implements IPlaceableSpell {
 
     @Override
     public Spell getNewInstance() {
-        return new SpellBotanica();
+        return new SpellBotanicalGrowth();
     }
 }

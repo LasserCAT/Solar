@@ -28,7 +28,7 @@ public class SpellLunarEmbrace extends Spell implements IPlaceableSpell {
     public static final String MOB_TAG = "lunar_embrace";
 
     private final static int MIN_SPAWN_DELAY = 200;
-    private final static int MAX_SPAWN_DELAY = 300;
+    private final static int MAX_SPAWN_DELAY = 800;
     private final static int MAX_MOBS = 7;
 
     private int currentDelay = 0;

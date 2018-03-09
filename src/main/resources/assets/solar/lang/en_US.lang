@@ -33,9 +33,10 @@ item.solar.rune.water.name=Water Rune
 item.solar.rune.wind.name=Wind Rune
 
 # Rituals
+ritual.solar.ritual_botanical_growth=Rite of Botanical Growth
 ritual.solar.ritual_clear_skies=Rite of Clear Skies
 ritual.solar.ritual_high_tide=Rite of High Tides
-ritual.solar.ritual_hunt=Rite of the Hunt
+ritual.solar.ritual_hunt=Rite of The Hunt
 ritual.solar.ritual_lunar_embrace=Rite of Lunar Embrace
 ritual.solar.ritual_rain=Rite of Rain
 ritual.solar.ritual_rising_moon=Rite of Rising Moon
@@ -67,11 +68,13 @@ guide.runes.info=The menhirs seem to have slots burned into their bodies. They l
 
 guide.rune_infuser.info1=Sometimes when I walk past some chests I hear items rumbling if I have a blank rune with me. I decided to throw everything out of the chest and also throw a rune on the ground. The rune started attracting some of the items! I forgot which though ... I should try this again and remember what the reagents were.
 
-guide.rune_infuser.info2=The items on the ground do not seem to be doing much more than attracting each other. They are trying to merge together but are failing. I might have an idea as to how I can create a structure that will allow them to syphon energy out of the altar to aid the infusion. I can place a rune and one of the reagents in the infuser to infuse the rune.
+guide.rune_infuser.info2=The items on the ground do not seem to be doing much more than attracting each other. They are trying to merge together but are failing. I might have an idea as to how I can create a structure that will allow them to syphon energy out of the altar to aid the infusion. I can place a rune and one of the reagents in the infuser to infuse the rune. I should be careful, once I place a reagent it will be bound to the infuser and I can not get it back.
 
-guide.rune_infuser.info2.1=I should be careful, once I place a reagent it will be bound to the infuser and I can not get it back. I should be able remove the bound reagent with my amulet if I did something wrong. Now I have to figure out what reagents work.
+guide.rune_infuser.info2.1= I should be able remove the bound reagent with my amulet if I did something wrong. Now I have to figure out what reagents work.
 
 guide.rune_infuser.info3=My father used to tell lots of stories about ancient times. One of them was that there exist different worlds for different people, and each world would have a certain affinity. Some might be the same but they can also be different. This will probably have effect on which of the reagents actually work with the item. It looks like there is only one actual working reagent per rune type.
+
+guide.rune_infuser.info4=The Infuser needs energy to be able to operate. It syphons this energy from a nearby altar to do that. When it’s close enough to an altar I should be able to see some radiating particles floating around the infuser.
 
 guide.rune_infuser.crafting_info=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
 
@@ -99,7 +102,10 @@ guide.ritual_rising_moon.info=With these powerful time runes and moon runes I sh
 
 guide.ritual_rising_sun.info=This ritual is the counterpart to the Rite of Rising Moon. It uses Sun Runes and needs it to be night time to be able to activate. This will speed up time until the sun has risen above the horizon.
 
-guide.ritual_solar_protection.info=I may have found a way to replicate the power of the sun for a small area. With the Sun runes and energy of the sun this will create a spell which I can activate in the world. When it is placed it should make spiders passive and burn the undead. This does however mean I am still a target for the rest of the night creatures. But it will make an area a lot safer if I need it to be. The spell only lasts a night, so I should be careful when I use it.
+guide.ritual_solar_protection.info=I may have found a way to replicate the power of the sun for a small area. With the Sun runes and energy of the sun this will create a spell which I can activate in the world. When it is placed it should make spiders passive and burn the undead. This does however mean I am still a target for the rest of the night creatures. But it will make an area a lot safer if I need it to be. The spell only lasts half a day, so I should be careful when I use it.
 
+guide.ritual_lunar_embrace.info=If I can replicate the sun with the Rite of Solar Protection I should be able to do the same with the moon. With the energy of the moon runes I can activate a spell which will allow dangerous mobs to spawn at daytime. The undead won’t be burned and the spiders are aggressive. The spell lasts half a day.
 
+guide.ritual_hunt.info=In desperate times when the Ancients couldn’t find enough wildlife to hunt for, they created a spell that would solve that problem for them. This ritual infuses the power of sun and life together, with more wildlife appearing in the area of the spell as result. There are even records of more ocelots appearing in jungle biomes.
 
+guide.ritual_botanical_growth.info=Some ancient tribes their believes involved not eating any meat. Winter would be a hard time for them since most of the crops would not grow. To get rid of this problem they created a spell that would speed up the plants grow stages by releasing life and sun energy in the atmosphere. It does seem that at night the spell is half as effective than when it’s day.

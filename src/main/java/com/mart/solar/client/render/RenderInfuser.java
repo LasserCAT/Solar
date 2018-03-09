@@ -31,6 +31,7 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
         GlStateManager.popMatrix();
 
         if(!runeInfuser.isLinkedToAltar()){
+            runeInfuser.getNearbyAltar();
             return;
         }
 
@@ -46,8 +47,7 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
         int angle3 = (angle + 180) % 360;
         int angle4 = (angle + 270) % 360;
 
-        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Solar.MODID, "textures/light.png"));
-
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Solar.MODID, "textures/particles/infuser_particle.png"));
 
         drawRotatingParticle(x, y, z, angle1);
         drawRotatingParticle(x, y, z, angle2);
@@ -69,6 +69,8 @@ public class RenderInfuser extends TileEntitySpecialRenderer<TileRuneInfuser> {
 
         GlStateManager.rotate(-Minecraft.getMinecraft().getRenderManager().playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+
+        GlStateManager.color(255, 255, 0);
 
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();

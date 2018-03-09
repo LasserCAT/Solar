@@ -28,8 +28,10 @@ public class EnergyParticle extends Particle {
         this.motionY = (this.endY - this.posY) * 0.05;
         this.motionZ = (this.endZ - this.posZ) * 0.05;
 
-        TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("solar:light");
+        TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("solar:particles/energy_particle");
         this.setParticleTexture(sprite);
+
+        this.setRBGColorF(1, 1, 0);
 
         this.particleMaxAge = 100;
         this.canCollide = false;
@@ -42,7 +44,6 @@ public class EnergyParticle extends Particle {
         Vector3d endVec = new Vector3d(this.endX, this.endY, this.endZ);
 
         double distance  = beginVec.length() - endVec.length();
-        System.out.println(distance);
 
         if (distance > -0.2 && distance < 0.2) {
             this.setExpired();
