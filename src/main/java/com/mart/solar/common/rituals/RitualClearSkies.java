@@ -13,9 +13,7 @@ import java.util.List;
 public class RitualClearSkies extends Ritual {
 
     public RitualClearSkies() {
-        super("Rite of the Clear Skies");
-
-        setRegistryName("ritualclearskies");
+        super("ritual_clear_skies");
     }
 
     @Override

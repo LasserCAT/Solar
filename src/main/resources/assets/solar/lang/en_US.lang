@@ -3,37 +3,47 @@ itemGroup.solar=Solar
 
 # Blocks
 
-tile.altar.name=Celestial Altar
-tile.broken_altar.name=Broken Altar
-tile.rune_infuser.name=Rune Infuser
-tile.silver_ore.name=Silver Ore
-tile.menhir.name=Menhir
-tile.sundial.name=Sundial
-tile.flower_moon.name=Moon Flower
-tile.flower_fiery.name=Fiery Flower
+tile.solar.altar.name=Celestial Altar
+tile.solar.broken_altar.name=Broken Altar
+tile.solar.rune_infuser.name=Rune Infuser
+tile.solar.silver_ore.name=Silver Ore
+tile.solar.menhir.name=Menhir
+tile.solar.sundial.name=Sundial
+tile.solar.flower_moon.name=Moon Flower
+tile.solar.flower_fiery.name=Fiery Flower
 
-#Items
-item.journal.name=Journal
-item.ritual_amulet.name=Ritual Amulet
-item.dull_amulet.name=Dull Amulet
-item.silver_ingot.name=Silver Ingot
-item.silver_nugget.name=Silver Nugget
-item.solar_focus.name=Solar Focus
-item.lunar_focus.name=Lunar Focus
+# Items
+item.solar.journal.name=Journal
+item.solar.ritual_amulet.name=Ritual Amulet
+item.solar.dull_amulet.name=Dull Amulet
+item.solar.silver_ingot.name=Silver Ingot
+item.solar.silver_nugget.name=Silver Nugget
+item.solar.solar_focus.name=Solar Focus
+item.solar.lunar_focus.name=Lunar Focus
 
-#Runes
-item.solar_rune.normal.name=Rune
-item.solar_rune.fire.name=Fire Rune
-item.solar_rune.water.name=Water Rune
-item.solar_rune.earth.name=Earth Rune
-item.solar_rune.wind.name=Wind Rune
-item.solar_rune.time.name=Time Rune
-item.solar_rune.life.name=Life Rune
-item.solar_rune.sun.name=Sun Rune
-item.solar_rune.moon.name=Moon Rune
+# Runes
+item.solar.rune.earth.name=Earth Rune
+item.solar.rune.fire.name=Fire Rune
+item.solar.rune.life.name=Life Rune
+item.solar.rune.moon.name=Moon Rune
+item.solar.rune.normal.name=Rune
+item.solar.rune.sun.name=Sun Rune
+item.solar.rune.time.name=Time Rune
+item.solar.rune.water.name=Water Rune
+item.solar.rune.wind.name=Wind Rune
 
+# Rituals
+ritual.solar.ritual_clear_skies=Rite of Clear Skies
+ritual.solar.ritual_high_tide=Rite of High Tides
+ritual.solar.ritual_hunt=Rite of the Hunt
+ritual.solar.ritual_lunar_embrace=Rite of Lunar Embrace
+ritual.solar.ritual_rain=Rite of Rain
+ritual.solar.ritual_rising_moon=Rite of Rising Moon
+ritual.solar.ritual_rising_sun=Rite of Rising Sun
+ritual.solar.ritual_solar_protection=Rite of Solar Protection
+ritual.solar.ritual_summer_heat=Rite of Summer Heat
 
-#Book
+# Book
 
 guide.me.info1=I found this empty book. I checked but nothing is written here. It looks old but sturdy enough to use. I decided to write down my story, and my experiences through this magical journey. Or at least I hope it will be one. I will start from the beginning.
 
@@ -45,9 +55,9 @@ guide.me.info3=But… I did believe him. I also believed in the stories passed d
 
 guide.solar.info=In the stories that I got told I used to hear about holy altars that could syphon energy out of thin air. It was told the Ancients used this energy to their advantage, creating magical beings and using the energy to shape the world around them. It seems I have stumbled upon one of these altars and was able to repair it. If I hadn’t it would have probably crumbled to dust any time soon. The pillars around the altar look like menhirs that have corroded over the thousands, maybe even millions of years, but they did somehow survive. While writing this journal I can navigate through chapters by using the bookmarks left of the book. Then I can open one of the desired topics. If a topic uses more pages there is an arrow at the bottom for me to use.
 
-guide.celestialaltar.info=Now that I have repaired one of the altars it is taking in some sort of energy. I am not so sure about it creating energy out of thin air ... I think it's collecting solar and lunar energy. I can see different kinds of energy flows depending on day and night. I still need to learn more, but I think I can start looking for more clues as to how to use the altar, maybe starting with the strange trinket I found. I am also sure I can move the altar now that it looks sturdy enough.
+guide.celestial_altar.info=Now that I have repaired one of the altars it is taking in some sort of energy. I am not so sure about it creating energy out of thin air ... I think it's collecting solar and lunar energy. I can see different kinds of energy flows depending on day and night. I still need to learn more, but I think I can start looking for more clues as to how to use the altar, maybe starting with the strange trinket I found. I am also sure I can move the altar now that it looks sturdy enough.
 
-guide.ritualamulet.info=Taking a good look at the trinket I think it was an amulet, but it has been worn down so much I might as well try to make a new one. It looks like I just need some more gold and silver. I wonder if it triggers a reaction when I put it on the altar.
+guide.ritual_amulet.info=Taking a good look at the trinket I think it was an amulet, but it has been worn down so much I might as well try to make a new one. It looks like I just need some more gold and silver. I wonder if it triggers a reaction when I put it on the altar.
 
 guide.menhir.info=The broken down menhirs seem to have been shifted around the altar by the land over the years. I do not think their position is right ... marks on the ground tell me that they were more symmetrically placed around the altar, but moved a lot. Depending on the ritual the menhirs are placed on certain places around the altar. They also look like they could hold something, I will need to take a closer look at that.
 
@@ -55,15 +65,15 @@ guide.menhir.creation=Placing 3 stone blocks ontop of eachother mimics the altar
 
 guide.runes.info=The menhirs seem to have slots burned into their bodies. They look like they can hold some sort of item. I tried carving some wood into items of the same exact size and shape but with all my effort it did not seem to have any effect. I placed them in the slot and they fell right out again. In anger I threw some of the wooden planks on top of the altar and they started to float! I think I figured it out. I will be calling them runes.
 
-guide.runeinfuser.info1=Sometimes when I walk past some chests I hear items rumbling if I have a blank rune with me. I decided to throw everything out of the chest and also throw a rune on the ground. The rune started attracting some of the items! I forgot which though ... I should try this again and remember what the reagents were.
+guide.rune_infuser.info1=Sometimes when I walk past some chests I hear items rumbling if I have a blank rune with me. I decided to throw everything out of the chest and also throw a rune on the ground. The rune started attracting some of the items! I forgot which though ... I should try this again and remember what the reagents were.
 
-guide.runeinfuser.info2=The items on the ground do not seem to be doing much more than attracting each other. They are trying to merge together but are failing. I might have an idea as to how I can create a structure that will allow them to syphon energy out of the altar to aid the infusion. I can place a rune and one of the reagents in the infuser to infuse the rune.
+guide.rune_infuser.info2=The items on the ground do not seem to be doing much more than attracting each other. They are trying to merge together but are failing. I might have an idea as to how I can create a structure that will allow them to syphon energy out of the altar to aid the infusion. I can place a rune and one of the reagents in the infuser to infuse the rune.
 
-guide.runeinfuser.info2.1=I should be careful, once I place a reagent it will be bound to the infuser and I can not get it back. I should be able remove the bound reagent with my amulet if I did something wrong. Now I have to figure out what reagents work.
+guide.rune_infuser.info2.1=I should be careful, once I place a reagent it will be bound to the infuser and I can not get it back. I should be able remove the bound reagent with my amulet if I did something wrong. Now I have to figure out what reagents work.
 
-guide.runeinfuser.info3=My father used to tell lots of stories about ancient times. One of them was that there exist different worlds for different people, and each world would have a certain affinity. Some might be the same but they can also be different. This will probably have effect on which of the reagents actually work with the item. It looks like there is only one actual working reagent per rune type.
+guide.rune_infuser.info3=My father used to tell lots of stories about ancient times. One of them was that there exist different worlds for different people, and each world would have a certain affinity. Some might be the same but they can also be different. This will probably have effect on which of the reagents actually work with the item. It looks like there is only one actual working reagent per rune type.
 
-guide.runeinfuser.craftinginfo=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
+guide.rune_infuser.crafting_info=I can create 2 types of foci that should be able to accept radiating energy from the Celestial Altar. One using gold and the other using silver.
 
 guide.moonflower.info=I saw some interesting flowers grow in the biomes that also house the altars. They looked very weak when it was day. I think they might be night flowers so I should probably not try to collect them during daytime. Night time looks like a better chance to gather some.
 
@@ -77,16 +87,19 @@ guide.rituals.info=Now that I know how to create menhirs I think I can start doi
 
 guide.rituals.layout=Every square in the drawing is a meter. Menhirs that have no runes are drawn by an outlined rune. The actual runes will have their representation drawn in their square.
 
-guide.ritualclearskies.info=I really hate the rain. It’s noisy and blocks my vision too much. And then there is getting wet ... Ugh! Some wind runes should do the trick this time. If I am lucky it will even clear the heaviest storms.
+guide.ritual_clear_skies.info=I really hate the rain. It’s noisy and blocks my vision too much. And then there is getting wet ... Ugh! Some wind runes should do the trick this time. If I am lucky it will even clear the heaviest storms.
 
-guide.ritualrain.info=Even though I hate the rain, sometimes we need it. Water runes and wind runes should give the altar enough power to shift the winds to some more wet type of weather.
+guide.ritual_rain.info=Even though I hate the rain, sometimes we need it. Water runes and wind runes should give the altar enough power to shift the winds to some more wet type of weather.
 
-guide.ritualhightide.info=With this ritual I can put a spell on my amulet which lets me raise water levels of small ponds. It can only manifest some amount of water so I should be careful I do not try to raise the water level of a too big area. The spell is unstable enough to fall apart.
+guide.ritual_high_tide.info=With this ritual I can put a spell on my amulet which lets me raise water levels of small ponds. It can only manifest some amount of water so I should be careful I do not try to raise the water level of a too big area. The spell is unstable enough to fall apart.
 
-guide.ritualsummerheat.info=This ritual is a counterpart of the Rite of High Tide. Instead of leveling water up it will vaporize the top layer of a small pond. Just like with the counterpart I should be careful with how big of an area I try to vaporize.
+guide.ritual_summer_heat.info=This ritual is a counterpart of the Rite of High Tide. Instead of leveling water up it will vaporize the top layer of a small pond. Just like with the counterpart I should be careful with how big of an area I try to vaporize.
 
-guide.ritualrisingmoon.info=With these powerful time runes and moon runes I should be able to speed up the time in this world. They speed up the day cycle by a lot. This ritual will only speed up the world until the sun has set. It also can only be performed at day time because it needs the energy of the sun to form with the magic of the moon runes.
+guide.ritual_rising_moon.info=With these powerful time runes and moon runes I should be able to speed up the time in this world. They speed up the day cycle by a lot. This ritual will only speed up the world until the sun has set. It also can only be performed at day time because it needs the energy of the sun to form with the magic of the moon runes.
 
-guide.ritualrisingsun.info=This ritual is the counterpart to the Rite of Rising Moon. It uses Sun Runes and needs it to be night time to be able to activate. This will speed up time until the sun has risen above the horizon.
+guide.ritual_rising_sun.info=This ritual is the counterpart to the Rite of Rising Moon. It uses Sun Runes and needs it to be night time to be able to activate. This will speed up time until the sun has risen above the horizon.
 
-guide.ritualsolarprotection.info=I may have found a way to replicate the power of the sun for a small area. With the Sun runes and energy of the sun this will create a spell which I can activate in the world. When it is placed it should make spiders passive and burn the undead. This does however mean I am still a target for the rest of the night creatures. But it will make an area a lot safer if I need it to be. The spell only lasts a night, so I should be careful when I use it.
+guide.ritual_solar_protection.info=I may have found a way to replicate the power of the sun for a small area. With the Sun runes and energy of the sun this will create a spell which I can activate in the world. When it is placed it should make spiders passive and burn the undead. This does however mean I am still a target for the rest of the night creatures. But it will make an area a lot safer if I need it to be. The spell only lasts a night, so I should be careful when I use it.
+
+
+

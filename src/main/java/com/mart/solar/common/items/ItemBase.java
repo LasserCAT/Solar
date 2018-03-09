@@ -16,7 +16,7 @@ public class ItemBase extends Item {
 
     public ItemBase(String registryName) {
         this.registryName = registryName;
-        setUnlocalizedName(registryName);
+        setUnlocalizedName(Solar.MODID + "." + registryName);
         setRegistryName(registryName);
     }
 

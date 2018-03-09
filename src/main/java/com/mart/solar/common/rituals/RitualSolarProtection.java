@@ -15,8 +15,7 @@ import java.util.List;
 public class RitualSolarProtection extends Ritual {
 
     public RitualSolarProtection() {
-        super("Rite of Solar Protection");
-        setRegistryName("ritualsolarprotection");
+        super("ritual_solar_protection");
     }
 
     @Override

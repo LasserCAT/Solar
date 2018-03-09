@@ -21,7 +21,7 @@ public class ModRituals {
         RITUALS.add(new RitualHighTide());
         RITUALS.add(new RitualSolarProtection());
         RITUALS.add(new RitualLunarEmbrace());
-        RITUALS.add(new RitualHunt("Rite of the Hunt"));
+        RITUALS.add(new RitualHunt());
     }
 
     public static Ritual[] getRituals()

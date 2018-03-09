@@ -15,7 +15,7 @@ public class BlockBase extends Block {
 
         this.registryName = registryName;
 
-        setUnlocalizedName(registryName);
+        setUnlocalizedName(Solar.MODID + "." + registryName);
         setRegistryName(registryName);
     }
 

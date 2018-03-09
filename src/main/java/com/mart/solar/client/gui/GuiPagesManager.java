@@ -46,22 +46,21 @@ public class GuiPagesManager {
         journalCategory.addPage(new GuiPage("Solar",
                 new PageTextComponent(I18n.format("guide.solar.info"))));
 
-        journalCategory.addPage(new GuiPage("Celestial Altar",
-                new PageTextComponent(I18n.format("guide.celestialaltar.info"))
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.altar.name"),
+                new PageTextComponent(I18n.format("guide.celestial_altar.info"))
         ));
 
-        journalCategory.addPage(new GuiPage("Ritual Amulet",
-                new PageTextComponent(I18n.format("guide.ritualamulet.info")),
+        journalCategory.addPage(new GuiPage(I18n.format("item.solar.ritual_amulet.name"),
+                new PageTextComponent(I18n.format("guide.ritual_amulet.info")),
                 new CraftingGridComponent(
-                        Items.AIR, Items.GOLD_INGOT, Items.AIR,
-                        Items.GOLD_INGOT, ModItems.SILVER_INGOT, Items.GOLD_INGOT,
-                        Items.AIR, Items.GOLD_INGOT, Items.AIR)
+                        Items.AIR,          Items.GOLD_INGOT,       Items.AIR,
+                        Items.GOLD_INGOT,   ModItems.SILVER_INGOT,  Items.GOLD_INGOT,
+                        Items.AIR,          Items.GOLD_INGOT,       Items.AIR)
                         .setCraftedItem(ModItems.DULL_AMULET)
                         .pageNumber(2)
-
         ));
 
-        journalCategory.addPage(new GuiPage("Menhir",
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.menhir.name"),
                 new PageTextComponent(I18n.format("guide.menhir.info")),
                 new PageTextComponent(I18n.format("guide.menhir.creation"))
         ));
@@ -70,31 +69,31 @@ public class GuiPagesManager {
                 new PageTextComponent(I18n.format("guide.runes.info"))
         ));
 
-        journalCategory.addPage(new GuiPage("Rune Infuser",
-                new PageTextComponent(I18n.format("guide.runeinfuser.info1")),
-                new PageTextComponent(I18n.format("guide.runeinfuser.info2")),
-                new PageTextComponent(I18n.format("guide.runeinfuser.info2.1")).pageNumber(2),
-                new PageTextComponent(I18n.format("guide.runeinfuser.info3")).pageNumber(2),
-                new PageTextComponent(I18n.format("guide.runeinfuser.craftinginfo")).pageNumber(2),
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.rune_infuser.name"),
+                new PageTextComponent(I18n.format("guide.rune_infuser.info1")),
+                new PageTextComponent(I18n.format("guide.rune_infuser.info2")),
+                new PageTextComponent(I18n.format("guide.rune_infuser.info2.1")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.rune_infuser.info3")).pageNumber(2),
+                new PageTextComponent(I18n.format("guide.rune_infuser.crafting_info")).pageNumber(2),
                 new CraftingGridComponent(
-                        Items.AIR, Items.GOLD_INGOT, Items.AIR,
-                        Items.GOLD_INGOT, Item.getItemFromBlock(Blocks.PLANKS), Items.GOLD_INGOT,
-                        Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS))
+                        Items.AIR,                              Items.GOLD_INGOT,                       Items.AIR,
+                        Items.GOLD_INGOT,                       Item.getItemFromBlock(Blocks.PLANKS),   Items.GOLD_INGOT,
+                        Item.getItemFromBlock(Blocks.PLANKS),   Item.getItemFromBlock(Blocks.PLANKS),   Item.getItemFromBlock(Blocks.PLANKS))
                         .setCraftedItem(ModItems.SOLAR_FOCUS)
                         .pageNumber(3),
                 new CraftingGridComponent(
-                        Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
-                        Items.GOLD_INGOT, ModItems.SOLAR_FOCUS, Items.GOLD_INGOT,
-                        ModItems.SILVER_INGOT, ModItems.LUNAR_FOCUS, ModItems.SILVER_INGOT)
+                        Item.getItemFromBlock(Blocks.PLANKS),   Item.getItemFromBlock(Blocks.PLANKS),   Item.getItemFromBlock(Blocks.PLANKS),
+                        Items.GOLD_INGOT,                       ModItems.SOLAR_FOCUS,                   Items.GOLD_INGOT,
+                        ModItems.SILVER_INGOT,                  ModItems.LUNAR_FOCUS,                   ModItems.SILVER_INGOT)
                         .setCraftedItem(Item.getItemFromBlock(ModBlocks.RUNE_INFUSER))
                         .pageNumber(4)
         ));
 
-        journalCategory.addPage(new GuiPage("Moon Flower",
-                new PageTextComponent(I18n.format("guide.moonflower.info"))
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.flower_moon.name"),
+                new PageTextComponent(I18n.format("guide.moon_flower.info"))
         ));
 
-        journalCategory.addPage(new GuiPage("Sundial",
+        journalCategory.addPage(new GuiPage(I18n.format("tile.solar.flower_moon.name"),
                 new PageTextComponent(I18n.format("guide.sundial.info")),
                 new CraftingGridComponent(
                         Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS), Item.getItemFromBlock(Blocks.PLANKS),
@@ -115,39 +114,39 @@ public class GuiPagesManager {
 
         //Rituals
 
-        ritualCategory.addPage(new GuiPage("Rite of Clear Skies",
-                new PageTextComponent(I18n.format("guide.ritualclearskies.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualclearskies"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_clear_skies"),
+                new PageTextComponent(I18n.format("guide.ritual_clear_skies.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_clear_skies"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of Rain",
-                new PageTextComponent(I18n.format("guide.ritualrain.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualrain"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_rain"),
+                new PageTextComponent(I18n.format("guide.ritual_rain.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_rain"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of High Tides",
-                new PageTextComponent(I18n.format("guide.ritualhightide.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualhightide"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_high_tide"),
+                new PageTextComponent(I18n.format("guide.ritual_high_tide.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_high_tide"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of Summer Heat",
-                new PageTextComponent(I18n.format("guide.ritualsummerheat.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualsummerheat"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_summer_heat"),
+                new PageTextComponent(I18n.format("guide.ritual_summer_heat.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_summer_heat"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of Rising Moon",
-                new PageTextComponent(I18n.format("guide.ritualrisingmoon.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualrisingmoon"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_rising_moon"),
+                new PageTextComponent(I18n.format("guide.ritual_rising_moon.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_rising_moon"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of Rising Sun",
-                new PageTextComponent(I18n.format("guide.ritualrisingsun.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualrisingsun"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_rising_sun"),
+                new PageTextComponent(I18n.format("guide.ritual_rising_sun.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_rising_sun"))
         ));
 
-        ritualCategory.addPage(new GuiPage("Rite of Solar Protection",
-                new PageTextComponent(I18n.format("guide.ritualsolarprotection.info")),
-                new PageRitualComponent(RitualManager.getByRegName("ritualsolarprotection"))
+        ritualCategory.addPage(new GuiPage(I18n.format("ritual.solar.ritual_solar_protection"),
+                new PageTextComponent(I18n.format("guide.ritual_solar_protection.info")),
+                new PageRitualComponent(RitualManager.getByRegName("ritual_solar_protection"))
         ));
     }
 

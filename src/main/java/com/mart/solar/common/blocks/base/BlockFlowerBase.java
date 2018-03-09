@@ -14,7 +14,7 @@ public class BlockFlowerBase extends BlockBush{
         super(Material.PLANTS);
         this.registryName = registryName;
 
-        setUnlocalizedName(registryName);
+        setUnlocalizedName(Solar.MODID + "." + registryName);
         setRegistryName(registryName);
         setSoundType(SoundType.PLANT);
     }

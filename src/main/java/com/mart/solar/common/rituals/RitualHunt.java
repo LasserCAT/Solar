@@ -14,9 +14,8 @@ import java.util.List;
 
 public class RitualHunt extends Ritual {
 
-    public RitualHunt(String ritualName) {
-        super(ritualName);
-        setRegistryName("ritual_hunt");
+    public RitualHunt() {
+        super("ritual_hunt");
     }
 
     @Override

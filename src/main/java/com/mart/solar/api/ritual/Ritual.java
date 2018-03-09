@@ -7,6 +7,7 @@ import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;
 import com.mart.solar.common.tileentities.TileMenhir;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -21,8 +22,9 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
     private String ritualName;
 
-    public Ritual(String ritualName) {
-        this.ritualName = ritualName;
+    public Ritual(String registryName) {
+        this.ritualName = I18n.format("ritual.solar." + registryName);
+        setRegistryName(registryName);
     }
 
     public boolean isSetup(TileAltar altar) {

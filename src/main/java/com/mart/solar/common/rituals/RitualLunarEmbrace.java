@@ -15,8 +15,7 @@ import java.util.List;
 public class RitualLunarEmbrace extends Ritual {
 
     public RitualLunarEmbrace() {
-        super("Rite of Lunar Embrace");
-        setRegistryName("ritual_lunar_embrace");
+        super("ritual_lunar_embrace");
     }
 
     @Override

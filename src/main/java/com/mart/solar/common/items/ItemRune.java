@@ -14,7 +14,7 @@ public class ItemRune<T extends Enum<T>> extends ItemEnum implements IRune {
 
     public ItemRune(Class<T> enumClass) {
         super(enumClass);
-        setUnlocalizedName(Solar.MODID + "_rune");
+        setUnlocalizedName(Solar.MODID + "." + "rune");
     }
 
     @Override

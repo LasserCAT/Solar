@@ -21,9 +21,7 @@ public class RitualRisingSun extends Ritual {
     private boolean activated = false;
 
     public RitualRisingSun() {
-        super("Rite of Rising Sun");
-
-        this.setRegistryName("ritualrisingsun");
+        super("ritual_rising_sun");
 
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -13,9 +13,7 @@ import java.util.List;
 public class RitualRain extends Ritual {
 
     public RitualRain() {
-        super("Rite of Rain");
-
-        setRegistryName("ritualrain");
+        super("ritual_rain");
     }
 
     @Override

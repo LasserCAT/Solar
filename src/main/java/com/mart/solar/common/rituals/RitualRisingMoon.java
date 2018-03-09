@@ -23,9 +23,7 @@ public class RitualRisingMoon extends Ritual {
     private boolean activated = false;
 
     public RitualRisingMoon() {
-        super("Rite of Rising Moon");
-
-        setRegistryName("ritualrisingmoon");
+        super("ritual_rising_moon");
 
         MinecraftForge.EVENT_BUS.register(this);
     }
