@@ -70,8 +70,8 @@ public class ModBlocks {
         registerItemBlock(FLOWER_MOON, event);
         registerItemBlock(FLOWER_FIERY, event);
 
-        ISolarBlock bmBlock = (ISolarBlock) SUNBURNT;
-        event.getRegistry().register(bmBlock.getItem().setRegistryName(SUNBURNT.getRegistryName()));
+        ISolarBlock solarBlock = (ISolarBlock) SUNBURNT;
+        event.getRegistry().register(solarBlock.getItem().setRegistryName(SUNBURNT.getRegistryName()));
 
 
     }
