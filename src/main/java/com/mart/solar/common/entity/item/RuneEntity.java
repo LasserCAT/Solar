@@ -1,10 +1,7 @@
-package com.mart.solar.common.items.entity;
+package com.mart.solar.common.entity.item;
 
 import com.mart.solar.api.infusing.InfuserReagentManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;

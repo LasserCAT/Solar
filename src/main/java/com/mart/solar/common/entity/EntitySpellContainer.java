@@ -65,7 +65,7 @@ public class EntitySpellContainer extends Entity {
         }
 
         if (!(spell instanceof IPlaceableSpell)) {
-            System.out.println("[EntitySpellContainer.java] Removing spell entity. spell was not an instance of a Spell.class");
+            System.out.println("[EntitySpellContainer.java] Removing spell item. spell was not an instance of a Spell.class");
             getEntityWorld().removeEntity(this);
         }
 

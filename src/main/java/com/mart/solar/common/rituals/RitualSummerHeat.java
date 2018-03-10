@@ -1,9 +1,8 @@
 package com.mart.solar.common.rituals;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
-import com.mart.solar.common.registry.ModSpells;
 import com.mart.solar.common.spells.SpellSummerHeat;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;

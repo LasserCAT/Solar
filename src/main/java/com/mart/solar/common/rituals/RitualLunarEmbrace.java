@@ -1,10 +1,9 @@
 package com.mart.solar.common.rituals;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.spells.SpellLunarEmbrace;
-import com.mart.solar.common.spells.SpellSolarProtection;
 import com.mart.solar.common.tileentities.TileAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

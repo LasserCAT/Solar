@@ -1,6 +1,6 @@
 package com.mart.solar.api.infusing;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 

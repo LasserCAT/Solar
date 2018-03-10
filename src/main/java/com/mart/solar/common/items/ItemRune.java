@@ -2,8 +2,8 @@ package com.mart.solar.common.items;
 
 import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IRune;
-import com.mart.solar.api.util.ItemEnum;
-import com.mart.solar.common.items.entity.RuneEntity;
+import com.mart.solar.common.entity.item.RuneEntity;
+import com.mart.solar.common.items.base.ItemEnum;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

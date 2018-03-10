@@ -1,6 +1,6 @@
 package com.mart.solar.api.ritual;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import net.minecraft.util.math.BlockPos;
 
 public class RitualComponent {

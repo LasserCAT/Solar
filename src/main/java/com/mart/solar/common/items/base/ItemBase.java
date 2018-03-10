@@ -1,4 +1,4 @@
-package com.mart.solar.common.items;
+package com.mart.solar.common.items.base;
 
 import com.mart.solar.Solar;
 import net.minecraft.creativetab.CreativeTabs;

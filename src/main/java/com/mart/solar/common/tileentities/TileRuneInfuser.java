@@ -1,6 +1,6 @@
 package com.mart.solar.common.tileentities;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.infusing.InfuserReagent;
 import com.mart.solar.api.infusing.InfuserReagentManager;
 import com.mart.solar.common.registry.ModBlocks;

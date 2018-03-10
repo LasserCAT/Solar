@@ -3,7 +3,7 @@ package com.mart.solar.common.registry;
 import com.mart.solar.Solar;
 import com.mart.solar.client.render.entityrender.RenderSpell;
 import com.mart.solar.common.entity.EntitySpellContainer;
-import com.mart.solar.common.items.entity.RuneEntity;
+import com.mart.solar.common.entity.item.RuneEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;

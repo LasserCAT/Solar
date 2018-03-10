@@ -1,6 +1,6 @@
 package com.mart.solar.common.registry;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.infusing.InfuserReagent;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;

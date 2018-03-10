@@ -2,9 +2,8 @@ package com.mart.solar.api.spell;
 
 import com.mart.solar.Solar;
 import com.mart.solar.common.entity.EntitySpellContainer;
-import com.mart.solar.common.items.ItemBase;
+import com.mart.solar.common.items.base.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import java.awt.*;
 
 public abstract class Spell extends IForgeRegistryEntry.Impl<Spell> {
 

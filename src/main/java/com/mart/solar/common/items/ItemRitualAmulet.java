@@ -4,6 +4,7 @@ import com.mart.solar.Solar;
 import com.mart.solar.api.interfaces.IAltarManipulator;
 import com.mart.solar.api.spell.Spell;
 import com.mart.solar.api.spell.SpellManager;
+import com.mart.solar.common.items.base.ItemBase;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
 
 public class ItemRitualAmulet extends ItemBase implements IAltarManipulator {
 

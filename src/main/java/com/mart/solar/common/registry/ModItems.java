@@ -1,9 +1,12 @@
 package com.mart.solar.common.registry;
 
 import com.mart.solar.Solar;
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.blocks.base.BlockEnum;
+import com.mart.solar.common.blocks.enums.EnumSunBurnt;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.common.items.ItemRune;
 import com.mart.solar.common.items.*;
+import com.mart.solar.common.items.base.ItemBase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

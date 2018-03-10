@@ -1,8 +1,8 @@
 package com.mart.solar.api.ritual;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.spell.Spell;
-import com.mart.solar.common.items.ItemBase;
+import com.mart.solar.common.items.base.ItemBase;
 import com.mart.solar.common.items.ItemRitualAmulet;
 import com.mart.solar.common.registry.ModItems;
 import com.mart.solar.common.tileentities.TileAltar;

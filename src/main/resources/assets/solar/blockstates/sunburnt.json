@@ -1,0 +1,61 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": { },
+    "model": "cube_all"
+  },
+  "variants": {
+    "type": {
+      "raw": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_raw"
+        }
+      },
+      "paved": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "engraved": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_engraved"
+        }
+      },
+      "arched_1": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_arched1"
+        }
+      },
+      "arched_2": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_arched2"
+        }
+      },
+      "arched_3": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_arched3"
+        }
+      },
+      "arched_4": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_arched4"
+        }
+      },
+      "arched_5": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_arched5"
+        }
+      },
+      "oxidised_endorsed": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_oxidised_endorsed"
+        }
+      },
+      "diamond_endorsed": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_diamond_endorsed"
+        }
+      }
+    }
+  }
+}

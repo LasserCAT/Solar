@@ -1,6 +1,6 @@
 package com.mart.solar.common.rituals;
 
-import com.mart.solar.api.enums.RuneType;
+import com.mart.solar.common.items.enums.RuneType;
 import com.mart.solar.api.ritual.Ritual;
 import com.mart.solar.api.ritual.RitualComponent;
 import com.mart.solar.common.tileentities.TileAltar;

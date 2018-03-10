@@ -1,6 +1,7 @@
 package com.mart.solar.common.items;
 
 import com.mart.solar.Solar;
+import com.mart.solar.common.items.base.ItemBase;
 import com.mart.solar.common.network.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
